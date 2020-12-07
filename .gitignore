@@ -1,0 +1,10 @@
+_results_2019
+example-deoldify
+example-pixi-exercice
+example-pixi-result
+window-example
+
+.DS_Store
+venv
+
+.vscode
