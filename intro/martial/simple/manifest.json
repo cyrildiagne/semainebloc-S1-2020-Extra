@@ -1,7 +1,7 @@
 {
-  "name": "Simple Example",
+  "name": "Monday Example",
   "version": "0.1",
-  "description": "Simple Example",
+  "description": "Martial Grin",
   "background": {
     "persistent": false,
     "scripts": ["background.js"]
