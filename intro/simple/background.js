@@ -1,5 +1,9 @@
 function onClicked(tab) {
-    console.log(tab + "hello");
+  chrome.windows.create({
+    url: chrome.runtime.getURL("popup.html"),
+    type: "popup",
+    focused: true,
+  });
 }
 
 chrome.browserAction.onClicked.addListener(onClicked);
