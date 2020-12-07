@@ -1,0 +1,7 @@
+img{
+    filter: blur(8px);
+}
+
+.mediatexts{
+    z-index: 1001;
+}
