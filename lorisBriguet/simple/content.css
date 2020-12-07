@@ -1,0 +1,9 @@
+.imgRot {
+  transform: rotate(45deg);
+  transition: transform 0.8s ease-in-out;
+}
+
+.imgRot:hover {
+  transform: rotate(210deg);
+  transition: transform 0.8s ease-in-out;
+}
