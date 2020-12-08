@@ -1,4 +1,6 @@
 // http://esapi.intellexer.com/Home/Help
+const API =
+  "http://api.intellexer.com/sentimentAnalyzerOntologies?apikey=2f2f37cb-5849-4425-b018-e61d2ea7b5af";
 async function run() {
   // Get all headers.
   let headers = document.body.querySelectorAll("h1, h2, h3");
@@ -11,18 +13,16 @@ async function run() {
       let settings = {
         async: true,
         crossDomain: true,
-        url:
-          "http://api.intellexer.com/sentimentAnalyzerOntologies?apikey=2f2f37cb-5849-4425-b018-e61d2ea7b5af",
         method: "GET",
         headers: {
           "content-type": "application/json",
           "cache-control": "no-cache",
         },
         processData: false,
-        data: { id: "snt1", text: words },
+        data: JSON.stringify([{ id: "test", text: words }]),
       };
 
-      fetch(settings).then(function (r) {
+      fetch(API, settings).then(function (r) {
         console.log(r);
       });
     } catch (e) {
