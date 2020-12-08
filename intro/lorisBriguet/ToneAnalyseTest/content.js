@@ -3,15 +3,15 @@ const API =
 const IBM_KEY = "6qpjSzQdGXjQ_5Wf2RmGbpLSx4IUnPnUkhZxeb6yjrBv";
 
 let bod = document.body;
-let divs = document.body.getElementsByTagName("div");
+let divs = document.body.querySelectorAll("div");
 let header = document.body.getElementsByTagName("h1, h2, h3");
 let imgs = document.body.getElementsByTagName("img");
 let svgs = document.body.getElementsByTagName("svg");
 
+divs.classList.add("bgColor");
 bod.classList.add("bgColor");
 imgs.classList.add("noImg");
 svgs.classList.add("noSvg");
-divs.classList.add("bgColor");
 
 async function run() {
   // Get all headers.
