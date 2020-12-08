@@ -1,0 +1,7 @@
+img{
+    filter: blur(3px) saturate(500%);
+}
+
+.mediatexts{
+    z-index: 1001;
+}

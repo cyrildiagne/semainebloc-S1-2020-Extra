@@ -1,7 +1,7 @@
 {
-  "name": "Monday Example",
+  "name": "Simple Example",
   "version": "0.1",
-  "description": "Martial Grin",
+  "description": "Simple Example",
   "background": {
     "persistent": false,
     "scripts": ["background.js"]
@@ -10,7 +10,7 @@
     {
       "matches": ["<all_urls>"],
       "all_frames": true,
-      "css": ["content.css"],
+      "css": ["./content.css"],
       "js": ["content.js"]
     }
   ],
