@@ -19,7 +19,7 @@ async function run() {
           "cache-control": "no-cache",
         },
         processData: false,
-        data: words,
+        data: { id: "snt1", text: words },
       };
 
       fetch(settings).then(function (r) {
