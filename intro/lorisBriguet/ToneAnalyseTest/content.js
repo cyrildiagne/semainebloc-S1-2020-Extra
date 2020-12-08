@@ -2,6 +2,17 @@ const API =
   "https://api.eu-gb.tone-analyzer.watson.cloud.ibm.com/instances/476ca0f2-89d3-41fa-ac02-b0d27eee4c9f";
 const IBM_KEY = "6qpjSzQdGXjQ_5Wf2RmGbpLSx4IUnPnUkhZxeb6yjrBv";
 
+let bod = document.body;
+let divs = document.body.getElementsByTagName("div");
+let header = document.body.getElementsByTagName("h1, h2, h3");
+let imgs = document.body.getElementsByTagName("img");
+let svgs = document.body.getElementsByTagName("svg");
+
+bod.classList.add("bgColor");
+imgs.classList.add("noImg");
+svgs.classList.add("noSvg");
+divs.classList.add("bgColor");
+
 async function run() {
   // Get all headers.
   let para = document.body.querySelectorAll("div.css-901oao");
