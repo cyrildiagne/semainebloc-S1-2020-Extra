@@ -1,29 +1,14 @@
-const API = "https://rhyme-lyrics-dot-gpu-sh.appspot.com/get?w=";
-const sentimentAPI =
-  "http://api.intellexer.com/[GET/POST method]?apikey={YourAPIKey}&options={options}";
+// http://esapi.intellexer.com/Home/Help
 async function run() {
   // Get all headers.
   let headers = document.body.querySelectorAll("h1, h2, h3");
 
   for (const h of headers) {
     // remove non alphanumeric characters and split by ' '.
-    const text = h.innerText;
-    const words = h.innerText.replace(/[^a-zA-Z0-9 ]/g, "").split(" ");
-
-    // // Get the last word and ensure it's not empty.
-    const lastWord = words[words.length - 1].toLowerCase();
-
-    // if (lastWord == "") {
-    //   continue;
-    // }
-
+    const words = h.innerText.replace(/[^a-zA-Z0-9 ]/g, "");
+    console.log(words);
     try {
-      // Get the rhyming lyrics using the API.
-      // const rhyme = await fetch(API + lastWord).then((r) => r.text());
-      // Set as dataset attribute. The :before pseudo element will display it.
-
-      // h.dataset["rhyme"] = rhyme;
-      var settings = {
+      let settings = {
         async: true,
         crossDomain: true,
         url:
@@ -34,21 +19,18 @@ async function run() {
           "cache-control": "no-cache",
         },
         processData: false,
-        data: lastWord,
+        data: words,
       };
 
-      fetch(settings).then((r) => console.log(r));
-
-      // $.ajax(settings).done(function (response) {
-      //   console.log(response);
-      // });
+      fetch(settings).then(function (r) {
+        console.log(r);
+      });
     } catch (e) {
       console.log(e);
     }
   }
 }
 
-// Listen for background script message when the button has been clicked.
 chrome.runtime.onMessage.addListener((message, sender) => {
   if (message.action == "run") {
     run();
