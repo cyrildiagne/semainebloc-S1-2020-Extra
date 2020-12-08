@@ -4,7 +4,7 @@ const IBM_KEY = "6qpjSzQdGXjQ_5Wf2RmGbpLSx4IUnPnUkhZxeb6yjrBv";
 
 async function run() {
   // Get all headers.
-  let para = document.body.querySelectorAll("p");
+  let para = document.body.querySelectorAll("div.css-901oao");
 
   for (const p of para) {
     // remove non alphanumeric characters.
@@ -18,7 +18,6 @@ async function run() {
 
       let headers = new Headers();
       headers.append("Authorization", "Basic " + btoa("apikey:" + IBM_KEY));
-
       const url = API + "/v3/tone?version=2017-09-21&text=" + words;
       const resp = await fetch(url, {
         method: "GET",
@@ -27,7 +26,7 @@ async function run() {
 
       if (resp.document_tone?.tones?.length != 0) {
         console.log(p.innerText);
-        console.log(resp);
+        console.log(resp.document_tone.tones[0].tone_id);
       }
     } catch (e) {
       console.log(e);

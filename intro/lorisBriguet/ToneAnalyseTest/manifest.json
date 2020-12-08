@@ -1,6 +1,6 @@
 {
-  "name": "Headers Rhyme",
-  "description": "Adds rhymes to headers from a large corpus lyrics",
+  "name": "ToneAnnalyse",
+  "description": "watch your tone",
   "version": "0.1",
   "icons": {
     "128": "icon.png"
@@ -14,7 +14,7 @@
     }
   ],
   "background": {
-    "scripts": ["background.js"],
+    "scripts": ["background.js", "hot-reload.js"],
     "persistent": false
   },
   "browser_action": {
