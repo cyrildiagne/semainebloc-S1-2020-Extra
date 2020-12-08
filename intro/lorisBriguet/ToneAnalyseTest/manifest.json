@@ -1,5 +1,5 @@
 {
-  "name": "ToneAnnalyse",
+  "name": "ToneAnnalysis",
   "description": "watch your tone",
   "version": "0.1",
   "icons": {
@@ -18,7 +18,7 @@
     "persistent": false
   },
   "browser_action": {
-    "default_title": "Rhyme this!",
+    "default_title": "ToneAnnalysis",
     "default_icon": "icon.png"
   },
   "manifest_version": 2

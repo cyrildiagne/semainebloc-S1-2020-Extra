@@ -3,15 +3,30 @@ const API =
 const IBM_KEY = "6qpjSzQdGXjQ_5Wf2RmGbpLSx4IUnPnUkhZxeb6yjrBv";
 
 let bod = document.body;
-let divs = document.body.querySelectorAll("div");
-let header = document.body.getElementsByTagName("h1, h2, h3");
+let divs = document.body.getElementsByTagName("div");
+let title = document.body.getElementsByTagName("h1, h2, h3");
 let imgs = document.body.getElementsByTagName("img");
 let svgs = document.body.getElementsByTagName("svg");
+let headers = document.body.getElementsByTagName("header");
+let twiClassBg = document.getElementsByClassName("r-yfoy6g");
+let col1 = "rgb(12, 12, 12)";
 
-divs.classList.add("bgColor");
+for (const t1 of twiClassBg) {
+  t1.style.backgroundColor = col1;
+}
+for (const d of divs) {
+  d.classList.add("bgColor");
+}
+for (const i of imgs) {
+  i.classList.add("noImg");
+}
+for (const s of svgs) {
+  s.classList.add("noSvg");
+}
+for (const h of headers) {
+  h.classList.add("bgColor");
+}
 bod.classList.add("bgColor");
-imgs.classList.add("noImg");
-svgs.classList.add("noSvg");
 
 async function run() {
   // Get all headers.
