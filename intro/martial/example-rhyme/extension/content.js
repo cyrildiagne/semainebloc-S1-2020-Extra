@@ -1,6 +1,4 @@
 const API = "https://rhyme-lyrics-dot-gpu-sh.appspot.com/get?w=";
-const sentimentAPI =
-  "http://api.intellexer.com/[GET/POST method]?apikey={YourAPIKey}&options={options}";
 async function run() {
   // Get all headers.
   let headers = document.body.querySelectorAll("h1, h2, h3");
