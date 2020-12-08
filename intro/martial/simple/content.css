@@ -1,5 +1,5 @@
 img{
-    filter: blur(8px);
+    filter: blur(3px) saturate(500%);
 }
 
 .mediatexts{
