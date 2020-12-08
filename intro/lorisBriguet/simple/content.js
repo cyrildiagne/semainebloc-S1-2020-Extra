@@ -1,4 +1,4 @@
-img = document.getElementsByTagName("img");
+img = document.getElementsByTagName("div");
 txt = document.getElementsByTagName("p");
 
 for (let i = 0; i < img.length; i++) {
