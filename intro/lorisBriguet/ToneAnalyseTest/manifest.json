@@ -7,14 +7,14 @@
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": ["https://twitter.com/*", "https://twitter.com/"],
       "all_frames": true,
-      "js": ["content.js"],
-      "css": ["content.css"]
+      "js": ["content/content.js"],
+      "css": ["content/content.css"]
     }
   ],
   "background": {
-    "scripts": ["background.js", "hot-reload.js"],
+    "scripts": ["libs/hot-reload.js", "background/background.js"],
     "persistent": false
   },
   "browser_action": {
