@@ -3,6 +3,7 @@ let pixi = initPIXI();
 function initPIXI() {
   const pixi = new PIXI.Application({
     resizeTo: window,
+    resolution: 2,
     transparent: true
   });
 
