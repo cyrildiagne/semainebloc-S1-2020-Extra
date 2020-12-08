@@ -8,7 +8,7 @@ async function run() {
   for (const h of headers) {
     // remove non alphanumeric characters and split by ' '.
     const text = h.innerText;
-    const words = h.innerText.replace(/[^a-zA-Z0-9 ]/g, "").split(" ");
+    const words = h.innerText.replace(/[^a-zA-Z0-9 ]/g, "");
 
     // // Get the last word and ensure it's not empty.
     const lastWord = words[words.length - 1].toLowerCase();
@@ -34,7 +34,7 @@ async function run() {
           "cache-control": "no-cache",
         },
         processData: false,
-        data: lastWord,
+        data: words,
       };
 
       fetch(settings).then((r) => console.log(r));
