@@ -1,25 +1,26 @@
 // http://esapi.intellexer.com/Home/Help
 const API =
-  "http://api.intellexer.com/sentimentAnalyzerOntologies?apikey=2f2f37cb-5849-4425-b018-e61d2ea7b5af";
+  'http://api.intellexer.com/analyzeSentiments?apikey=2f2f37cb-5849-4425-b018-e61d2ea7b5af';
 async function run() {
   // Get all headers.
-  let headers = document.body.querySelectorAll("h1, h2, h3");
+  let headers = document.body.querySelectorAll('h1, h2, h3');
 
   for (const h of headers) {
     // remove non alphanumeric characters and split by ' '.
-    const words = h.innerText.replace(/[^a-zA-Z0-9 ]/g, "");
+    const words = h.innerText.replace(/[^a-zA-Z0-9 ]/g, '');
     console.log(words);
     try {
       let settings = {
-        async: true,
-        crossDomain: true,
-        method: "GET",
+        // async: true,
+        // crossDomain: true,
+        // mode: 'cors',
+        method: 'POST',
         headers: {
-          "content-type": "application/json",
-          "cache-control": "no-cache",
+          'content-type': 'application/json',
+          'cache-control': 'no-cache',
         },
-        processData: false,
-        data: JSON.stringify([{ id: "test", text: words }]),
+        // processData: false,
+        body: JSON.stringify([{ id: 'test', text: words }]),
       };
 
       fetch(API, settings).then(function (r) {
@@ -32,7 +33,7 @@ async function run() {
 }
 
 chrome.runtime.onMessage.addListener((message, sender) => {
-  if (message.action == "run") {
+  if (message.action == 'run') {
     run();
   }
 });
