@@ -4,7 +4,8 @@
   "description": "Simple Example",
   "background": {
     "persistent": false,
-    "scripts": ["background.js"]
+    "scripts": ["background.js",
+    "hot-relaod.js"]
   },
   "content_scripts": [
     {
