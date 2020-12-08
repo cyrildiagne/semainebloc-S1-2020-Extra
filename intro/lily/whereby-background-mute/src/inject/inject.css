@@ -1,0 +1,11 @@
+/**
+ * Place your custom CSS styles here.
+ **/
+
+ .mute-background {
+     background-color: red;
+ }
+
+ /* [class*="mute-button"] [class*="isOff"] {
+    opacity: 0;
+ } */
