@@ -1,3 +1,4 @@
+// http://esapi.intellexer.com/Home/Help
 async function run() {
   // Get all headers.
   let headers = document.body.querySelectorAll("h1, h2, h3");
