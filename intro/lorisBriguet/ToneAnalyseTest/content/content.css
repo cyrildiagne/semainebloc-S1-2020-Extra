@@ -8,10 +8,34 @@
 .tone--background-overwrite {
   --bgColor: black;
   background-color: var(--bgColor) !important;
+  color: var(--bgColor) !important ;
 }
 
 .tone--angry {
   --bgColor: red;
+}
+
+.tone--conf {
+  --bgColor: green;
+}
+
+.tone--joy {
+  --bgColor: blue;
+}
+
+.tone--tentative {
+  --bgColor: orange;
+}
+.tone--analytical {
+  --bgColor: purple;
+}
+
+.tone--sadness {
+  --bgColor: pink;
+}
+
+.tone--none {
+  --bgColor: white;
 }
 
 .tone--text-visibility {
@@ -43,18 +67,29 @@ img {
 
 * {
   border: none !important;
+  cursor: pointer !important;
+  pointer-events: none;
+  color: var(--bgColor) !important;
+  /* border-radius: 0px !important; */
+}
+
+*:hover {
+  pointer-events: none;
+  all: none;
+
+  /* border-radius: 0px !important; */
+}
+
+*:active {
+  pointer-events: none;
+  all: none;
+
   /* border-radius: 0px !important; */
 }
 
 [style*="url"] {
   background-image: none;
 }
-
-/* {
-  background-color: transparent !important;
-  color: rgba(0,0,0,0) !important;
-}
- */
 
 [role*="banner"] {
   visibility: hidden;
@@ -64,9 +99,15 @@ img {
   visibility: hidden;
 }
 
-/* [role*="link"], */
 [role*="button"] {
   display: none !important ;
+}
+
+[role*="link"] {
+  background-image: none !important ;
+  background: none !important;
+  color: white !important ;
+  background-color: white !important ;
 }
 
 /* :not([role*="article"]), :not([role*="article"]) * {
@@ -80,13 +121,9 @@ img {
 
 /* .bgColor {
   background-color: rgb(12, 12, 12) !important;
-}
+} */
 
 .noImg {
   src: none;
   background-color: rgb(255, 255, 255);
 }
-
-.noSvg {
-  display: none;
-} */
