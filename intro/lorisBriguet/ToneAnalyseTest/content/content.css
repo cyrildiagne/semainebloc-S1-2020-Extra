@@ -6,7 +6,7 @@
 } */
 
 .tone--background-overwrite {
-  --bgColor: black;
+  --bgColor: rgb(230, 230, 230);
   background-color: var(--bgColor) !important;
   color: var(--bgColor) !important ;
 }
