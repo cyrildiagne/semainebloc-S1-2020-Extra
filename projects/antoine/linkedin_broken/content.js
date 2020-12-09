@@ -27,6 +27,28 @@ async function run() {
   // return
 }
 
+//mission impossible theme GO!!!
+(function audioTest(){ 
+  const synth = new Tone.MembraneSynth().toMaster();
+  // null is equal to rest
+  const notes = ["G2", [null, "G2"], null,"Bb2", "C3", "G2", [null, "G2"], null, "F2", "F#2", "F2"];
+  const synthPart = new Tone.Sequence(function(time, notes){
+                             synth.triggerAttackRelease(notes, "10hz", time);
+                             }, notes, "8n");
+  synthPart.start();
+  /** Play Controls **/
+  // let playing = false;
+  // document.querySelector("p").addEventListener("click", function(){ 
+  //   if(!playing){
+  //     Tone.Transport.start();
+  //     playing = true;
+  //   }else{
+  //     Tone.Transport.stop();
+  //     playing = false;
+  //   }
+  // });
+})();
+
 // Listen for background script message when the button has been clicked.
 chrome.runtime.onMessage.addListener((message, sender) => {
   if (message.action == 'run') {
