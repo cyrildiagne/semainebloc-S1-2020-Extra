@@ -2,12 +2,43 @@ function ask(word, id) {
     chrome.runtime.sendMessage({ "type": "wordRequest", "word": word, "id": id });
 }
 
+/* var isHTML = new RegExp(/<\/?[a-z][\s\S]*>/gi); */
+const bannedKeyWords = ["function()", "@media", "{"]
+
+function respectsList(thing) {
+    for (i in bannedKeyWords) {
+        if (thing.innerText.includes[bannedKeyWords[i]]) {
+            console.log(bannedKeyWords[i]);
+            console.log("bad word")
+            return false;
+        }
+    }
+    return true;
+}
+
+function isHTML(thing) {
+    if (thing.innerText != "" && !thing.innerText.includes("function()") && !thing.innerText.includes("@media") && !thing.innerText.includes("<")) {
+        if (respectsList(thing)) {
+            return false;
+        }
+    }
+    return true;
+}
+
 var a = [];
-a.push(document.getElementsByTagName("p"))
-a.push(document.getElementsByTagName("div"))
+/* a.push(document.getElementsByTagName("div")) */
+/* a.push(document.getElementsByTagName("p"))
 a.push(document.getElementsByTagName("h1"))
 a.push(document.getElementsByTagName("h2"))
-
+a.push(document.getElementsByTagName("h3"))
+a.push(document.getElementsByTagName("h4"))
+a.push(document.getElementsByTagName("h5"))
+ */
+a = document.getElementsByTagName("*");
+console.log(a)
+for (var i = 0; i < a.length; i++) {
+    /* console.log(a[i]) */
+}
 
 function UUID() {
     var val = Math.floor(Math.random() * (Math.pow(2, 32)));
@@ -20,10 +51,14 @@ function UUID() {
 var idMap = {}
 
 function buildIdMap() {
-    a.forEach((html) => {
-        /* console.log(html) */
-        for (var i = 0; i < html.length; i++) {
-            const e = html[i];
+    /* for (var j = 0; j < a.length; j++) { */
+    /* var html = a[j]; */
+    /* console.log(html) */
+    var html = a;
+    for (var i = 0; i < html.length; i++) {
+        const e = html[i];
+        /* console.log(e) */
+        if (e.ids) {
             e.ids.forEach((id) => {
                 idMap[id] = e;
                 if (!idMap[id].completePhrase) {
@@ -31,30 +66,36 @@ function buildIdMap() {
                 }
             })
         }
-    })
+    }
 }
+/* } */
 
 var words = {};
-a.forEach((html) => {
-        for (var i = 0; i < html.length; i++) {
-            var e = html[i];
-            e.ids = [];
-            var theseWords = e.innerText.split(" ");
-            /* console.log(e); */
-            theseWords.forEach((word) => {
-                if (word != "" && word[0] != "<") {
-                    var id = UUID();
-                    if (words[id]) {
-                        console.log("uuid not unique")
-                        id = UUID();
-                    }
-                    words[id] = word;
-                    e.ids.push(id);
+for (var j = 0; j < a.length; j++) {
+    var html = a[j];
+    console.log(html)
+        /* for (var i = 0; i < html.length; i++) { */
+    if (html.innerText) {
+        var e = html;
+        /* console.log(e) */
+        e.ids = [];
+        var theseWords = e.innerText.split(" ");
+        /* console.log(theseWords); */
+        theseWords.forEach((word) => {
+            if (word != "") {
+                var id = UUID();
+                if (words[id]) {
+                    console.log("uuid not unique")
+                    id = UUID();
                 }
-            })
-        }
-    })
-    /* console.log(words) */
+                words[id] = word;
+                e.ids.push(id);
+            }
+        })
+    }
+    /* } */
+}
+/* console.log(words) */
 buildIdMap();
 console.log(idMap);
 
@@ -75,16 +116,16 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             var elementId = idMap[request.key].ids.indexOf(parseFloat(request.key));
             /* console.log(idMap[request.key]) */
             idMap[request.key].completePhrase[elementId] = request.word[Math.floor(Math.random() * 10)].word;
-            console.log(idMap[request.key].textContent)
+            /* console.log(request.key) */
 
             const newText = replaceWithBase(idMap[request.key].innerText.split(" "), idMap[request.key].completePhrase);
             /* console.log(newText) */
             /* const newText = "waer" */
             idMap[request.key].innerText = newText
             usedKeys.push(idMap[request.key])
-            console.log(usedKeys.length);
+                /* console.log(usedKeys.length); */
 
-            console.log(usedKeys)
+            /* console.log(usedKeys) */
 
         }
     }

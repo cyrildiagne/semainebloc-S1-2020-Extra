@@ -30,18 +30,18 @@ wordVectors.nearest('rainbow', (err, results) => {
 var fails = 0;
 
 function w2v(word, tab, key) {
-    var result;
+    var result = "fromage";
     /* console.log("asking for " + word) */
     wordVectors.nearest(word, (e, r) => {
         result = r;
-        console.log(r)
-        if (true) {
+        if (r) {
+            console.log(r[0])
             fails++
         }
-        console.log(fails)
-            /* var id = tab["id"] */
-        chrome.tabs.sendMessage(tab, { "word": r, "originalWord": word, "key": key })
-        return r;
+        chrome.tabs.sendMessage(tab, { "word": result, "originalWord": word, "key": key })
+        return result;
+        /* console.log(fails) */
+        /* var id = tab["id"] */
     })
 }
 /* w2v("hi"); */
