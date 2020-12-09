@@ -1,11 +1,13 @@
-// DeepAI API KEY
+// VALUE
+
+
 console.log("linkedin ok")
 const API_KEY = 'dd7c38c7-9a46-48b3-8b78-0696a284771f';
 deepai.setApiKey(API_KEY);
 async function run() {
   // console.log("linkedin ok")
   let ps = document.body.querySelectorAll('p');
-  
+
   for (const p of ps) {
     // console.log(ps);
     if (p.innerText == '') {
@@ -17,29 +19,38 @@ async function run() {
       //   text: p.innerText,
       // });
       // console.log(resp);
-     
+
       // h.dataset['rhyme'] = rhyme;
     } catch (e) {
       console.log(e);
     }
-   
+
   }
   // return
 }
 
 //mission impossible theme GO!!!
-(function audioTest(){ 
+(function audioTest() {
   const synth = new Tone.MembraneSynth().toMaster();
   // null is equal to rest
-  const notes = ["G2", [null, "G2"], null,"Bb2", "C3", "G2", [null, "G2"], null, "F2", "F#2", "F2"];
-  const synthPart = new Tone.Sequence(function(time, notes){
-                             synth.triggerAttackRelease(notes, "10hz", time);
-                             }, notes, "8n");
+  const notes = ["G2", [null, "G2"], null, "Bb2", "C3", "G2", [null, "G2"], null, "F2", "F#2", "F2"];
+  const synthPart = new Tone.Sequence(function (time, notes) {
+    synth.triggerAttackRelease(notes, "10hz", time);
+  }, notes, "1n");
   synthPart.start();
+
+
   /** Play Controls **/
   let playing = false;
-  document.querySelector("body").addEventListener("click", function(){ 
-    console.log("linkedin ok") 
+
+  let img = document.getElementsByTagName("presence-entity");
+
+  for (let i = 0; i < img.length; i++) {
+    // img[i].classList.add("imgRot");
+    // console.log(img[i].classList.add("imgRot"));
+    
+  }
+  $( ".artdeco-card" ).mouseover(function() {
     if(!playing){
       Tone.Transport.start();
       playing = true;
@@ -48,6 +59,17 @@ async function run() {
       playing = false;
     }
   });
+
+  // document.querySelector("body").addEventListener("click", function(){ 
+  // document.querySelector(".presence-entity").addEventListener("click", function(){ 
+  // if(!playing){
+  //     Tone.Transport.start();
+  //     playing = true;
+  //   }else{
+  //     Tone.Transport.stop();
+  //     playing = false;
+  //   }
+  // });
 })();
 
 // Listen for background script message when the button has been clicked.
@@ -61,7 +83,7 @@ console.log('yes');
 
 const observer = new MutationObserver((records) => {
   records.forEach((record) => {
-    
+
     record.addedNodes.forEach((elem) => {
 
 
@@ -71,10 +93,10 @@ const observer = new MutationObserver((records) => {
 
     record.addedNodes.forEach((elem) => {
 
-      if(!("matches" in elem))
+      if (!("matches" in elem))
         return;
 
-      if(elem.matches('[data-id*="urn:li:activity"]')) {
+      if (elem.matches('[data-id*="urn:li:activity"]')) {
         let post = elem;
         console.log(post);
       }
