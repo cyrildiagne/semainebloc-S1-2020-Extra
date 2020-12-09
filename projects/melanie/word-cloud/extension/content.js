@@ -2,7 +2,7 @@ const API = "https://rhyme-lyrics-dot-gpu-sh.appspot.com/get?w=";
 
 async function run() {
   // Get all headers.
-  let headers = document.body.querySelectorAll("p, h1, h2, h3,h4,h5,h6");
+  let headers = document.body.querySelectorAll("body");
 
   for (const h of headers) {
     // remove non alphanumeric characters and split by ' '.
