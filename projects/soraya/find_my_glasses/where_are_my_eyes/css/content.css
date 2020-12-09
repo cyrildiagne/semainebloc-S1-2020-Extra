@@ -1,21 +1,21 @@
-.custom-img {
+.custom-img, .custom-h  {
     transform: rotate(1deg);
     transition: all 0.1s;
-    filter: blur(2px);
+    filter: blur(1px);
     transform: rotate(1deg);
 }
 
-.custom-img:hover{
+.custom-img:hover, .custom-h:hover{
     /* border-radius: 100px;  */
     transform: rotate(0deg);
-    filter: blur(1px);
+    filter: blur(0px);
     
 } 
 
 .custom-p {
     transition: all 0.1s;
     transform:rotate(-1deg);
-    filter: blur(2px); 
+    filter: blur(1px); 
 }
 
 .custom-p:hover{
@@ -27,7 +27,7 @@
 .custom-a {
     transition: all 0.1s;
     transform:rotate(1deg);
-    filter: blur(2px); 
+    filter: blur(1px); 
 }
 
 .custom-a:hover{
@@ -36,25 +36,22 @@
 }
 
 
-.custom-h {
-    /* transform: rotate(90deg);
-    transform: transition 0.5s ease;
-    border-radius: 50px; */
+/* .custom-h {
     transition: all 0.1s;
     transform:rotate(1deg);
-    filter: blur(2px); 
+    filter: blur(1px); 
 }
 
 .custom-h:hover{
     transform: rotate(0deg);
     color: black;
     filter: blur(0px);
-}
+} */
 
 .custom-li {
     transition: all 0.1s;
     transform:rotate(1deg);
-    filter: blur(2px); 
+    filter: blur(1px); 
 }
 
 .custom-li:hover{
@@ -65,7 +62,7 @@
 .custom-span {
     transition: all 0.1s;
     transform:rotate(-1deg);
-    filter: blur(2px); 
+    filter: blur(1px); 
 }
 
 .custom-span:hover{
@@ -76,7 +73,7 @@
 .custom-td {
     transition: all 0.1s;
     transform:rotate(1deg);
-    filter: blur(2px); 
+    filter: blur(1px); 
 }
 
 .custom-td:hover{
@@ -87,7 +84,7 @@
 .custom-th {
     transition: all 0.1s;
     transform:rotate(-1deg);
-    filter: blur(2px); 
+    filter: blur(1px); 
 }
 
 .custom-th:hover{
@@ -98,7 +95,7 @@
 .custom-button {
     transition: all 0.1s;
     transform:rotate(1deg);
-    filter: blur(2px); 
+    filter: blur(5px); 
 }
 
 .custom-button:hover{
@@ -115,3 +112,52 @@
     filter: blur(0px);
 } */
 
+.custom-label {
+    transition: all 0.1s;
+    transform:rotate(1deg);
+    filter: blur(1px); 
+}
+
+.custom-label:hover{
+    transform: rotate(0deg);
+    filter: blur(0px);
+}
+
+.custom-i {
+    transition: all 0.1s;
+    transform:rotate(-1deg);
+    filter: blur(1px); 
+}
+
+.custom-i:hover{
+    transform: rotate(0deg);
+    filter: blur(0px);
+}
+
+.custom-text {
+    transition: all 0.1s;
+    transform:rotate(1deg);
+    filter: blur(1px); 
+}
+
+.custom-text:hover{
+    transform: rotate(0deg);
+    filter: blur(0px);
+}
+
+
+/* SWITCHES NOT WOKRING */
+.switch-1{
+    background-color: blue;
+    filter: blur(5px);
+  }
+  .switch-2{
+    background-color: rgb(0, 255, 0);
+    filter: blur(10px);
+  }
+  
+  .switch-click{
+    transform: rotate(135deg);
+    filter: blur(0px);
+  }
+   
