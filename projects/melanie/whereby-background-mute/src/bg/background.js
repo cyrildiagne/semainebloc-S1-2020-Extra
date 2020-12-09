@@ -22,4 +22,5 @@ chrome.tabs.query({ currentWindow: true, active: true }, (tabs) => {
 // 1. elements sont cachés mais avec une bordure/outline (hitbox) apparente.
 // 2. bouton play
 // 3. Vies
-// 4. 
+// 4. Win detection -> trouver sur quel site on est
+//  -> inject.js, insérer un input text pour comparer avec l'url du site web
