@@ -29,8 +29,6 @@
       "css": [
         "src/inject/inject.css",
         "src/popup/popup.css"
-
-
       ]
     }
   ]
