@@ -1,5 +1,5 @@
 // DeepAI API KEY
-// console.log("linkedin ok")
+console.log("linkedin ok")
 const API_KEY = 'dd7c38c7-9a46-48b3-8b78-0696a284771f';
 deepai.setApiKey(API_KEY);
 async function run() {
@@ -13,10 +13,10 @@ async function run() {
     }
 
     try {
-      const resp = await deepai.callStandardApi('summarization', {
-        text: p.innerText,
-      });
-      console.log(resp);
+      // const resp = await deepai.callStandardApi('summarization', {
+      //   text: p.innerText,
+      // });
+      // console.log(resp);
      
       // h.dataset['rhyme'] = rhyme;
     } catch (e) {
@@ -37,16 +37,17 @@ async function run() {
                              }, notes, "8n");
   synthPart.start();
   /** Play Controls **/
-  // let playing = false;
-  // document.querySelector("p").addEventListener("click", function(){ 
-  //   if(!playing){
-  //     Tone.Transport.start();
-  //     playing = true;
-  //   }else{
-  //     Tone.Transport.stop();
-  //     playing = false;
-  //   }
-  // });
+  let playing = false;
+  document.querySelector("body").addEventListener("click", function(){ 
+    console.log("linkedin ok") 
+    if(!playing){
+      Tone.Transport.start();
+      playing = true;
+    }else{
+      Tone.Transport.stop();
+      playing = false;
+    }
+  });
 })();
 
 // Listen for background script message when the button has been clicked.

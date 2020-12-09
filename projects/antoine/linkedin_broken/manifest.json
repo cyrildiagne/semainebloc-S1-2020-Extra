@@ -9,7 +9,7 @@
     {
       "matches": ["<all_urls>"],
       "all_frames": true,
-      "js": ["libs/Tone.min.js", "libs/deepai.min.js", "content/content.js"],
+      "js": ["libs/Tone.min.js", "libs/deepai.min.js", "libs/jquery.slim.min.js", "content/content.js"],
       "css": ["content/content.css"]
     }
   ],
