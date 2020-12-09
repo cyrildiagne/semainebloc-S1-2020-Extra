@@ -1,7 +1,9 @@
 // const API = "https://rhyme-lyrics-dot-gpu-sh.appspot.com/get?w=";
-const API = 'https://api.deepai.org/api/summarization ';
-const TEXT_SUM_KEY = 'wxuhNMkYnc2MMvTAjUYCfH5TNPBqyS3D';
+// const API = 'https://api.deepai.org/api/summarization ';
+// const TEXT_SUM_KEY = 'wxuhNMkYnc2MMvTAjUYCfH5TNPBqyS3D';
 
+const deepai = require('deepai'); // OR include deepai.min.js as a script tag in your HTML
+deepai.setApiKey('dd7c38c7-9a46-48b3-8b78-0696a284771f');
 async function run() {
   // Get all headers.
   let headers = document.body.querySelectorAll('h1, h2, h3');
