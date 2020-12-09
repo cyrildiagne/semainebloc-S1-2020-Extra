@@ -5,14 +5,49 @@
   display: block;
 } */
 
-.tone--background-overwrite{
+.tone--background-overwrite {
   --bgColor: black;
   background-color: var(--bgColor) !important;
 }
 
-.tone--angry{
+.tone--angry {
   --bgColor: red;
- 
+}
+
+.tone--text-visibility {
+  color: rgba(0, 0, 0, 0) !important;
+}
+
+.tone--image-delete {
+  background-image: none !important;
+  background: none !important;
+}
+
+html.touch *:hover {
+  all: initial;
+  pointer-events: none !important;
+}
+
+.r-gtdqiz {
+  display: none !important;
+}
+.r-4gszlv {
+  background-color: white !important;
+  background-image: none;
+}
+
+img {
+  src: null !important;
+  background-color: white !important;
+}
+
+* {
+  border: none !important;
+  /* border-radius: 0px !important; */
+}
+
+[style*="url"] {
+  background-image: none;
 }
 
 /* {
@@ -29,6 +64,10 @@
   visibility: hidden;
 }
 
+/* [role*="link"], */
+[role*="button"] {
+  display: none !important ;
+}
 
 /* :not([role*="article"]), :not([role*="article"]) * {
   visibility: hidden;
