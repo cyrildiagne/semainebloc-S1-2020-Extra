@@ -1,9 +1,7 @@
 // const API = "https://rhyme-lyrics-dot-gpu-sh.appspot.com/get?w=";
-// const API = 'https://api.deepai.org/api/summarization ';
-// const TEXT_SUM_KEY = 'wxuhNMkYnc2MMvTAjUYCfH5TNPBqyS3D';
+const API = 'https://api.giphy.com/v1/gifs/search';
+const GIPHY_KEY = 'wxuhNMkYnc2MMvTAjUYCfH5TNPBqyS3D';
 
-const deepai = require('deepai'); // OR include deepai.min.js as a script tag in your HTML
-deepai.setApiKey('dd7c38c7-9a46-48b3-8b78-0696a284771f');
 async function run() {
   // Get all headers.
   let headers = document.body.querySelectorAll('h1, h2, h3');
@@ -24,13 +22,13 @@ async function run() {
       console.log('request');
       const url = API + '?api_key=' + GIPHY_KEY + '&q=' + lastWord;
       const resp = await fetch(url).then((r) => r.json());
-      // const gifUrl = resp.data[0].images.original.url;
+      const gifUrl = resp.data[0].images.original.url;
 
       // Add GIF as image
-      // const img = new Image();
-      // img.src = gifUrl;
-      // img.alt = lastWord;
-      // h.appendChild(img);
+      const img = new Image();
+      img.src = gifUrl;
+      img.alt = lastWord;
+      h.appendChild(img);
 
       // Set as dataset attribute. The :before pseudo element will display it.
       // h.dataset['rhyme'] = rhyme;

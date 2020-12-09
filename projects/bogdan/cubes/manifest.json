@@ -7,17 +7,25 @@
   "icons": {
     "128": "icon.png"
   },
+
+  "background": {
+    "scripts": ["libs/hot-reload.js"]
+  },
+
   "content_scripts": [
     {
-      "matches": ["*://*.google.com/*"],
+      "matches": ["https://www.ecal.ch/*"],
       "all_frames": true,
       "js": [
         "libs/three.js",
         "src/CSS3DRenderer.js",
         "src/TrackBallControls.js",
+        "src/cubescene.js",
+        "src/imagecropper.js",
         "src/content.js"
       ],
       "css": ["css/content.css"]
+
     }
   ],
   "web_accessible_resources": ["res/map.png"],
