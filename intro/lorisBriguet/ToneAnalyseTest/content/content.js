@@ -24,49 +24,66 @@ async function processArticle(article) {
         method: 'GET',
         headers: headers,
       }).then((r) => r.json());
+      console.log(resp.document_tone.tones[0].tone_id);
+      let tone = resp.document_tone.tones[0].tone_id;
 
       if (resp.document_tone?.tones?.length != 0) {
-        console.log(article.innerText);
-        console.log(resp.document_tone.tones[0].tone_id);
+        if (tone == 'angry') {
+          article.classList.add('tone--angry');
+        } else if (tone == 'confident') {
+          article.classList.add('tone--conf');
+        } else if (tone == 'joy') {
+          article.classList.add('tone--joy');
+        } else if (tone == 'tentative') {
+          article.classList.add('tone--tentative');
+        } else if (tone == 'analytical') {
+          article.classList.add('tone--analytical');
+        } else if (tone == 'sadness') {
+          article.classList.add('tone--sadness');
+        }
       }
     }
   } catch (e) {
     console.log(e);
-    if (article.e == 'angry') {
-      article.classList.add('tone--angry');
-    }
   }
 }
 
-function run() {
-  var observer = new MutationObserver((records) => {
+function processElem(elem) {
+  elem.querySelectorAll('[role*="article"]').forEach(processArticle);
+
+  elem.querySelectorAll('img').forEach((image) => {
+    if (image.className.includes('tone--')) {
+      return;
+    }
+
+    image.style.backgroundImage = 'none';
+    image.style.style.background = 'none';
+    image.style.backgroundUrl = 'none';
+    console.log(image);
+  });
+
+  elem.querySelectorAll('div').forEach((div) => {
+    if (div.className.includes('tone--')) return;
+    //div.classList.add("tone--image-delete");
+    // console.log(div);
+  });
+}
+
+async function run() {
+  // Process all elements currently on the DOM.
+  processElem(document.body);
+
+  // Add mutation observer to launch process everytime a new item is added.
+  const observer = new MutationObserver((records) => {
     records.forEach((record) => {
       record.addedNodes.forEach((elem) => {
         if (!('querySelectorAll' in elem)) {
           return;
         }
-        elem.querySelectorAll('[role*="article"]').forEach(processArticle);
-
-        elem.querySelectorAll('img').forEach((image) => {
-          if (image.className.includes('tone--')) {
-            return;
-          }
-
-          image.style.backgroundImage = 'none';
-          image.style.style.background = 'none';
-          image.style.backgroundUrl = 'none';
-          console.log(image);
-        });
-
-        elem.querySelectorAll('div').forEach((div) => {
-          if (div.className.includes('tone--')) return;
-          div.classList.add('tone--image-delete');
-          console.log(div);
-        });
+        processElem(elem);
       });
     });
   });
-
   observer.observe(document, {
     attributes: false,
     childList: true,

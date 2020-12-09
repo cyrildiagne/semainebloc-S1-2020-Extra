@@ -1,10 +1,9 @@
 {
-  "name": "Simple Example",
+  "name": "Headers Rhyme",
+  "description": "Adds rhymes to headers from a large corpus lyrics",
   "version": "0.1",
-  "description": "Simple Example",
-  "background": {
-    "persistent": false,
-    "scripts": ["background.js"]
+  "icons": {
+    "128": "icon.png"
   },
   "content_scripts": [
     {
@@ -14,7 +13,12 @@
       "css": ["content.css"]
     }
   ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
   "browser_action": {
+    "default_title": "Rhyme this!",
     "default_icon": "icon.png"
   },
   "manifest_version": 2

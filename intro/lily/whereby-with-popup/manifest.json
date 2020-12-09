@@ -1,0 +1,35 @@
+{
+  "name": "Whereby - Popup integrated",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "description here",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "scripts": [
+      "js/hot-reload.js",
+      "src/bg/background.js"
+    ],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://whereby.com/*",
+        "https://*.whereby.com/*"
+      ],
+      "js": [
+        "src/popup/popup.js",
+        "src/inject/inject.js"
+      ],
+      "css": [
+        "src/inject/inject.css",
+        "src/popup/popup.css"
+      ]
+    }
+  ]
+}
