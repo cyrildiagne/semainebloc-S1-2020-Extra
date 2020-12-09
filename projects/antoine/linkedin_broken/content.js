@@ -11,7 +11,7 @@ async function run() {
   //   text: "YOUR_TEXT_URL",
   // });
   console.log(resp);
-  // let headers = document.body.querySelectorAll('h1, h2, h3');
+   let headers = document.body.querySelectorAll('h1, h2, h3');
 
   for (const h of headers) {
     // remove non alphanumeric characters and split by ' '.
@@ -25,8 +25,9 @@ async function run() {
     }
 
     try {
+      console.log(headers);
       // Get the rhyming lyrics using the API.
-      console.log('request');
+      // console.log('request');
       // const url = API + '?api_key=' + GIPHY_KEY + '&q=' + lastWord;
       // const resp = await fetch(url).then((r) => r.json());
       // const gifUrl = resp.data[0].images.original.url;
