@@ -4,7 +4,7 @@
   "description": "Simple Example",
   "background": {
     "persistent": false,
-    "scripts": ["background.js", "libs/hot-reload.js"]
+    "scripts": ["background.js", "libs/hot-reload.js", "libs/jquery.min.js"]
   },
   "content_scripts": [
     {
