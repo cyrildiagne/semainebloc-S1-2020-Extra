@@ -1,3 +1,17 @@
+* {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    /*transform: unset !important;*/
+    scroll-behavior: auto !important;
+}
+
+canvas {
+	display: none !important;
+}
+
+/*canvas.getDataURL()*/
+
 .pixi {
     position: fixed;
     z-index: 10000;
