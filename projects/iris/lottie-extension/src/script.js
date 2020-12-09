@@ -1,5 +1,6 @@
 //ajout array avec toutes mes urls
-var allMyUrls = ["res/pissenlits.json","res/pissenlits-blue.json"]
+const allMyUrls = ['res/pissenlits.json', 'res/pissenlits-blue.json'];
+
 //
 const width = 580;
 const height = 830;
@@ -12,12 +13,15 @@ function onClick(ev) {
   el.style.width = width + 'px';
   el.style.height = height + 'px';
 
+  const index = Math.floor(Math.random() * 2);
+  const url = allMyUrls[index];
+
   bodymovin.loadAnimation({
     container: el,
     renderer: 'svg',
     loop: false,
     autoplay: true,
-    path: chrome.runtime.getURL(allMyUrls[Math.floor(Math.random(2))]),
+    path: chrome.runtime.getURL(url),
   });
   document.body.append(el);
 }
