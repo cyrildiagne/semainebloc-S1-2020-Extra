@@ -7,9 +7,7 @@ const city = 'Sathon';
 const state = 'Bangkok';
 const country = 'Thailand';
 
-
-function getAirQuality({city, state, country}){
-  var requestOptions = {
+var requestOptions = {
             method: 'GET',
             redirect: 'follow'
           };
@@ -18,12 +16,7 @@ function getAirQuality({city, state, country}){
       .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
-            }
-
-function run(){
+            
 
 
-getAirQuality({city, state, country});
-}
-run();
 
