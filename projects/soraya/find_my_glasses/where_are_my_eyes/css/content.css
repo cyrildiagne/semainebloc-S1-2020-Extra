@@ -1,26 +1,23 @@
-.custom-img, .custom-h  {
+.custom-img, .custom-h, .custom-td, .custom-label, .custom-text {
     transform: rotate(1deg);
     transition: all 0.1s;
     filter: blur(1px);
-    transform: rotate(1deg);
 }
 
-.custom-img:hover, .custom-h:hover{
+.custom-img:hover, .custom-h:hover, .custom-td:hover, .custom-label:hover, .custom-text:hover{
     /* border-radius: 100px;  */
     transform: rotate(0deg);
     filter: blur(0px);
-    
 } 
 
-.custom-p {
+.custom-p , .custom-li, .custom-span, .custom-th, .custom-i, .custom-button {
     transition: all 0.1s;
     transform:rotate(-1deg);
     filter: blur(1px); 
 }
 
-.custom-p:hover{
+.custom-p:hover, .custom-li:hover, .custom-span:hover, .custom-th:hover, .custom-i:hover, .custom-button:hover{
     transform: rotate(0deg);
-    color: black;
     filter: blur(0px);
 }
 
@@ -35,74 +32,6 @@
     filter: blur(0px);
 }
 
-
-/* .custom-h {
-    transition: all 0.1s;
-    transform:rotate(1deg);
-    filter: blur(1px); 
-}
-
-.custom-h:hover{
-    transform: rotate(0deg);
-    color: black;
-    filter: blur(0px);
-} */
-
-.custom-li {
-    transition: all 0.1s;
-    transform:rotate(1deg);
-    filter: blur(1px); 
-}
-
-.custom-li:hover{
-    transform: rotate(0deg);
-    filter: blur(0px);
-}
-
-.custom-span {
-    transition: all 0.1s;
-    transform:rotate(-1deg);
-    filter: blur(1px); 
-}
-
-.custom-span:hover{
-    transform: rotate(0deg);
-    filter: blur(0px);
-}
-
-.custom-td {
-    transition: all 0.1s;
-    transform:rotate(1deg);
-    filter: blur(1px); 
-}
-
-.custom-td:hover{
-    transform: rotate(0deg);
-    filter: blur(0px);
-}
-
-.custom-th {
-    transition: all 0.1s;
-    transform:rotate(-1deg);
-    filter: blur(1px); 
-}
-
-.custom-th:hover{
-    transform: rotate(0deg);
-    filter: blur(0px);
-}
-
-.custom-button {
-    transition: all 0.1s;
-    transform:rotate(1deg);
-    filter: blur(5px); 
-}
-
-.custom-button:hover{
-    transform: rotate(0deg);
-    filter: blur(0px);
-}
-
 /* .custom-div {
     transition: all 1s;
     filter: blur(0px); 
@@ -112,38 +41,6 @@
     filter: blur(0px);
 } */
 
-.custom-label {
-    transition: all 0.1s;
-    transform:rotate(1deg);
-    filter: blur(1px); 
-}
-
-.custom-label:hover{
-    transform: rotate(0deg);
-    filter: blur(0px);
-}
-
-.custom-i {
-    transition: all 0.1s;
-    transform:rotate(-1deg);
-    filter: blur(1px); 
-}
-
-.custom-i:hover{
-    transform: rotate(0deg);
-    filter: blur(0px);
-}
-
-.custom-text {
-    transition: all 0.1s;
-    transform:rotate(1deg);
-    filter: blur(1px); 
-}
-
-.custom-text:hover{
-    transform: rotate(0deg);
-    filter: blur(0px);
-}
 
 
 /* SWITCHES NOT WOKRING */
