@@ -55,3 +55,35 @@ chrome.runtime.onMessage.addListener((message, sender) => {
     run();
   }
 });
+
+console.log('yes');
+
+const observer = new MutationObserver((records) => {
+  records.forEach((record) => {
+    
+    record.addedNodes.forEach((elem) => {
+
+
+
+    });
+
+
+    record.addedNodes.forEach((elem) => {
+
+      if(!("matches" in elem))
+        return;
+
+      if(elem.matches('[data-id*="urn:li:activity"]')) {
+        let post = elem;
+        console.log(post);
+      }
+    });
+  });
+});
+
+observer.observe(document.body, {
+  attributes: false,
+  childList: true,
+  characterData: false,
+  subtree: true,
+});

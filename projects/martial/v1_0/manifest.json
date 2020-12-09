@@ -10,7 +10,7 @@
     {
       "matches": ["<all_urls>"],
       "all_frames": true,
-      "js": ["libs/pixi.min.js", "src/pixi.js", "src/content.js"],
+      "js": ["src/content.js"],
       "css": ["css/content.css"]
     }
   ],
