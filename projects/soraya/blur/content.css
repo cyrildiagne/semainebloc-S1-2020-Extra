@@ -1,0 +1,45 @@
+.custom-img {
+    transform: rotate(1deg);
+   /* transform: transition 0.5s ease;
+    border-radius: 50px; */
+    transition: all 1s;
+    filter: blur(15px);
+    transform: rotate(1deg);
+}
+
+.custom-img:hover{
+    border-radius: 100px; 
+    transform: rotate(0deg);
+    filter: blur(1px);
+    
+} 
+
+.custom-p {
+    /* transform: rotate(90deg);
+    transform: transition 0.5s ease;
+    border-radius: 50px; */
+    transition: all 1s;
+    transform:rotate(-1deg);
+    /* filter: blur(40px); */
+}
+
+.custom-p:hover{
+    transform: rotate(0deg);
+    color: black;
+    filter: blur(0px);
+}
+
+.custom-h {
+    /* transform: rotate(90deg);
+    transform: transition 0.5s ease;
+    border-radius: 50px; */
+    transition: all 1s;
+    transform:rotate(1deg);
+    /* filter: blur(40px); */
+}
+
+.custom-h:hover{
+    transform: rotate(0deg);
+    color: black;
+    filter: blur(0px);
+}

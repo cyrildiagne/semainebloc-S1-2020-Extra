@@ -1,0 +1,33 @@
+{
+  "name": "ThreeJS Cubes on Image Test",
+  "version": "1.0",
+  "description": "Does  what it says",
+  "permissions": ["<all_urls>"],
+
+  "icons": {
+    "128": "icon.png"
+  },
+
+  "background": {
+    "scripts": ["libs/hot-reload.js"]
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://www.ecal.ch/*"],
+      "all_frames": true,
+      "js": [
+        "libs/three.js",
+        "src/CSS3DRenderer.js",
+        "src/TrackBallControls.js",
+        "src/cubescene.js",
+        "src/imagecropper.js",
+        "src/content.js"
+      ],
+      "css": ["css/content.css"]
+
+    }
+  ],
+  "web_accessible_resources": ["res/map.png"],
+  "manifest_version": 2
+}
