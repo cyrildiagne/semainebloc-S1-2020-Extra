@@ -1,6 +1,6 @@
 {
-  "name": "Headers Rhyme",
-  "description": "Adds rhymes to headers from a large corpus lyrics",
+  "name": "Linkedin Broken",
+  "description": "Linkedin Broken",
   "version": "0.1",
   "icons": {
     "128": "icon.png"
@@ -9,7 +9,7 @@
     {
       "matches": ["<all_urls>"],
       "all_frames": true,
-      "js": ["content.js"],
+      "js": ["deepai.min.js", "content.js"],
       "css": ["content.css"]
     }
   ],
