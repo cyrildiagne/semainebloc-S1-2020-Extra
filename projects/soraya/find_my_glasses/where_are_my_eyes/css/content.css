@@ -1,4 +1,18 @@
-.custom-img, .custom-h, .custom-td, .custom-label, .custom-text {
+body {
+    filter: contrast(100%) blur(0px);
+    transition: filter 1s ease-in-out;
+}
+
+
+.custom--game-button {
+    display: inline-block;
+    background-color: red;
+    outline: blue 1px solid;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.custom-img, .custom-h  {
     transform: rotate(1deg);
     transition: all 0.1s;
     filter: blur(1px);
@@ -8,7 +22,8 @@
     /* border-radius: 100px;  */
     transform: rotate(0deg);
     filter: blur(0px);
-} 
+    
+}
 
 .custom-p , .custom-li, .custom-span, .custom-th, .custom-i, .custom-button {
     transition: all 0.1s;

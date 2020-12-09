@@ -1,3 +1,6 @@
+//ajout array avec toutes mes urls
+var allMyUrls = ["res/pissenlits.json","res/pissenlits-blue.json"]
+//
 const width = 580;
 const height = 830;
 
@@ -14,7 +17,7 @@ function onClick(ev) {
     renderer: 'svg',
     loop: false,
     autoplay: true,
-    path: chrome.runtime.getURL('res/pissenlits.json'),
+    path: chrome.runtime.getURL(allMyUrls[Math.floor(Math.random(2))]),
   });
   document.body.append(el);
 }
