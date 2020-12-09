@@ -6,7 +6,8 @@
             renderer: 'svg',
             loop: false,
             autoplay: false,
-            path: "https://raw.githubusercontent.com/thesvbd/Lottie-examples/master/assets/animations/skip-forward.json"
+            //path: "https://raw.githubusercontent.com/thesvbd/Lottie-examples/master/assets/animations/skip-forward.json"
+            path: "assets/pissenlits.json"
     });
 
       iconSkipForward.addEventListener('click', function() {
