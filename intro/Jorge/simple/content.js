@@ -14,8 +14,15 @@ var requestOptions = {
 
            fetch(API + city + '&state=' + state + '&country=' + country + '&key=' + KEY, requestOptions)
       .then(response => response.json())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
+      .then(result => console.log(result.data.current.pollution.aqius));
+      {
+        if(result => result.data.current.pollution.aqius > 100){
+          console.log('yes');
+        } else {
+          console.log('no');
+        }
+      };
+      
             
 
 
