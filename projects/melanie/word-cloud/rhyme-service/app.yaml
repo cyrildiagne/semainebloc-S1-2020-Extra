@@ -1,4 +1,0 @@
-runtime: python37
-entrypoint: gunicorn -b :$PORT main:app --workers 1 --timeout=1200
-service: rhyme-lyrics
-instance_class: F4
