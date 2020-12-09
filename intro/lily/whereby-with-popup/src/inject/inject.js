@@ -6,13 +6,15 @@ chrome.extension.sendMessage({}, (response) => {
     if (document.readyState === "complete") {
       clearInterval(readyStateCheckInterval);
 
-      requestAnimationFrame(update);
+      // requestAnimationFrame(update);
+      update()
+
       // // ----------------------------------------------------------
       // // This part of the script triggers when page is done loading
       // console.log("Hello. This message was sent from scripts/inject.js");
       // // ----------------------------------------------------------
     }
-  }, 10);
+  }, 20);
 });
 
 function update() {
@@ -22,7 +24,7 @@ function update() {
 
 
 function updateMuteButton() {
-  requestAnimationFrame(update);
+  // requestAnimationFrame(update);
 
   let muteButton = document.querySelector('[class*="mute-button"]');
   let connectedRoom = document.querySelector('[class*="ConnectedRoom"]');
@@ -39,7 +41,7 @@ function updateMuteButton() {
 }
 
 function updateCamButton() {
-  requestAnimationFrame(update);
+  // requestAnimationFrame(update);
 
   let camButton = document.querySelector('[class*="toggle-video"]');
   let connectedRoom = document.querySelector('[class*="ConnectedRoom"]');
