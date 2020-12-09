@@ -24,9 +24,9 @@ function modelLoaded() {
 }
 
 // Find the closest word to 'rainbow'
-wordVectors.nearest('rainbow', (err, results) => {
+/* wordVectors.nearest('rainbow', (err, results) => {
     console.log(results);
-});
+}); */
 var fails = 0;
 
 function w2v(word, tab, key) {
@@ -35,7 +35,7 @@ function w2v(word, tab, key) {
     wordVectors.nearest(word, (e, r) => {
         result = r;
         if (r) {
-            console.log(r[0])
+            /* console.log(r[0]) */
             fails++
         }
         chrome.tabs.sendMessage(tab, { "word": result, "originalWord": word, "key": key })
