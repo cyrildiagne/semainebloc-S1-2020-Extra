@@ -1,0 +1,25 @@
+{
+  "name": "ThreeJS Cubes on Image Test",
+  "version": "1.0",
+  "description": "Does  what it says",
+  "permissions": ["<all_urls>"],
+
+  "icons": {
+    "128": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.google.com/*"],
+      "all_frames": true,
+      "js": [
+        "libs/three.js",
+        "src/CSS3DRenderer.js",
+        "src/TrackBallControls.js",
+        "src/content.js"
+      ],
+      "css": ["css/content.css"]
+    }
+  ],
+  "web_accessible_resources": ["res/map.png"],
+  "manifest_version": 2
+}

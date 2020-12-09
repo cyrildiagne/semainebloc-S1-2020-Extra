@@ -1,0 +1,92 @@
+/* h1:after, h2:after, h3:after {
+  content: attr(data-rhyme);
+  color: magenta;
+  font-style: italic;
+  display: block;
+} */
+
+.tone--background-overwrite {
+  --bgColor: black;
+  background-color: var(--bgColor) !important;
+}
+
+.tone--angry {
+  --bgColor: red;
+}
+
+.tone--text-visibility {
+  color: rgba(0, 0, 0, 0) !important;
+}
+
+.tone--image-delete {
+  background-image: none !important;
+  background: none !important;
+}
+
+html.touch *:hover {
+  all: initial;
+  pointer-events: none !important;
+}
+
+.r-gtdqiz {
+  display: none !important;
+}
+.r-4gszlv {
+  background-color: white !important;
+  background-image: none;
+}
+
+img {
+  src: null !important;
+  background-color: white !important;
+}
+
+* {
+  border: none !important;
+  /* border-radius: 0px !important; */
+}
+
+[style*="url"] {
+  background-image: none;
+}
+
+/* {
+  background-color: transparent !important;
+  color: rgba(0,0,0,0) !important;
+}
+ */
+
+[role*="banner"] {
+  visibility: hidden;
+}
+
+[data-testid*="sidebarColumn"] {
+  visibility: hidden;
+}
+
+/* [role*="link"], */
+[role*="button"] {
+  display: none !important ;
+}
+
+/* :not([role*="article"]), :not([role*="article"]) * {
+  visibility: hidden;
+} */
+
+/* 
+.tone--hide {
+  visibility: hidden;
+} */
+
+/* .bgColor {
+  background-color: rgb(12, 12, 12) !important;
+}
+
+.noImg {
+  src: none;
+  background-color: rgb(255, 255, 255);
+}
+
+.noSvg {
+  display: none;
+} */

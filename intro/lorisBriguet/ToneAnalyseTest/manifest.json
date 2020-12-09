@@ -1,24 +1,24 @@
 {
-  "name": "Headers Rhyme",
-  "description": "Adds rhymes to headers from a large corpus lyrics",
+  "name": "ToneAnnalysis",
+  "description": "watch your tone",
   "version": "0.1",
   "icons": {
     "128": "icon.png"
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": ["https://twitter.com/*", "https://twitter.com/"],
       "all_frames": true,
-      "js": ["content.js"],
-      "css": ["content.css"]
+      "js": ["content/content.js"],
+      "css": ["content/content.css"]
     }
   ],
   "background": {
-    "scripts": ["background.js"],
+    "scripts": ["libs/hot-reload.js", "background/background.js"],
     "persistent": false
   },
   "browser_action": {
-    "default_title": "Rhyme this!",
+    "default_title": "ToneAnnalysis",
     "default_icon": "icon.png"
   },
   "manifest_version": 2
