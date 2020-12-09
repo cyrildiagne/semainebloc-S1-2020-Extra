@@ -1,0 +1,64 @@
+body {
+  background-color: #ffffff;
+}
+
+#main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.site_bar {
+    position: relative;
+  margin-top: 5px;
+  margin-right: 5px;
+  height: 70px;
+  /* width:100vw; */
+  --main-bg-color: #252525;
+  background-color: var(--main-bg-color);
+  border-radius: 40px;
+  /* background-color:--main-bg-color; */
+  transition: background-color 1s ease-in-out;
+  transition: color 0.5s ease-in-out;
+  overflow: hidden;
+  -webkit-box-shadow: 17px 21px 30px -11px rgba(0,0,0,0.46);
+-moz-box-shadow: 17px 21px 30px -11px rgba(0,0,0,0.46);
+box-shadow: 17px 21px 30px -11px rgba(0,0,0,0.46);
+}
+
+.site_bar:hover{
+    
+    background-color: #ffffff;
+    
+}
+
+.site_name {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  text-transform: uppercase;
+  font-family: Helvetica, sans-serif;
+  font-size: 20px;
+  text-align: center;
+  height: 100px;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.site_bar a{
+  margin: 0;
+  display:block;
+  text-decoration: none;
+  color:black;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 30px;
+  white-space: nowrap;
+}
+
+.site_name span {
+  position: relative;
+  /* display: inline-block; */
+  
+}
