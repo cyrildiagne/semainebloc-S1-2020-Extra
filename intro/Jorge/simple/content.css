@@ -1,7 +1,0 @@
-.custom-img{
-    transition:all 1s;
-}
-
-.custom-img:hover{
-    transform:rotate(45deg);
-}

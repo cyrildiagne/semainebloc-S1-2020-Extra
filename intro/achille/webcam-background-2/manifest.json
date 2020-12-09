@@ -26,3 +26,5 @@
   "permissions": ["activeTab", "declarativeContent", "storage","tabs", "<all_urls>"]
   
 }
+
+
