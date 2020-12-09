@@ -22,8 +22,6 @@ var requestOptions = {
           console.log('no');
         }
       };
-
-          
       
             
 
