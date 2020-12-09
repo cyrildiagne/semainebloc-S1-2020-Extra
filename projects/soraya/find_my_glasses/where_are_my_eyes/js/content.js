@@ -72,3 +72,50 @@ for (const button of buttons) {
 //    // img.style.transform="rotate(45deg)";
 //     div.classList.add('custom-div');
 // }
+
+const labels = document.body.getElementsByTagName("label");
+for (const label of labels) {
+    label.classList.add('custom-label');
+}
+
+const is = document.body.getElementsByTagName("i");
+for (const i of is) {
+    i.classList.add('custom-i');
+}
+
+
+const texts = document.body.getElementsByTagName('#text');
+for (const text of texts) {
+    text.classList.add('custom-text');
+}
+
+
+
+
+// switches NOT WORKING
+
+// window.onload = function () {};
+
+// $(document).ready(function () {
+//   $(document).scroll(function () {});
+//   $(document).mousemove(function (event) {});
+
+//   changeClass();
+// });
+
+// function changeClass() {
+//   $('.cell')
+//     .on('mouseenter', function () {
+//       let $this = $(this);
+//       if ($this.hasClass('switch-1')) {
+//         $this.removeClass('switch-1').addClass('switch-2');
+//       } else if ($this.hasClass('switch-2')) {
+//         $this.removeClass('switch-2');
+//       } else {
+//         $this.addClass('switch-1');
+//       }
+//     })
+//     .on('click', function () {
+//       $(this).toggleClass('switch-click');
+//     });
+// }
