@@ -1,5 +1,5 @@
 //ajout array avec toutes mes urls
-const allMyUrls = ['res/pissenlits.json', 'res/pissenlits-blue.json'];
+const allMyUrls = ['res/pissenlits.json', 'res/pissenlits-blue.json', 'res/algaes.json'];
 
 //
 const width = 580;
@@ -13,7 +13,7 @@ function onClick(ev) {
   el.style.width = width + 'px';
   el.style.height = height + 'px';
 
-  const index = Math.floor(Math.random() * 2);
+  const index = Math.floor(Math.random() * 3);
   const url = allMyUrls[index];
 
   bodymovin.loadAnimation({
