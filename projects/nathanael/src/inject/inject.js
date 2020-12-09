@@ -1,15 +1,16 @@
 function ask(word, id) {
     chrome.runtime.sendMessage({ "type": "wordRequest", "word": word, "id": id });
+    requests++;
 }
 
 /* var isHTML = new RegExp(/<\/?[a-z][\s\S]*>/gi); */
 const bannedKeyWords = ["function()", "@media", "{"]
-const bannedTags = ["script"]
+
 
 function respectsList(thing, list) {
-    for (i in bannedKeyWords) {
-        if (thing.innerText.includes[bannedKeyWords[i]]) {
-            console.log(bannedKeyWords[i]);
+    for (i in list) {
+        if (thing.innerText.includes[list[i]]) {
+            console.log(list[i]);
             console.log("bad word")
             return false;
         }
@@ -19,7 +20,7 @@ function respectsList(thing, list) {
 
 function isHTML(thing) {
     if (thing.innerText != "" && !thing.innerText.includes("function()") && !thing.innerText.includes("@media") && !thing.innerText.includes("<")) {
-        if (respectsList(thing)) {
+        if (respectsList(thing, bannedKeyWords)) {
             return false;
         }
     }
@@ -61,12 +62,25 @@ function hasChildren(thing) {
 
 var a = document.getElementsByTagName("*");
 console.log(a)
+
+const bannedTags = ["SCRIPT", "STYLE", "TEXTAREA", "svg", "path"]
+var result = []
 for (var i = 0; i < a.length; i++) {
-    /* console.log(a[i]) */
+    console.log(a[i].tagName)
     if (hasChildren(a[i])) {
         a[i].skip = true;
     }
+    var fails = 0;
+    bannedTags.forEach((tag) => {
+        if (a[i].tagName == tag) {
+            fails++
+        }
+    })
+    if (fails == 0) {
+        result.push(a[i])
+    }
 }
+a = result;
 console.log(a)
 
 function UUID() {
@@ -87,7 +101,7 @@ function buildIdMap() {
     for (var i = 0; i < html.length; i++) {
         const e = html[i];
         /* console.log(e) */
-        if (e.ids) {
+        if (e.ids && !e.modifiedByWord2Vec) {
             e.ids.forEach((id) => {
                 idMap[id] = e;
                 if (!idMap[id].completePhrase) {
@@ -100,12 +114,11 @@ function buildIdMap() {
 /* } */
 
 const observer = new MutationObserver((records) => {
+    buildIdMap();
     records.forEach((record) => {
         if (!record.target.modifiedByWord2Vec) {
             record.addedNodes.forEach((elem) => {
-                if (elem.modifiedByWord2Vec) {
-
-                }
+                console.log(elem)
             });
         }
     });
@@ -117,6 +130,9 @@ observer.observe(document.body, {
     characterData: false,
     subtree: true,
 });
+
+var requests = 0;
+var callbacks = 0;
 
 var words = {};
 for (var j = 0; j < a.length; j++) {
@@ -140,7 +156,7 @@ for (var j = 0; j < a.length; j++) {
             }
         })
     } else if (html.skip) {
-        console.log(html.children)
+        /* console.log(html.children) */
     }
     /* } */
 }
@@ -160,6 +176,7 @@ var usedKeys = []
 var calls = 0;
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    callbacks++;
     if (request.word) {
         if (idMap[request.key]) {
             var elementId = idMap[request.key].ids.indexOf(parseFloat(request.key));
@@ -172,7 +189,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             const newText = replaceWithBase(idMap[request.key].innerText.split(" "), idMap[request.key].completePhrase);
             /* console.log(newText) */
             /* const newText = "waer" */
-            idMap[request.key].innerText = newText
+            idMap[request.key].innerHTML = newText
             usedKeys.push(idMap[request.key])
                 /* console.log(usedKeys.length); */
 
@@ -181,7 +198,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         }
     }
     calls++;
-    /* console.log(calls); */
+    console.log(callbacks + " out of " + requests + " received");
 })
 
 function replaceWithBase(base, mod) {
