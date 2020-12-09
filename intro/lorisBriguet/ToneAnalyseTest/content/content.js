@@ -16,34 +16,27 @@ async function run() {
           if (article.className.includes("tone--")) return;
 
           article.classList.add("tone--background-overwrite");
-
           article.classList.add("tone--text-visibility");
-
           article.innerText.replace(/[^a-zA-Z0-9 ]/g, "");
         
           try {
-          // Get the rhyming lyrics using the API.
-            if (article.length !== 0) {
-             
-            
+            if (article.length != 0) {
+              let headers = new Headers();
+              headers.append("Authorization", "Basic " + btoa("apikey:" + IBM_KEY));
+              const url = API + "/v3/tone?version=2017-09-21&text=" + article.innerText;
+              const resp = await fetch(url, {
+                method: "GET",
+                headers: headers,
+              }).then((r) => r.json());
         
-            let headers = new Headers();
-            headers.append("Authorization", "Basic " + btoa("apikey:" + IBM_KEY));
-            const url = API + "/v3/tone?version=2017-09-21&text=" + words;
-            const resp = await fetch(url, {
-              method: "GET",
-              headers: headers,
-            }).then((r) => r.json());
-        
-            if (resp.document_tone?.tones?.length != 0) {
-              console.log(p.innerText);
-              console.log(resp.document_tone.tones[0].tone_id);
+              if (resp.document_tone?.tones?.length != 0) {
+                console.log(article.innerText);
+                console.log(resp.document_tone.tones[0].tone_id);
+              }
             }
-          }
           } catch (e) {
               console.log(e);
-
-              if(article.e == 'angry'){
+                if(article.e == 'angry'){
                 article.classList.add("tone--angry");
               }
           }
@@ -75,11 +68,6 @@ async function run() {
     characterData: false,
     subtree: true,
   });
-
-  // Get all headers.
-  let para = document.body.querySelectorAll('[data-testid="tweet"]');
-
-
 }
 
 // Listen for background script message when the button has been clicked.
