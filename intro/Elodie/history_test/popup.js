@@ -57,7 +57,7 @@ function buildTypedUrlList(divName) {
   chrome.history.search({
       'text': '',              // Return every history item....
       'startTime': startTime,
-      'maxResults' : 5000  // that was accessed less than one week ago.
+      'maxResults' : 300  // that was accessed less than one week ago.
     },
     function(historyItems) {
       // For each history item, get details on all visits.

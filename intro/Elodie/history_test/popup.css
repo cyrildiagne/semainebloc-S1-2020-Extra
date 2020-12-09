@@ -15,18 +15,14 @@ body {
   margin-right: 5px;
   height: 70px;
   /* width:100vw; */
-  --main-bg-color: #252525;
-  background-color: var(--main-bg-color);
+  --main-bg-color: #9a9a9a;
   border-radius: 40px;
-  /* background-color:--main-bg-color; */
   transition: background-color 1s ease-in-out;
-  transition: color 0.5s ease-in-out;
   overflow: hidden;
 }
 
 .site_bar:hover{
-    
-    background-color: #ffffff;
+    background-color: rgb(255,255,255);
     
 }
 
