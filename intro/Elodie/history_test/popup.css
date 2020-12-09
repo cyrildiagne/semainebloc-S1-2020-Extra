@@ -1,0 +1,50 @@
+body {
+  background-color: #252525;
+}
+
+#main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.site_bar {
+    position: relative;
+  margin-top: 5px;
+  margin-right: 5px;
+  height: 70px;
+  /* width:100vw; */
+  --main-bg-color: #252525;
+  background-color: var(--main-bg-color);
+  border-radius: 40px;
+  /* background-color:--main-bg-color; */
+  transition: background-color 1s ease-in-out;
+  transition: color 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+.site_bar:hover{
+    
+    background-color: #ffffff;
+    
+}
+
+.site_name {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  text-transform: uppercase;
+  font-family: Helvetica, sans-serif;
+  font-size: 20px;
+  text-align: center;
+  height: 100px;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.site_name span {
+  position: relative;
+  /* display: inline-block; */
+  
+}
