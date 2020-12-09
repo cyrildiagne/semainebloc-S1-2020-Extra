@@ -28,7 +28,6 @@ function isHTML(thing) {
 }
 
 function checkForTags(string) {
-    console.log(string)
     if (string[0] == "<" || string[0] == "(" || string[0] == "{") {
         return true;
     }
@@ -172,9 +171,12 @@ function convertElement(e) {
         })
     }
     e.ids.forEach((id) => {
-        console.log(words[idMap[id]])
+        /* console.log(words[id]) */
+        ask(words[id], id);
     })
 }
+
+//          Mutation Observer
 
 const observer = new MutationObserver((records) => {
     /* buildIdMap(); */
@@ -187,10 +189,12 @@ const observer = new MutationObserver((records) => {
                         if (passesBanList(e)) {
                             if (e.children) {
                                 var children = findChildrenWithText(e)
-                                console.log(children)
                                 children.forEach((child) => {
                                     /* child.innerHTML = "sauce béarnaise" */
-                                    convertElement(child)
+                                    if (child.innerText) {
+                                        console.log(child)
+                                        convertElement(child)
+                                    }
                                 })
                             }
 
@@ -260,19 +264,21 @@ var calls = 0;
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     callbacks++;
     if (request.word) {
+        console.log(request.originalWord, request.word[0].word)
         if (idMap[request.key]) {
             var elementId = idMap[request.key].ids.indexOf(parseFloat(request.key));
             /* console.log(idMap[request.key]) */
             var craziness = Math.floor(Math.random() * 10);
-            craziness = 0;
+            craziness = 9;
+            /* idMap[request.key].completePhrase[elementId] = "<i>" + request.word[craziness].word + "</i>"; */
             idMap[request.key].completePhrase[elementId] = request.word[craziness].word;
             /* console.log(request.key) */
 
             if (!idMap[request.key].modifiedByWord2Vec) {
                 idMap[request.key].oldText = idMap[request.key].innerText
+                idMap[request.key].modifiedByWord2Vec = true;
             }
 
-            idMap[request.key].modifiedByWord2Vec = true;
 
             const newText = replaceWithBase(idMap[request.key].innerText.split(" "), idMap[request.key].completePhrase);
             /* console.log(newText) */
