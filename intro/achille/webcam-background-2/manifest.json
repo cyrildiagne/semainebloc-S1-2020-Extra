@@ -8,6 +8,7 @@
       "matches": ["<all_urls>"],
       "js": ["content/content.js"],
       "run_at": "document_start"
+      
     }
   ],
 
@@ -18,8 +19,10 @@
 
   "browser_action": {
     "default_popup": "popup/index.html"
+    
   },
 
   "options_page": "options/index.html",
-  "permissions": ["storage"]
+  "permissions": ["activeTab", "declarativeContent", "storage","tabs", "<all_urls>"]
+  
 }
