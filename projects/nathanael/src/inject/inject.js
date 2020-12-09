@@ -4,8 +4,9 @@ function ask(word, id) {
 
 /* var isHTML = new RegExp(/<\/?[a-z][\s\S]*>/gi); */
 const bannedKeyWords = ["function()", "@media", "{"]
+const bannedTags = ["script"]
 
-function respectsList(thing) {
+function respectsList(thing, list) {
     for (i in bannedKeyWords) {
         if (thing.innerText.includes[bannedKeyWords[i]]) {
             console.log(bannedKeyWords[i]);
@@ -25,20 +26,48 @@ function isHTML(thing) {
     return true;
 }
 
-var a = [];
-/* a.push(document.getElementsByTagName("div")) */
-/* a.push(document.getElementsByTagName("p"))
-a.push(document.getElementsByTagName("h1"))
-a.push(document.getElementsByTagName("h2"))
-a.push(document.getElementsByTagName("h3"))
-a.push(document.getElementsByTagName("h4"))
-a.push(document.getElementsByTagName("h5"))
- */
-a = document.getElementsByTagName("*");
+function checkForTags(string) {
+    if (string[0] == "<" || string[0] == "(" || string[0] == "{") {
+        return true;
+    }
+    const last = string[string.length - 1];
+    if (last == ">" || last == ")" || last == "}") {
+        return true;
+    }
+    return false;
+}
+
+function hasChildren(thing) {
+    var occurences = 0;
+    if (thing.children.length > 0) {
+        return true;
+    }
+    /*  if (thing.children) {
+         console.log(thing.children)
+
+         for (var i = 0; i < a.length; i++) {
+             var e = a[i];
+             for (var j = 0; j < thing.children.length; j++) {
+                 var c = thing.children[j];
+                 if (e == c) {
+                     occurences++;
+                     return true;
+                 }
+             }
+         }
+     } */
+    return false;
+}
+
+var a = document.getElementsByTagName("*");
 console.log(a)
 for (var i = 0; i < a.length; i++) {
     /* console.log(a[i]) */
+    if (hasChildren(a[i])) {
+        a[i].skip = true;
+    }
 }
+console.log(a)
 
 function UUID() {
     var val = Math.floor(Math.random() * (Math.pow(2, 32)));
@@ -70,19 +99,37 @@ function buildIdMap() {
 }
 /* } */
 
+const observer = new MutationObserver((records) => {
+    records.forEach((record) => {
+        if (!record.target.modifiedByWord2Vec) {
+            record.addedNodes.forEach((elem) => {
+                if (elem.modifiedByWord2Vec) {
+
+                }
+            });
+        }
+    });
+});
+
+observer.observe(document.body, {
+    attributes: false,
+    childList: true,
+    characterData: false,
+    subtree: true,
+});
+
 var words = {};
 for (var j = 0; j < a.length; j++) {
     var html = a[j];
-    console.log(html)
-        /* for (var i = 0; i < html.length; i++) { */
-    if (html.innerText) {
+    /* for (var i = 0; i < html.length; i++) { */
+    if (html.innerText && html.children.length < 1) {
         var e = html;
         /* console.log(e) */
         e.ids = [];
         var theseWords = e.innerText.split(" ");
-        /* console.log(theseWords); */
         theseWords.forEach((word) => {
-            if (word != "") {
+            if (!checkForTags(word)) {
+                /* console.log(word); */
                 var id = UUID();
                 if (words[id]) {
                     console.log("uuid not unique")
@@ -92,6 +139,8 @@ for (var j = 0; j < a.length; j++) {
                 e.ids.push(id);
             }
         })
+    } else if (html.skip) {
+        console.log(html.children)
     }
     /* } */
 }
@@ -117,6 +166,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             /* console.log(idMap[request.key]) */
             idMap[request.key].completePhrase[elementId] = request.word[Math.floor(Math.random() * 10)].word;
             /* console.log(request.key) */
+
+            idMap[request.key].modifiedByWord2Vec = true;
 
             const newText = replaceWithBase(idMap[request.key].innerText.split(" "), idMap[request.key].completePhrase);
             /* console.log(newText) */
