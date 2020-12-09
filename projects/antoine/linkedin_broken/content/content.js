@@ -36,7 +36,7 @@ async function run() {
   const notes = ["G2", [null, "G2"], null, "Bb2", "C3", "G2", [null, "G2"], null, "F2", "F#2", "F2"];
   const synthPart = new Tone.Sequence(function (time, notes) {
     synth.triggerAttackRelease(notes, "10hz", time);
-  }, notes, "1n");
+  }, notes, "8n");
   synthPart.start();
 
 
@@ -48,18 +48,20 @@ async function run() {
   for (let i = 0; i < img.length; i++) {
     // img[i].classList.add("imgRot");
     // console.log(img[i].classList.add("imgRot"));
-    
-  }
-  $( ".artdeco-card" ).mouseover(function() {
-    if(!playing){
-      Tone.Transport.start();
-      playing = true;
-    }else{
-      Tone.Transport.stop();
-      playing = false;
-    }
-  });
 
+  }
+  $(".artdeco-card").mouseenter(function () {
+
+    Tone.Transport.start();
+    console.log("insinde");
+    // playing = true;
+
+  });
+  $(".artdeco-card").mouseout(function () {
+    Tone.Transport.stop();
+    console.log("outside");
+    // playing = false;
+  });
   // document.querySelector("body").addEventListener("click", function(){ 
   // document.querySelector(".presence-entity").addEventListener("click", function(){ 
   // if(!playing){
