@@ -1,0 +1,18 @@
+{
+  "name": "Simple PIXI",
+  "version": "1.0",
+  "description": "Basic PIXI Example",
+  "permissions": ["<all_urls>"],
+  "background": {
+    "scripts": ["libs/hot-reload.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "all_frames": true,
+      "js": ["libs/pixi.min.js", "src/pixi.js", "src/content.js"],
+      "css": ["css/content.css"]
+    }
+  ],
+  "manifest_version": 2
+}

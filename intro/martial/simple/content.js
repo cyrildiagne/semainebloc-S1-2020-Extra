@@ -1,6 +1,7 @@
 let deg = 1;
 let velocity = 3;
 let x = document.querySelectorAll("img");
+let text = document.querySelectorAll("p");
 let mediaText = document.querySelectorAll(".mediatexts");
 
 class Content {
@@ -22,7 +23,8 @@ class Content {
       mediaText[i].style.zIndex = "1001";
     }
     for (let i = 0; i < x.length; i++) {
-      x[i].style.transform = "rotate(" + deg + "deg)";
+      let rotation = deg + i * 100;
+      x[i].style.transform = "rotate(" + rotation + "deg)";
     }
     requestAnimationFrame(this.draw.bind(this));
   }

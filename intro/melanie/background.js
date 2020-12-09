@@ -1,7 +1,7 @@
 function onClicked(tab) {
   chrome.windows.create({
     url: chrome.runtime.getURL("popup.html"),
-    type: "popup",
+    type: "panel",
     focused: true,
   });
 }

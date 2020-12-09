@@ -4,13 +4,15 @@
   "description": "Simple Example",
   "background": {
     "persistent": false,
-    "scripts": ["background.js"]
+    "scripts": ["background.js",
+    "hot-relaod.js"]
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "all_frames": true,
-      "js": ["content.js"]
+      "js": ["content.js"],
+      "css":["content.css"]
     }
   ],
   "browser_action": {

@@ -7,6 +7,5 @@ console.log("ca marche");
 
 const imgs = document.body.getElementsByTagName("img");
 for(const img of imgs){
-    img.style.transform = "rotate(45deg)"
-    img.classList.add("rotate");
+    img.classList.add("custom-img");
 }

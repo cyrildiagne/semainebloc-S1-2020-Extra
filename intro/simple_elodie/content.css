@@ -1,0 +1,9 @@
+.custom-img{
+/* border-radius: 50%; */
+transition: all 1s ease;
+}
+
+.custom-img:hover{
+   transform: rotate(45deg);
+    }
+    
