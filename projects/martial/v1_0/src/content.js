@@ -3,6 +3,8 @@
 
 //https://www.w3schools.com/jsref/jsref_getcomputedstyle.asp
 
+// https://developer.mozilla.org/en-US/docs/Web/API/MutationObserverInit/attributes
+
 class Content {
   constructor() {
     this.setup();
