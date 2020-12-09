@@ -1,0 +1,135 @@
+.container-menu	{display:none;}
+.desktop {display:block}
+.mobile {display:none}
+div.mobileMenus.mobile {z-index:2;color: #000000;left: auto;text-transform: uppercase; position: absolute; top: 35px; width: 290px; right:18px; background:#fff; font-size:24px;}
+div.mobileMenus.mobile ul li a{white-space: nowrap;font-family:renensmedium, Helvetica,Arial,sans-serif; font-size:18px !important}
+div.mobileMenus.mobile ul.level2 {display:none;}
+div.mobileMenus.mobile ul{left:0 !important; position:relative !important;width:auto; top:0 !important; border: 0; line-height:24px}
+div.mobileMenus.mobile li	li{line-height:21px; border:0 !important; margin-left:12px !important;overflow: hidden;text-overflow: ellipsis;width:90% }
+div.mobileMenus.mobile li.level1	{min-height:31px;height:auto;width:279px;line-height:21px;border: 1px solid #ccc;float: left;margin-left: -1px;margin-top: -1px;padding: 6px 0 0 10px;position: relative;}
+div.mobileMenus.mobile input[type="text"]		{font-size:24px; background-color:inherit; border:none; font-size:18px !Important}
+div.mobileMenus.mobile .count2	{display:none;} /* hide ecalendar */
+div.mobileMenus.mobile li.level1.small	{height:36px !important; line-height:21px !important; box-sizing:border-box; width:17%;vertical-align:top !important;  margin-left:-1px !important; font-family:renensmedium, Helvetica,Arial,sans-serif; font-size:18px !important}
+div.mobileMenus.mobile li.level3 a	{font-size:16px !Important; color:#999}
+div.mobileMenus.mobile ul.level1.count1 {display:none;}
+div.mobileMenus.mobile form img	{position:absolute;right:12px;top:7px}
+div.mobileMenus.mobile a {color:#000; text-decoration:none; outline:0 none}
+div.mobileMenus.mobile ul.level2 {background: #fff none repeat scroll 0 0;left: -1px;padding: 5px 0;top: 28px;z-index: 3;}
+
+@media screen and (max-width: 767px) {
+	.desktop {display:none}
+	.mobile {display:block}
+	#cbyMapBoxEvent	{z-index:1}
+	tr.content	{display:none}
+	.inner iframe {width:100% !Important}
+	.tpl_left	{float:none !Important; width:100% !Important}
+	.tpl_left .outer.format	{min-height:0 !Important; height:auto !Important; font-size:16px; line-height:18px}
+	.tpl_right	{margin-left:0 !Important}
+	.cbyTools  .large	{width:100% !Important; white-space:normal !Important}
+	.cbyTools ul	{width: 100% !Important}
+	div.cbyTools a	{font-size:16px !Important}
+	
+	div.cbyTools li.nextprev	{position:absolute; right:0}
+	div.cbyTools li.nextprev.prev	{right:80px}
+	.right a {display: inline-block;position: relative;right: 10px;}
+	div.cbyTools ul li.large	{font-size:16px !Important; width:95% !important; overflow:hidden !important; text-overflow:ellipsis !important; white-space:nowrap !important}
+	div.cbyTools li.level4, div.cbyTools li.level2,div.cbyTools li.level3	{width:95% !Important}
+	div.cbyTools li.level2 a	{background-position: 0 3px;}
+	div.cbyTools li.level3 a, div.cbyTools li.level4 a	{background-position: 0 2px;}
+	div.cbyTools li.right {float:left !important; margin-left:10px; width:auto !important; text-align:left !Important}
+	
+	.outer.cbySlideshow.small  .added	{bottom:75px !Important; width:100% !Important}
+	.outer.cbySlideshow.large  .added	{bottom:27px !Important; width:100% !Important}
+	.outer.cbySlideshow.small	{position:relative !Important; width:33% !Important;height:480px !Important;left:0 !Important;top:0 !Important;float:left !Important}
+	.tpl_right .outer.cbySlideshow.small  {position:relative !Important; width:33% !Important;height:auto !Important;left:0 !Important;top:0 !Important;float:left !Important}
+	.outer.cbySlideshow.large	{position:relative !Important; width:100% !Important;height:auto !Important;left:0 !Important;top:0 !Important; float:left !Important}
+	.downloadlist .outer.small	{position:relative !Important; width:33% !Important;height:350px !Important;left:0 !Important;top:0 !Important;float:left !Important}
+	.outer.cbySlideshow.large .mediatexts	{height:auto !Important;}
+	h1, div.topMenus, div.time-date div.time div.inner, div.outer div.mediatiles, div.cbyTools li.large	{font-size:18px !Important}
+	
+	/*div.download div.outer div, div.search div.outer div	{width:auto !Important}*/
+	.inner.downloadfile	{width:46% !important}
+	div.outer div.downloadinfo	{width:auto !Important}
+	.small .inner	{position:relative !Important}
+	.large .inner	{position:relative !Important}
+	.outer.cbySlideshow.small img	{width:100% !Important}
+	.outer.cbySlideshow.large img	{width:100% !Important}
+	#cbyHeader	{position:absolute !Important; border:none !important;}
+	#cbyFixed	{position:absolute !Important; }
+	#cbyTools	{position:absolute !Important; width:100%; top:108px !important; border:1px solid #ccc !important}
+	
+	div.time-date	{min-width:100% !Important; width: 100% !Important}
+	div.timecontent div.outer	{position:relative !Important; width:33% !Important;height:auto !Important;left:0 !Important;top:0 !Important;float:left !Important}
+	div.timecontent div.outer.large	{position:relative !Important; width:100% !Important;height:auto !Important;left:0 !Important;top:0 !Important; float:left !Important}
+	.mediapicts img {width:100%}
+	div.outer div.mediatexts	{height:8em !Important; font-size:17px; line-height:19px}
+	div.timecontent div.outer.large  .mediatexts {height:auto !Important}
+	div.timecontent div.outer div.mediatiles	{margin-top:10px !Important}
+	div.homepage div.outer div.mediatiles	{height:8px !important}
+	
+	div.cbyTools li.breadcrumb	 {width:93% !Important; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; border-bottom:0 !Important}
+	div.cbyTools li.nextprev	{position:relative; right:0; width:49.8% !Important; border-top:1px solid #ccc !important;}
+	div.cbyTools li.nextprev.prev	{right:0; }
+	td.ttitle {font-size:16px !Important}
+	h6	{font-size:18px !Important}
+	.alumni ul.login {margin: 0 auto;position: relative;width: 287px;top:50px}
+	
+	.alumni .login li	{box-sizing:border-box;}
+	div.download div.outer, div.search div.outer 	{width:100% !Important; height:auto !important; overflow:auto !Important}
+	div.outer div.downloaddesc 	{width:96% !Important; overflow:auto !important; height:auto !important}
+	div.outer div.downloaddesc span	{width:45% !important; height:auto !important; display:inline-block;padding-right:0 !important}
+	div.outer div.downloaddesc a.download2	{vertical-align:top; left:0 !Important; bottom:0 !Important; padding:0 !important; position:relative !important; display:inline-block; width:49% !important}
+	div.outer div.downloaddesc a.openclose2	{margin-top:25px !Important; bottom:0 !Important; position:relative !Important; background-position: 0px 9px !Important; display:block;}
+	
+	div.download div.outer div, div.search div.outer div	{width:100%}
+	
+	table.outer	{width:100% !Important; border: none !important}
+	table.outer td	{display:block; }
+	table.outer td.tleft	{height:auto !Important; width:100% !important; padding:10px !Important; box-sizing:border-box}
+	table.outer td.tleft img	{width:100%}
+	/*#cbyContent a	{display:none}*/
+	table.outer div.share	{position:relative !important; right:0 !important}
+	
+	.fRight {height: 35px !important;line-height: 41px;float:none !important}
+	#blogoptions	{font-size:16px !important}
+	#blogoptions li	{width:100% !Important}
+	div.tpl2 div.tpl_right div.outer	{float:none !important; top:10px; position:relative;margin:0 auto !important}
+	.field_website_image div {margin-top:20px !Important}
+	.field_website_image div span 	{top:-14px;}
+	.tleft .field_image div	{margin-top:0 !Important}
+	.tleft .field_image div span	{top:-30px}
+	
+	div.outer div.downloadfile, div.outer div.searchmedia	{width:45% !Important; height:auto !important}
+	div.outer div.searchdesc	{width:45% !important; height:auto !important}
+	div.outer div.downloadfile, div.outer div.searchmedia img	{width:100%}
+	.added	{display:none}
+	
+	.small.grey.level1 img {position: relative;top: -2px;}
+	.homepage 	{height:auto !important}
+}
+@media screen and (max-width: 640px) {
+	.outer.cbySlideshow.small	{position:relative !Important; width:49.8% !Important;height:540px !Important;left:0 !Important;top:0 !Important}
+	div.timecontent div.outer	{position:relative !Important; width:49.8% !Important;height:auto !Important;left:0 !Important;top:0 !Important;float:left !Important}
+	div.cbyTools li.count16, div.cbyTools li.count17	{width: 95% !Important}
+	.downloadlist .outer.small	{position:relative !Important; width:49.8% !Important;height:350px !Important;left:0 !Important;top:0 !Important;float:left !Important}
+	.tpl_right .outer.cbySlideshow.small  {position:relative !Important; width:49.8% !Important;height:auto !Important;left:0 !Important;top:0 !Important;float:left !Important}
+	div.outer div.downloaddesc a.download2	{width:50% !important}
+}
+@media screen and (max-width: 510px) {
+	.outer.cbySlideshow.small	{position:relative !Important; width:49.7% !Important;height:480px !Important;left:0 !Important;top:0 !Important}
+	div.timecontent div.outer	{position:relative !Important; width:49.72% !Important;height:auto !Important;left:0 !Important;top:0 !Important;float:left !Important}
+	.downloadlist .outer.small	{position:relative !Important; width:49.789% !Important;height:350px !Important;left:0 !Important;top:0 !Important;float:left !Important}
+	div.cbyTools li.nextprev	{position:relative; right:0; width:49.6% !Important;border-top:1px solid #ccc !important;}
+	.tpl_right .outer.cbySlideshow.small  {position:relative !Important; width:49.7% !Important;height:auto !Important;left:0 !Important;top:0 !Important;float:left !Important}
+	div.outer div.downloaddesc a.download2	{width:51% !important}
+}
+@media screen and (max-width: 400px) {
+	.outer.cbySlideshow.small	{position:relative !Important; width:100% !Important;height:auto !Important;left:0 !Important;top:0 !Important}
+	div.timecontent div.outer	{position:relative !Important; width:100% !Important;height:auto !Important;left:0 !Important;top:0 !Important;float:left !Important}
+	.downloadlist .outer.small	{position:relative !Important; width:100% !Important;height:auto !Important;left:0 !Important;top:0 !Important;float:left !Important}
+	.tpl_right .outer.cbySlideshow.small  {position:relative !Important; width:100% !Important;height:auto !Important;left:0 !Important;top:0 !Important;float:left !Important}
+	div.outer div.mediatexts	{height:auto !Important; }
+	div.outer div.downloaddesc a.openclose2	{bottom:0 !Important; position:relative !Important; background-position: 0px 9px !Important}
+	div.outer div.downloaddesc a.download2	{width:49% !important}
+	div.outer div.downloadfile, div.outer div.searchmedia	{width:42% !Important; height:auto !important}
+}
