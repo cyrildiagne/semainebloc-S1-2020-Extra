@@ -42,7 +42,8 @@ function findChildrenWithText(e) {
     var children = [];
     for (var i = 0; i < e.children.length; i++) {
         var child = e.children[i];
-        if (!checkForTags(child.innerHTML)) {
+        if (!checkForTags(child.innerHTML)) { //problem
+
             children.push(child);
         } else {
             var subChildren = findChildrenWithText(child);
@@ -88,13 +89,13 @@ function passesBanList(e) {
 
 var a = document.getElementsByTagName("*");
 console.log(a)
-const bannedTags = ["SCRIPT", "STYLE", "TEXTAREA", "svg", "path", "g", "circle"]
+const bannedTags = ["SCRIPT", "STYLE", "TEXTAREA", "svg", "path", "g", "circle", "VIDEO", "IMG"]
 sanitizeDOMList();
 
 function sanitizeDOMList() {
     var result = []
     for (var i = 0; i < a.length; i++) {
-        console.log(a[i].tagName)
+        /* console.log(a[i].tagName) */
         if (hasChildren(a[i])) {
             a[i].skip = true;
         }
@@ -192,7 +193,7 @@ const observer = new MutationObserver((records) => {
                                 children.forEach((child) => {
                                     /* child.innerHTML = "sauce béarnaise" */
                                     if (child.innerText) {
-                                        console.log(child)
+                                        /* console.log(child) */
                                         convertElement(child)
                                     }
                                 })
@@ -202,7 +203,7 @@ const observer = new MutationObserver((records) => {
                     }
                 } /* else { console.log(elem) } */
                 if (elem.innerText && elem.children.length < 1) {
-                    console.log(elem)
+                    convertElement(elem);
                 }
                 /* console.log(elem.ids) */
             });
@@ -248,7 +249,7 @@ for (var j = 0; j < a.length; j++) {
 }
 /* console.log(words) */
 buildIdMap();
-console.log(idMap);
+/* console.log(idMap); */
 
 
 
@@ -283,7 +284,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             const newText = replaceWithBase(idMap[request.key].innerText.split(" "), idMap[request.key].completePhrase);
             /* console.log(newText) */
             /* const newText = "waer" */
-            idMap[request.key].innerHTML = newText
+            if (idMap[request.key].children) { console.log(idMap[request.key].children) }
+            idMap[request.key].innerText = newText
             usedKeys.push(idMap[request.key])
                 /* console.log(usedKeys.length); */
 
