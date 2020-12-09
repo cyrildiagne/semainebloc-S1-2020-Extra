@@ -1,0 +1,117 @@
+.custom-img {
+    transform: rotate(1deg);
+    transition: all 0.1s;
+    filter: blur(2px);
+    transform: rotate(1deg);
+}
+
+.custom-img:hover{
+    /* border-radius: 100px;  */
+    transform: rotate(0deg);
+    filter: blur(1px);
+    
+} 
+
+.custom-p {
+    transition: all 0.1s;
+    transform:rotate(-1deg);
+    filter: blur(2px); 
+}
+
+.custom-p:hover{
+    transform: rotate(0deg);
+    color: black;
+    filter: blur(0px);
+}
+
+.custom-a {
+    transition: all 0.1s;
+    transform:rotate(1deg);
+    filter: blur(2px); 
+}
+
+.custom-a:hover{
+    transform: rotate(0deg);
+    filter: blur(0px);
+}
+
+
+.custom-h {
+    /* transform: rotate(90deg);
+    transform: transition 0.5s ease;
+    border-radius: 50px; */
+    transition: all 0.1s;
+    transform:rotate(1deg);
+    filter: blur(2px); 
+}
+
+.custom-h:hover{
+    transform: rotate(0deg);
+    color: black;
+    filter: blur(0px);
+}
+
+.custom-li {
+    transition: all 0.1s;
+    transform:rotate(1deg);
+    filter: blur(2px); 
+}
+
+.custom-li:hover{
+    transform: rotate(0deg);
+    filter: blur(0px);
+}
+
+.custom-span {
+    transition: all 0.1s;
+    transform:rotate(-1deg);
+    filter: blur(2px); 
+}
+
+.custom-span:hover{
+    transform: rotate(0deg);
+    filter: blur(0px);
+}
+
+.custom-td {
+    transition: all 0.1s;
+    transform:rotate(1deg);
+    filter: blur(2px); 
+}
+
+.custom-td:hover{
+    transform: rotate(0deg);
+    filter: blur(0px);
+}
+
+.custom-th {
+    transition: all 0.1s;
+    transform:rotate(-1deg);
+    filter: blur(2px); 
+}
+
+.custom-th:hover{
+    transform: rotate(0deg);
+    filter: blur(0px);
+}
+
+.custom-button {
+    transition: all 0.1s;
+    transform:rotate(1deg);
+    filter: blur(2px); 
+}
+
+.custom-button:hover{
+    transform: rotate(0deg);
+    filter: blur(0px);
+}
+
+/* .custom-div {
+    transition: all 1s;
+    filter: blur(0px); 
+}
+
+.custom-div:hover{
+    filter: blur(0px);
+} */
+
