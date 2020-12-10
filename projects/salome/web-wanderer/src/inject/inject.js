@@ -1,18 +1,40 @@
 chrome.extension.onMessage.addListener(async (msg, sender, sendResponse) => {
-
-  if (msg.action === "clickButtons") {
+  if (msg.action === 'clickButtons') {
     await waitForDocumentReady();
-
-    let state = await searchAndClick("a");
-
-    await delay(1000);
-    requestNextAction();
-
+    let state = await searchAndClick('a');
   }
 });
 
-async function searchAndClick(selector) {
+const canvas = document.createElement('canvas');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+canvas.classList.add('canvas');
+const ctx = canvas.getContext('2d');
+document.body.appendChild(canvas);
 
+function drawCanvas(history) {
+  for (const page of history) {
+    console.log(page);
+    ctx.beginPath();
+    ctx.fillStyle = 'red';
+    ctx.ellipse(page.coords.x, page.coords.y, 50, 50, 0, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+async function load() {
+  await waitForDocumentReady();
+  chrome.runtime.sendMessage('getHistory', (resp, test) => {
+    console.log('history is:', resp, test);
+    if (resp) {
+      console.log('history draw canvas');
+      drawCanvas(resp);
+    }
+  });
+}
+load();
+
+async function searchAndClick(selector) {
   const hyperlinks = document.querySelectorAll(selector);
 
   if (hyperlinks.length === 0) return false;
@@ -20,62 +42,30 @@ async function searchAndClick(selector) {
   const randomIndex = Math.floor(Math.random() * hyperlinks.length);
   const randomHyperlink = hyperlinks[randomIndex];
 
-  //console.log(hyperlinks);
-
-  console.log(randomHyperlink);
-
   randomHyperlink.scrollIntoView({
-    behavior: "smooth",
-    block: "center",
-    inline: "center",
+    behavior: 'smooth',
+    block: 'center',
+    inline: 'center',
   });
 
   await waitForScrollEnd();
-  
-  randomHyperlink.classList.add("wanderer--highlight");
+
+  // console.log(randomHyperlink);
+  const coords = randomHyperlink.getBoundingClientRect();
+  const text = randomHyperlink.innerText;
+  const href = randomHyperlink.href;
+  const link = { coords: coords, text: text, href: href };
+
+  chrome.extension.sendMessage({
+    action: 'newPage',
+    link: link,
+  });
+
+  randomHyperlink.classList.add('wanderer--highlight');
 
   await delay(500);
-  
+
   randomHyperlink.click();
 
   return true;
-}
-function requestNextAction() {
-  chrome.runtime.sendMessage({action: "requestNextAction"});
-}
-
-
-function waitForDocumentReady() {
-  return new Promise((resolve) => {
-    let readyStateCheckInterval;
-    setInterval(() => {
-      if (document.readyState === "complete") {
-        clearInterval(readyStateCheckInterval);
-        resolve();
-      }
-    }, 10);
-  });
-}
-
-async function delay(millis = 0) {
-  return new Promise(function (resolve) {
-    window.setTimeout(resolve, millis);
-  });
-}
-
-function waitForScrollEnd() {
-  return new Promise((resolve) => {
-    var scrollTimeout = createTimeout(resolve);
-    addEventListener("scroll", function (e) {
-      clearTimeout(scrollTimeout);
-      scrollTimeout = createTimeout(resolve);
-    });
-  });
-
-  function createTimeout(resolve) {
-    return setTimeout(function () {
-      console.log("Scroll ended");
-      resolve();
-    }, 100);
-  }
 }
