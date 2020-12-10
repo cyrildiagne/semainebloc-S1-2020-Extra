@@ -42,7 +42,7 @@ function drawCanvas(history) {
 
 async function load() {
   await waitForDocumentReady();
-  chrome.runtime.sendMessage({ action: 'getHistory' }, resp) => {
+  chrome.runtime.sendMessage({ action: 'getHistory' }, (resp) => {
     console.log('history is:', resp, test);
     console.log(chrome.runtime.lastError);
     if (resp) {
