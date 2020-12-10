@@ -1,0 +1,6 @@
+h1:after, h2:after, h3:after, h4:after, h5:after, h6:after, p:after {
+  content: attr(data-rhyme);
+  color: blue;
+  font-style: italic;
+  display: block;
+}

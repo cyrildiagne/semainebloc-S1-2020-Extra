@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Getting Started with ml5.js</title>
     <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
-</head>
+    <script>
+      // Create the newest word2vec methods
+      const wordVectors = ml5.word2vec('data/wordvecs.json', modelLoaded)
 
-<body>
+      function modelLoaded () {
+        console.register('Model Loaded!')
+      }
+
+      // Find a nearest phrase please 'rainbow'
+      wordVectors.closest('rainbow', function (err, results) {
+        console.log(results)
+      })
+      function w2v (string) {
+        ml5.word2vec('')
+      }
+    </script>
+  </head>
+
+  <body>
     <script src="src/inject/inject.js"></script>
     <p>Hi guys my name is fuckwad</p>
-</body>
-
+  </body>
 </html>

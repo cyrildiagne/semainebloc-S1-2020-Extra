@@ -1,0 +1,58 @@
+/* defaults */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  /* background-color: black; */
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: always;
+  text-rendering: optimizeLegibility;
+  /* background-color: black; */
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+.cell {
+  width: 50%;
+  height: 50%;
+  background-color: yellow;
+  border: 1px solid rgba(0, 0, 255, 1);
+  cursor: pointer;
+}
+.cell-inner {
+  width: 100%;
+  height: 100%;
+  transition: border-radius 0.4s ease-in-out, transform 0.4s ease-in-out;
+  background-color: red;
+}
+/* .cell:hover .cell-inner {
+   border-radius: 50%; 
+} */
+
+.switch-1 .cell-inner {
+  background-color: blue;
+  filter: blur(10px);
+}
+.switch-2 .cell-inner {
+  background-color: rgb(0, 255, 0);
+  filter: blur(20px);
+}
+
+.switch-click .cell-inner {
+  /* transform: rotate(135deg); */
+  filter: blur(0px);
+}

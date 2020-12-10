@@ -4,15 +4,11 @@
   "description": "Simple Example",
   "background": {
     "persistent": false,
-<<<<<<< HEAD
-    "scripts": ["background.js"]
-=======
-    "scripts": ["background.js", "libs/hot-reload.js", "libs/jquery.min.js"]
->>>>>>> 7d7584bce02b4eae2889165fbcdef896921e305c
+    "scripts": ["background.js", "libs/hot-reload.js"]
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": ["https://google.com/*", "https://google.ch/*", "https://*.google.com/*", "https://*.google.ch/*"],
       "all_frames": true,
       "js": ["content.js"],
       "css": ["content.css"]
