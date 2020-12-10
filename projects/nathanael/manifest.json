@@ -1,6 +1,6 @@
 {
     "name": "Artificial Stupidity",
-    "version": "9001",
+    "version": "1",
     "manifest_version": 2,
     "description": "AI Exquisite Corpse Engine: replaces words by words with similar meaning. Example: from \"Machine Learning\" to \"Machine Dumb\".",
     "homepage_url": "http://extensionizr.com",
