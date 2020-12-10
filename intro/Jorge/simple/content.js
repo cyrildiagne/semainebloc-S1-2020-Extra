@@ -13,9 +13,24 @@ window.addEventListener("click", function () {
 
       fetch(API + cityName + "/?token=" + KEY)
       .then((response) => response.json())
-      .then((result) => console.log(result.data.aqi))
-  }
-});
+      //.then((result) => console.log(result.data.aqi))
+      .then((result) => {
+        if(result.data.aqi > 0 && result.data.aqi < 50){
+          console.log('it is between 0 and 50') 
+          console.log(result.data.aqi)
+        } else if (result.data.aqi > 50 && result.data.aqi < 100) {
+          console.log('it is between 50 and 100')
+          console.log(result.data.aqi)
+        } else if (result.data.aqi > 100 && result.data.aqi < 200) {
+          console.log('it is between 100 and 200')
+          console.log(result.data.aqi)
+        } else if (result.data.aqi > 200 && result.data.aqi < 300) {
+          console.log('it is between 200 and 300')
+          console.log(result.data.aqi)
+        }
+        })
+      }
+    });
 
 function getCityName() {
   let url = window.location.search;
@@ -25,3 +40,4 @@ function getCityName() {
   // console.log(googleSearch);
   return googleSearch;
 }
+
