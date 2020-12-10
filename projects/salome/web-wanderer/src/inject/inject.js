@@ -1,18 +1,56 @@
 chrome.extension.onMessage.addListener(async (msg, sender, sendResponse) => {
-
-  if (msg.action === "clickButtons") {
+  if (msg.action === 'clickButtons') {
     await waitForDocumentReady();
-
-    let state = await searchAndClick("a");
-
-    await delay(1000);
-    requestNextAction();
-
+    let state = await searchAndClick('a');
   }
 });
 
-async function searchAndClick(selector) {
+const canvas = document.createElement('canvas');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+canvas.classList.add('canvas');
+const ctx = canvas.getContext('2d');
+document.body.appendChild(canvas);
 
+const container = document.createElement('div');
+container.classList.add('container');
+document.body.appendChild(container);
+
+function drawCanvas(history) {
+  // Add link
+  for (const link of history) {
+    console.log(link);
+    const a = document.createElement('a');
+    a.innerText = link.text;
+    a.href = link.href;
+    a.classList.add('link');
+    a.style.left = Math.floor(link.coords.x) + 'px';
+    a.style.top = Math.floor(link.coords.y) + 'px';
+    container.appendChild(a);
+  }
+
+  // Draw lines
+  ctx.beginPath();
+  ctx.strokeStyle = 'red';
+  ctx.lineWidth = 5;
+  ctx.moveTo(history[0].coords.x + 50, history[0].coords.y + 50);
+  for (const link of history) {
+    ctx.lineTo(link.coords.x + 50, link.coords.y + 50);
+  }
+  ctx.stroke();
+}
+
+async function load() {
+  await waitForDocumentReady();
+  chrome.runtime.sendMessage({ action: 'getHistory' }, (resp) => {
+    if (resp) {
+      drawCanvas(resp.links);
+    }
+  });
+}
+load();
+
+async function searchAndClick(selector) {
   const hyperlinks = document.querySelectorAll(selector);
 
   if (hyperlinks.length === 0) return false;
@@ -20,62 +58,30 @@ async function searchAndClick(selector) {
   const randomIndex = Math.floor(Math.random() * hyperlinks.length);
   const randomHyperlink = hyperlinks[randomIndex];
 
-  //console.log(hyperlinks);
-
-  console.log(randomHyperlink);
-
   randomHyperlink.scrollIntoView({
-    behavior: "smooth",
-    block: "center",
-    inline: "center",
+    behavior: 'smooth',
+    block: 'center',
+    inline: 'center',
   });
 
   await waitForScrollEnd();
-  
-  randomHyperlink.classList.add("wanderer--highlight");
+
+  // console.log(randomHyperlink);
+  const coords = randomHyperlink.getBoundingClientRect();
+  const text = randomHyperlink.innerText;
+  const href = randomHyperlink.href;
+  const link = { coords: coords, text: text, href: href };
+
+  chrome.extension.sendMessage({
+    action: 'newPage',
+    link: link,
+  });
+
+  randomHyperlink.classList.add('wanderer--highlight');
 
   await delay(500);
-  
+
   randomHyperlink.click();
 
   return true;
-}
-function requestNextAction() {
-  chrome.runtime.sendMessage({action: "requestNextAction"});
-}
-
-
-function waitForDocumentReady() {
-  return new Promise((resolve) => {
-    let readyStateCheckInterval;
-    setInterval(() => {
-      if (document.readyState === "complete") {
-        clearInterval(readyStateCheckInterval);
-        resolve();
-      }
-    }, 10);
-  });
-}
-
-async function delay(millis = 0) {
-  return new Promise(function (resolve) {
-    window.setTimeout(resolve, millis);
-  });
-}
-
-function waitForScrollEnd() {
-  return new Promise((resolve) => {
-    var scrollTimeout = createTimeout(resolve);
-    addEventListener("scroll", function (e) {
-      clearTimeout(scrollTimeout);
-      scrollTimeout = createTimeout(resolve);
-    });
-  });
-
-  function createTimeout(resolve) {
-    return setTimeout(function () {
-      console.log("Scroll ended");
-      resolve();
-    }, 100);
-  }
 }

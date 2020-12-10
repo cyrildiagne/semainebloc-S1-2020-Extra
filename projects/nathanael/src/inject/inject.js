@@ -89,7 +89,7 @@ function passesBanList(e) {
 
 var a = document.getElementsByTagName("*");
 console.log(a)
-const bannedTags = ["SCRIPT", "STYLE", "TEXTAREA", "svg", "path", "g", "circle", "VIDEO", "IMG"]
+const bannedTags = ["SCRIPT", "STYLE", "TEXTAREA", "svg", "path", "g", "circle", "VIDEO", "IMG", "HEAD"]
 sanitizeDOMList();
 
 function sanitizeDOMList() {

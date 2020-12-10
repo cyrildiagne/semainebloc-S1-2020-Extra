@@ -5,12 +5,33 @@ body {
 
 
 .custom--game-button {
-    display: inline-block;
-    background-color: red;
-    outline: blue 1px solid;
-    padding: 10px;
-    cursor: pointer;
+    display: inline-block !important;
+    background-color: white !important;
+    border-radius: 5px;
+    background-image: "icon_eye.png" !important;
+    outline: blue 1px solid !important;
+    padding: 10px !important;
+    cursor: pointer !important;
+    z-index: 1000 !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .custom-img, .custom-h  {
     transform: rotate(1deg);
