@@ -5,7 +5,7 @@ const ANIMATION_PATHS = [
   "res/pissenlits-blue.json",
   "res/little-fish.json",
   // "res/cloud-2.json",
-  "res/bouquet.json",
+  "res/bouquet-dore.json",
   "res/single-flow.json",
   //"res/algaes.json",
 ];
