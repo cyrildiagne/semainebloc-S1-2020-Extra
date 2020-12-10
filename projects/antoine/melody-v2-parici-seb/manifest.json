@@ -9,12 +9,16 @@
     {
       "matches": ["<all_urls>"],
       "all_frames": true,
-      "js": ["libs/Tone.min.js", "libs/deepai.min.js", "libs/jquery.slim.min.js", "content/content.js"],
+      "js": ["libs/Tone.min.js", "libs/deepai.min.js", "libs/jquery.slim.min.js","content/synth.js",  "content/textanalyser.js","content/content.js"],
       "css": ["content/content.css"]
     }
   ],
+  "permissions": [
+    "tabs",
+    "<all_urls>"
+  ],
   "background": {
-    "scripts": ["libs/hot-reload.js","background/background.js"]
+    "scripts": ["libs/hot-reload.js", "libs/Tone.min.js", "background/background.js"]
   },
   "browser_action": {
     "default_title": "Rhyme this!",

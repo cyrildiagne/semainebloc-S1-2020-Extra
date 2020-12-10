@@ -7,15 +7,25 @@ h1:after, h2:after, h3:after {
 /* .presence-entity:hover{
   background: red;
 } */
-.isOver{
+.isOver {
   transition: cubic-bezier(0.075, 0.82, 0.165, 1);
   transition-duration: 1s;
   animation: morph 5s linear 0.3s;
 }
+/* 
+.tone--isOver {
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-duration: 1s;
+  animation: morph 5s linear 0.3s;
+} */
 
 /* BACKGROUND COLOR CHANGE SEQUENCE */
 @keyframes morph {
   0% { background-color: blueviolet; }
   50% { background-color: lightcyan; }
   100% { background-color: blueviolet; }
+}
+
+.tone--active {
+  outline: 3px solid red !important;
 }
