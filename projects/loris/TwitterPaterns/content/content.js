@@ -22,6 +22,9 @@ async function processArticle(article) {
   document.body.appendChild(newDiv);
   newDiv.classList.add("base-div");
 
+  var randomColor = Math.floor(Math.random() * 5);
+  newDiv.classList.add("tone--" + randomColor);
+
   // try {
   //   if (article.length != 0) {
   //     let articleText = article.querySelector("[lang]");
@@ -67,19 +70,18 @@ function run() {
         let divTable = document.querySelectorAll(".base-div");
         let columns = Math.round(Math.sqrt(numOfPosts));
         let rows = Math.ceil(numOfPosts / columns);
-        let divWidth = window.innerWidth / columns;
+        let divWidth = window.innerWidth / divTable.length;
         let divHeight = window.innerHeight / rows;
-        console.log(columns);
+        var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+
         for (let i = 0; i < divTable.length; i++) {
           divTable[i].style.width = divWidth + "px";
-          divTable[i].style.height = divHeight + "px";
-          divTable[i].style.opacity = "0.3";
-        }
-        for (let x = 0; x < columns; x++) {
-          divTable[x].style.left = x * divWidth + "px";
-          for (let y = 0; y < rows; y++) {
-            divTable[y].style.top = y * divWidth + "px";
-          }
+          divTable[i].style.height = 100 + "vh";
+          // divTable[i].style.opacity = "0.6";
+          // divTable[i].style.border = "5px solid black";
+
+          divTable[i].style.left = i * divWidth + "px";
+          // divTable[i].style.top = Math.ceil(i / columns) * divHeight + "px";
         }
         // let randomColor = Math.floor(Math.random() * 6);
         // divTable.classList.add("tone--" + randomColor);
