@@ -12,13 +12,13 @@
 //   });
 
 const URLS = [];
-const time = new Date();
-const h = time.getHours();
-const m = time.getMinutes();
-const temps = h + ":" + m;
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   // console.log('updated from background');
+  const time = new Date();
+  const h = time.getHours();
+  const m = time.getMinutes();
+  const temps = h + ":" + m;
 
   // new Date https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date
   if (changeInfo.status === "complete") {
@@ -28,6 +28,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
       date: temps,
     };
     URLS.push(infos); //loading
+
     console.log(infos);
 
     // chrome.extension.sendMessage(tabId, {action: "historychange", history: URLS}, function(){});

@@ -2,7 +2,8 @@
 const allMyUrls = [
   'res/pissenlits.json',
   'res/pissenlits-blue.json',
-  'res/fish.json',
+  'res/little-fish.json',
+  'res/cloud-2.json',
 ];
 
 //
@@ -17,7 +18,7 @@ function addVisual(x, y) {
   el.style.width = width + 'px';
   el.style.height = height + 'px';
 
-  const index = Math.floor(Math.random() * 3);
+  const index = Math.floor(Math.random() * 4);
   const url = allMyUrls[index];
 
   bodymovin.loadAnimation({
