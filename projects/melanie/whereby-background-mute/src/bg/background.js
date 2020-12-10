@@ -14,9 +14,9 @@ chrome.extension.onMessage.addListener(function (
   sendResponse();
 });
 
-chrome.tabs.query({ currentWindow: true, active: true }, (tabs) => {
-  chrome.windows.update(tabs[0].windowId, { state: "fullscreen" });
-});
+// chrome.tabs.query({ currentWindow: true, active: true }, (tabs) => {
+//   chrome.windows.update(tabs[0].windowId, { state: "fullscreen" });
+// });
 
 
 // 1. elements sont cachés mais avec une bordure/outline (hitbox) apparente.
