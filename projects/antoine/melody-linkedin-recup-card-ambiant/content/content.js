@@ -8,7 +8,7 @@ async function run() {
     if (p.innerText == '') {
       continue;
     }
-
+    //GET TEXT WITH API
     try {
       //REDUCE TEXT API OK
       // const resp = await deepai.callStandardApi('summarization', {
@@ -31,6 +31,7 @@ async function run() {
     } catch (e) {
       console.log(e);
     }
+    //END GET TEXT WITH API
   }
   // return
 }
