@@ -58,7 +58,7 @@ async function run() {
 
   });
   $(".artdeco-card").mouseout(function () {
-    Tone.Transport.stop();
+    // Tone.Transport.stop();
     console.log("outside");
     // playing = false;
   });
