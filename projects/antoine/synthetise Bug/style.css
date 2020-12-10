@@ -1,0 +1,19 @@
+body > div {
+  /* text-align: center; */
+  margin-top: 4rem;
+}
+body > div > div + div {
+  margin-top: 1rem;
+}
+.checkbox{
+  background: red;
+  padding: 20px;
+  display: inline-block;
+}
+/* .checkbox:hover{
+  background:green;
+} */
+.isOver{
+  background: blueviolet;
+  stroke: black 1px solid;
+}
