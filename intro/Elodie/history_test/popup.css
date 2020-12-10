@@ -1,15 +1,91 @@
+@import url('https://rsms.me/inter/inter.css');
+html { font-family: 'Inter', sans-serif;
+text-transform: uppercase; }
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', sans-serif; }
+}
+
 body {
   background-color: #ffffff;
+  padding:1%;
+  height:100vh;
+  overflow: hidden;
+}
+
+#navbar {
+  overflow: hidden;
+  background-color: rgb(228, 228, 228);
+  margin-bottom: 3vh;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  position:sticky;
+}
+
+#historyInfo{
+  padding-top:3%;
+  height:15vh;
+  position:sticky;
+  background: rgb(228, 228, 228);
+  font-size: 15px;
+  color: #616161;
+  overflow: hidden;
+}
+
+.column {
+  padding-left:5%;
+  float: left;
+  width: 20%;
+}
+
+.column:nth-child(2){
+  width:64%;
+}
+
+#historyInfo a{
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #7b7b7b;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
 }
 
 #main {
+  padding-top:5vh;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  overflow-y:scroll;
+  height:70vh;
 }
 
 .site_bar {
+  font-family: Inter, sans-serif;
+  font-weight: 300;
     position: relative;
   margin-top: 5px;
   margin-right: 5px;
@@ -38,7 +114,7 @@ box-shadow: 17px 21px 30px -11px rgba(0,0,0,0.46);
   width: 100%;
   margin: 0 auto;
   text-transform: uppercase;
-  font-family: Helvetica, sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 20px;
   text-align: center;
   height: 100px;
@@ -50,10 +126,10 @@ box-shadow: 17px 21px 30px -11px rgba(0,0,0,0.46);
   margin: 0;
   display:block;
   text-decoration: none;
-  color:black;
+  color:rgb(29, 29, 29);
   text-align: center;
   text-transform: uppercase;
-  font-size: 30px;
+  font-size: 20px;
   white-space: nowrap;
 }
 
