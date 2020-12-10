@@ -10,24 +10,24 @@ async function run() {
     }
     //GET TEXT WITH API
     try {
+
       //REDUCE TEXT API OK
       // const resp = await deepai.callStandardApi('summarization', {
       //   text: p.innerText,
       // });
-      // console.log(resp);
 
       //SENTIMENT TEXT API OK
       //REPONSE = respSen.output 
       let respSen = await deepai.callStandardApi("sentiment-analysis", {
-          //TEST LOCAL TEXT OK
-          // text: "Today, the One Planet Sovereign Wealth Funds has demonstrated that reinforced cooperation between global financial actors is key to accelerate the path to a net zero economy and implement the Paris Agreement. Your announcement on Task Force on Climate-related Financial Disclosures recommendations is a pivotal moment. I count on all members, sovereign wealth funds, asset managers, private equity firms to continue to use their collective power and ambition to accelerate the financing of the ecological transition and mitigate climate change.",
-          text:p.innerText,
-        });
+        //TEST LOCAL TEXT OK
+        // text: "Today, the One Planet Sovereign Wealth Funds has demonstrated that reinforced cooperation between global financial actors is key to accelerate the path to a net zero economy and implement the Paris Agreement. Your announcement on Task Force on Climate-related Financial Disclosures recommendations is a pivotal moment. I count on all members, sovereign wealth funds, asset managers, private equity firms to continue to use their collective power and ambition to accelerate the financing of the ecological transition and mitigate climate change.",
+        text: p.innerText,
+      });
 
-      console.log(p.innerText+" ==  "+respSen.output);
+      console.log(p.innerText + " ==  " + respSen.output);
       //END
 
-      //SET UP SOUNDSCAPE
+      //CLICK TO SET UP SOUNDSCAPE
       document.documentElement.addEventListener('mousedown', () => {
         if (Tone.context.state !== 'running') Tone.context.resume();
       });
