@@ -1,6 +1,5 @@
-let contrast = [100,150];
-let blur = [0,1,2,3,4,5,6,7,8,9,10];
-let index =1;
+let contrast = [100, 150];
+let index = 1;
 
 function doBlur(blur = 0, contrast = 100) {
   document.body.style.cssText = /*back ticks, template strings */ `
@@ -8,10 +7,10 @@ function doBlur(blur = 0, contrast = 100) {
 `;
 }
 
-let elem = placeButton("CLICK", "game-button");
+let elem = placeButton('CLICK', 'game-button');
 
 window.addEventListener(
-  "click",
+  'click',
   (evt) => {
     if (evt.target !== elem) return;
     elem = undefined;
@@ -21,17 +20,19 @@ window.addEventListener(
 );
 
 // doBlur(10, 150);
-doBlur(blur[index], contrast[2]);
-//doit envoyer les valeur de doBlur au background pour qu'il les stocke chrome.extension.sendMessage() 
+chrome.runtime.sendMessage({ action: 'getBlur' }, (blurValue) => {
+  console.log(blurValue);
+  doBlur(blurValue, contrast[2]);
+});
+//doit envoyer les valeur de doBlur au background pour qu'il les stocke chrome.extension.sendMessage()
 //doit récupérer les valeurus stockées dans le background pour les incérementer.
 
-
 function placeButton(text, subclass) {
-  let elem = document.createElement("div");
+  let elem = document.createElement('div');
   elem.classList.add(`custom--${subclass}`);
   elem.textContent = text;
 
-  let filter = "*:not(script):not(link):not(img)";
+  let filter = '*:not(script):not(.link):not(img):not(a)';
 
   let allDoms = document.body.querySelectorAll(filter);
   let randomDom = allDoms[Math.floor(Math.random() * allDoms.length)];
@@ -72,13 +73,15 @@ function placeButton(text, subclass) {
 }
 
 async function win() {
-  console.log("FOUND!");
+  console.log('FOUND!');
 
   await delay(1000);
   // doBlur(blur[index+1], contrast[2]);
   doBlur();
-  console.log("reloading now!");
+  console.log('reloading now!');
   await delay(2000);
+
+  chrome.runtime.sendMessage({ action: 'onWin' });
 
   location.reload();
 }
@@ -89,19 +92,15 @@ async function delay(millis = 0) {
   });
 }
 
-
 //tester message
 chrome.runtime.onMessage.addListener(gotMessage);
 
 function gotMessage(message, sender, sendResponse) {
   console.log(message.txt);
-  if (message.txt === "hello") {
+  if (message.txt === 'hello') {
     doBlur();
   }
 }
-
-
-
 
 // document.body.
 
