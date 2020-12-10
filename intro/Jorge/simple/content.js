@@ -18,9 +18,11 @@ window.addEventListener("click", function () {
         if(result.data.aqi > 0 && result.data.aqi < 50){
           console.log('it is between 0 and 50') 
           console.log(result.data.aqi)
+          document.documentElement.style.setProperty('--blur', '2px');
         } else if (result.data.aqi > 50 && result.data.aqi < 100) {
           console.log('it is between 50 and 100')
           console.log(result.data.aqi)
+          document.documentElement.style.setProperty('--blur', '10px');
         } else if (result.data.aqi > 100 && result.data.aqi < 200) {
           console.log('it is between 100 and 200')
           console.log(result.data.aqi)
