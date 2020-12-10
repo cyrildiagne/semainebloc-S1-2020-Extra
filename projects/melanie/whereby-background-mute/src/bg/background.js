@@ -23,8 +23,7 @@ const urls = [
   'https://whereby.com',
   'https://www.pinterest.fr',
   'https://time.com/',
-  'https://www.spotify.com/fr/'
-  
+  'https://www.spotify.com/fr/',
 ];
 
 //example of using a message handler from the inject scripts
@@ -38,8 +37,8 @@ chrome.extension.onMessage.addListener(function (
   if (request == 'getURL') {
     sendResponse(currentTab.url);
   } else if (request == 'win') {
-    let url = urls[Math.floor(Math.random()*urls.length)]
-    
+    let url = urls[Math.floor(Math.random() * urls.length)];
+    chrome.tabs.update(currentTab.id, { url: url });
     // COMMENT JE CONNECTE AVEC LE TAB
     setTimeout(() => {
       sendResponse(url);
