@@ -7,8 +7,8 @@ const allMyUrls = [
 ];
 
 //
-const width = 580;
-const height = 830;
+const width = 100;
+const height = 100;
 
 function addVisual(x, y) {
   const el = document.createElement('div');
@@ -19,24 +19,32 @@ function addVisual(x, y) {
   el.style.height = height + 'px';
 
   const index = Math.floor(Math.random() * 4);
-  const url = allMyUrls[index];
+  let url = allMyUrls[index];
+
+  url = allMyUrls[3];
 
   bodymovin.loadAnimation({
     container: el,
     renderer: 'svg',
     loop: false,
     autoplay: true,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    },
     path: chrome.runtime.getURL(url),
   });
   document.body.append(el);
 }
 
-const frequency = 5000; // in ms
-setInterval(() => {
-  const x = window.innerWidth * Math.random();
-  const y = window.innerHeight * Math.random();
-  addVisual(x, y);
-}, frequency);
+// const frequency = 5000; // in ms
+// setInterval(() => {
+//   const x = window.innerWidth * Math.random();
+//   const y = window.innerHeight * Math.random();
+//   addVisual(x, y);
+// }, frequency);
+
+
+addVisual(window.innerWidth/2, window.innerHeight/2);
 
 // document.body.addEventListener('click', (ev) => {
 //   addVisual(ev.clientX, ev.clientY)
