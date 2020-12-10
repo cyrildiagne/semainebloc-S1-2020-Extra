@@ -18,7 +18,7 @@ document.onmousemove = (e) => {
     }
     if (!elem.alteredByCursor && !checkForTags(elem.tagName) && elem.innerText /* && elem.modifiedByWord2Vec */ ) {
         registerMouseEvent(elem);
-        console.log(elem)
+        /* console.log(elem) */
     } else {
         findAlterableChild(elem)
     }
@@ -114,7 +114,7 @@ function findAlterableChild(elem) {
 var loadbar = document.createElement("div");
 var loadbar_bar = document.createElement("div");
 loadbar.style.width = "100%";
-loadbar.style.height = "3px";
+loadbar.style.height = "6px";
 loadbar.style.backgroundColor = "lightgrey";
 loadbar.style.position = "fixed";
 loadbar.style.top = "0px";
@@ -129,7 +129,7 @@ loadbar_bar.style = loadbar.style;
 loadbar_bar.style.width = "0px";
 loadbar_bar.style.backgroundColor = "#b0ffc5";
 loadbar_bar.style.zIndex = 100000;
-loadbar_bar.style.height = "3px";
+loadbar_bar.style.height = "5px";
 loadbar_bar.style.position = "fixed";
 loadbar_bar.style.top = "0px";
 loadbar_bar.style.left = "0px"
@@ -516,7 +516,19 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         /* refreshCraziness(Math.ceil(Math.random() * 9)) */
     }
     loadbar_bar.style.width = Math.floor((callbacks / requests) * innerWidth) + "px"
-    console.log(loadbar_bar.style.width)
+    if (callbacks == requests) {
+        console.log(callbacks, requests)
+        loadbar.style.display = "none";
+        loadbar_bar.style.display = "none";
+    } else if (loadbar.style.display == "none") {
+        loadbar.style.display = "inline";
+        loadbar_bar.style.display = "inline";
+    }
+    /* console.log(loadbar_bar.style.width) */
+
+    if (request.message) {
+        console.log(request)
+    }
 
 })
 
