@@ -10,3 +10,15 @@
 // }
 
 // chrome.browserAction.onClicked.addListener(onClicked);
+console.log('background script running');
+
+
+chrome.browserAction.onClicked.addListener(buttonClicked);
+
+
+function buttonClicked(tab){
+    let msg ={
+        txt: "hello"
+    }
+    chrome.tabs.sendMessage(tab.id, msg);
+}
