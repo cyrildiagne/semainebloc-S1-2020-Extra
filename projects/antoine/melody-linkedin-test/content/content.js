@@ -15,10 +15,18 @@ async function run() {
     }
 
     try {
+      //REDUCE TEXT API
       // const resp = await deepai.callStandardApi('summarization', {
       //   text: p.innerText,
       // });
       // console.log(resp);
+
+    let respSen = await deepai.callStandardApi("sentiment-analysis", {
+            text: "Today, the One Planet Sovereign Wealth Funds has demonstrated that reinforced cooperation between global financial actors is key to accelerate the path to a net zero economy and implement the Paris Agreement. Your announcement on Task Force on Climate-related Financial Disclosures recommendations is a pivotal moment. I count on all members, sovereign wealth funds, asset managers, private equity firms to continue to use their collective power and ambition to accelerate the financing of the ecological transition and mitigate climate change.",
+    });
+    console.log(respSen.output);
+    
+      
 
       // h.dataset['rhyme'] = rhyme;
     } catch (e) {

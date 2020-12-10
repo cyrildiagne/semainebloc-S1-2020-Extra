@@ -1,0 +1,7 @@
+body > div {
+  text-align: center;
+  margin-top: 4rem;
+}
+body > div > div + div {
+  margin-top: 1rem;
+}

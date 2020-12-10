@@ -4,3 +4,7 @@ h1:after, h2:after, h3:after {
   font-style: italic;
   display: block;
 }
+
+.presence-entity:hover{
+  background: red;
+}
