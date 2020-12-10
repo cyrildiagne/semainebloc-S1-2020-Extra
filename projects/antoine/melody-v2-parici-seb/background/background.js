@@ -1,5 +1,4 @@
 const TABS = {};
-const SYNTHS = {};
 
 chrome.runtime.onConnect.addListener(function (port) {
   port.onMessage.addListener(function (msg) {
@@ -34,20 +33,6 @@ setupAudio();
 chrome.browserAction.onClicked.addListener(onClicked);
 
 function setupAudio() {
-  const gain = new Tone.Gain(0.1);
-  gain.toMaster();
-
-  const types = ["triangle", "sine", "sine2", "sine3", "triangle2"];
-
-  for (let i = 0; i < types.length; i++) {
-    let synth = new Tone.Synth();
-    let type = types[i];
-    synth.oscillator.type = type;
-    synth.connect(gain);
-
-    SYNTHS[type] = synth;
-  }
-
   Tone.Transport.scheduleRepeat(repeatAudio, "8n");
   Tone.Transport.start();
 }
