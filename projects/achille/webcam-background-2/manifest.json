@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+  "name": "Webcam background",
+  "version": "0.0.1",
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/content.js"],
+      "run_at": "document_start"
+      
+    }
+  ],
+
+  "background": {
+    "page": "background/index.html",
+    "persistent": true
+  },
+
+  "browser_action": {
+    "default_popup": "popup/index.html"
+    
+  },
+
+  "web_accessible_resources": ["models/*"],
+
+  "options_page": "options/index.html",
+  "permissions": ["activeTab", "declarativeContent", "storage","tabs", "<all_urls>"]
+  
+}
+
+

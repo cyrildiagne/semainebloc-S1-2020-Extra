@@ -1,107 +1,66 @@
-.custom-img {
-    transform: rotate(1deg);
-    transition: all 0.1s;
-    filter: blur(2px);
-    transform: rotate(1deg);
+body {
+    filter: contrast(100%) blur(0px);
+    transition: filter 1s ease-in-out;
 }
 
-.custom-img:hover{
+
+.custom--game-button {
+    display: inline-block;
+    background-color: red;
+    outline: blue 1px solid;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.custom-img, .custom-h  {
+    transform: rotate(1deg);
+    transition: all 0.1s;
+    filter: blur(1px);
+}
+
+.custom-img:hover, .custom-h:hover, .custom-td:hover, .custom-label:hover, .custom-text:hover{
     /* border-radius: 100px;  */
     transform: rotate(0deg);
-    filter: blur(1px);
+    filter: blur(0px);
     
-} 
-
-.custom-p {
-    transition: all 0.1s;
-    transform:rotate(-1deg);
-    filter: blur(2px); 
 }
 
-.custom-p:hover{
+.custom-p , .custom-li, .custom-span, .custom-th, .custom-i, .custom-button {
+    transition: all 0.1s;
+    transform:rotate(-1deg);
+    filter: blur(1px); 
+}
+
+.custom-p:hover, .custom-li:hover, .custom-span:hover, .custom-th:hover, .custom-i:hover, .custom-button:hover{
     transform: rotate(0deg);
-    color: black;
     filter: blur(0px);
 }
 
 .custom-a {
     transition: all 0.1s;
     transform:rotate(1deg);
-    filter: blur(2px); 
+    filter: blur(1px); 
 }
 
 .custom-a:hover{
-    transform: rotate(0deg);
-    filter: blur(0px);
-}
-
-
-.custom-h {
-    /* transform: rotate(90deg);
-    transform: transition 0.5s ease;
-    border-radius: 50px; */
-    transition: all 0.1s;
-    transform:rotate(1deg);
-    filter: blur(2px); 
-}
-
-.custom-h:hover{
-    transform: rotate(0deg);
-    color: black;
-    filter: blur(0px);
-}
-
-.custom-li {
-    transition: all 0.1s;
-    transform:rotate(1deg);
-    filter: blur(2px); 
-}
-
-.custom-li:hover{
-    transform: rotate(0deg);
-    filter: blur(0px);
-}
-
-.custom-span {
-    transition: all 0.1s;
-    transform:rotate(-1deg);
-    filter: blur(2px); 
-}
-
-.custom-span:hover{
-    transform: rotate(0deg);
-    filter: blur(0px);
-}
-
-.custom-td {
-    transition: all 0.1s;
-    transform:rotate(1deg);
-    filter: blur(2px); 
-}
-
-.custom-td:hover{
-    transform: rotate(0deg);
-    filter: blur(0px);
-}
-
-.custom-th {
-    transition: all 0.1s;
-    transform:rotate(-1deg);
-    filter: blur(2px); 
-}
-
-.custom-th:hover{
-    transform: rotate(0deg);
-    filter: blur(0px);
-}
-
-.custom-button {
-    transition: all 0.1s;
-    transform:rotate(1deg);
-    filter: blur(2px); 
-}
-
-.custom-button:hover{
     transform: rotate(0deg);
     filter: blur(0px);
 }
@@ -115,3 +74,20 @@
     filter: blur(0px);
 } */
 
+
+
+/* SWITCHES NOT WOKRING */
+.switch-1{
+    background-color: blue;
+    filter: blur(5px);
+  }
+  .switch-2{
+    background-color: rgb(0, 255, 0);
+    filter: blur(10px);
+  }
+  
+  .switch-click{
+    transform: rotate(135deg);
+    filter: blur(0px);
+  }
+   

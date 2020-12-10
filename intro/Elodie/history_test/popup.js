@@ -5,7 +5,7 @@
 // Open the link in a new tab of the current window.
 
 var historyResults = [];
-function createDivs(divName){
+function createDivs(divName) {
   for (var i = 0, len = divName.length; i < len; i++) {
     var $div = $("<div>", { id: divName[i] });
     $("#main").append($div);
@@ -13,43 +13,82 @@ function createDivs(divName){
   }
 }
 
-
-
 function onAnchorClick(event) {
   chrome.tabs.create({
     selected: true,
-    url: event.srcElement.href
+    url: event.srcElement.href,
   });
   return false;
 }
 // Given an array of URLs, build a DOM list of those URLs in the
 // browser action popup.
 function buildPopupDom(divName, urlToCount) {
-  var keys = Object.keys(urlToCount);
-  var timesVisited = Object.values(urlToCount);
-  
-
   // console.log(urlArray);
   // console.log(urlArray[0]);
 
   for (var i = 0, ie = historyResults[0].length; i < ie; ++i) {
     createDivs([i]);
-    function randomInRange(min, max) {  
-      return Math.random() * (max - min) + min; 
-  } 
-    var randomColorHue = Math.floor(randomInRange(0,260));
-    var randomColorSat = Math.floor(randomInRange(50,90));
-    var randomColorLum = Math.floor(randomInRange(35,100));
-    
-     
-    $(".site_bar:nth-child(" +[i] + ")").css('width',historyResults[0][i].visitCount + "vw");
-    $(".site_bar:nth-child(" +[i] + ")").css('background-color', "hsl(" + randomColorHue + ","+ randomColorSat+"%,"+ randomColorLum+"%");
-    console.log(randomColorSat, randomColorHue);
-    $(".site_bar:nth-child(" +[i] + ")").append("<a href='" + historyResults[0][i].url +"'>" + historyResults[0][i].title + "</a>");
-    // $(".site_bar:nth-child(" +[i] + ")").append("<p class='site_name marquee'><span>" + keys[i] +"</span></p>");
-  }
-}
+    function randomInRange(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+    var randomColorHue = Math.floor(randomInRange(0, 260));
+    var randomColorSat = Math.floor(randomInRange(50, 90));
+    var randomColorLum = Math.floor(randomInRange(35, 100));
 
+    $(".site_bar:nth-child(" + [i] + ")").css(
+      "width",
+      historyResults[0][i].visitCount + "vw"
+    );
+    $(".site_bar:nth-child(" + [i] + ")").css(
+      "background-color",
+      "hsl(" +
+        randomColorHue +
+        "," +
+        randomColorSat +
+        "%," +
+        randomColorLum +
+        "%"
+    );
+    $(".site_bar:nth-child(" + [i] + ")").append(
+      "<a href='" +
+        historyResults[0][i].url +
+        "'>" +
+        historyResults[0][i].title +
+        "</a>"
+    );
+    $(".site_bar:nth-child(" + [i] + ")").attr(
+      "site_title",
+      historyResults[0][i].title
+    );
+    $(".site_bar:nth-child(" + [i] + ")").attr(
+      "site_visits",
+      historyResults[0][i].visitCount
+    );
+    $(".site_bar:nth-child(" + [i] + ")").attr(
+      "site_link",
+      historyResults[0][i].url
+    );
+    console.log(historyResults[0][i].lastVisitTime);
+    var myDate = new Date(historyResults[0][i].lastVisitTime);
+    console.log(myDate);
+    var day = myDate.toLocaleString('fr-FR', {hour: '2-digit', minute: '2-digit'});
+
+    $(".site_bar:nth-child(" + [i] + ")").attr(
+      "last_visit", day
+      
+    );
+  }
+
+  $(".site_bar").hover(function () {
+    console.log();
+    $("#site_title").text($(this).attr("site_title"));
+    $("#site_visits").text($(this).attr("site_visits"));
+    $("#site_url").text($(this).attr("site_link"));
+    $("#url_src").attr("href",$(this).attr("site_link"));
+    $("#site_time").text($(this).attr("last_visit"));
+
+  });
+}
 
 // Search history to find up to ten links that a user has typed in,
 // and show those links in a popup.
@@ -58,47 +97,48 @@ function buildTypedUrlList(divName) {
   // subtract a week of microseconds from the current time.
   var microsecondsPerWeek = 1000 * 60 * 60 * 24 * 7;
   var microsecondsPerYear = 1000 * 60 * 60 * 24 * 7 * 52;
-  var startTime = (new Date).getTime() - microsecondsPerYear;
+  var startTime = new Date().getTime() - microsecondsPerYear;
+
+ 
   // Track the number of callbacks from chrome.history.getVisits()
   // that we expect to get.  When it reaches zero, we have all results.
   var numRequestsOutstanding = 0;
-  chrome.history.search({
-      'text': '',              // Return every history item....
-      'startTime': startTime,
-      'maxResults' : 500  // that was accessed less than one week ago.
+  chrome.history.search(
+    {
+      text: "", // Return every history item....
+      startTime: startTime,
+      maxResults: 500, // that was accessed less than one week ago.
     },
-    function(historyItems) {
-      
+    function (historyItems) {
       // For each history item, get details on all visits.
       for (var i = 0; i < historyItems.length; ++i) {
         var url = historyItems[i].url;
         var title = historyItems[i].title;
         var visitCount = historyItems[i].visitCount;
-        var processVisitsWithUrl = function(url) {
+        var processVisitsWithUrl = function (url) {
           // We need the url of the visited item to process the visit.
           // Use a closure to bind the  url into the callback's args.
-          return function(visitItems) {
-            processVisits(url,visitItems);
+          return function (visitItems) {
+            processVisits(url, visitItems);
           };
         };
-        chrome.history.getVisits({url: url}, processVisitsWithUrl(url));
+        chrome.history.getVisits({ url: url }, processVisitsWithUrl(url));
         numRequestsOutstanding++;
       }
       if (!numRequestsOutstanding) {
         onAllVisitsProcessed();
       }
       historyResults.push(historyItems);
-      
-    });
-   
-    
+    }
+  );
+
   // Maps URLs to a count of the number of times the user typed that URL into the omnibox.
   var urlToCount = {};
   // Callback for chrome.history.getVisits().  Counts the number of times a user visited a URL by typing the address.
-  var processVisits = function(url,visitItems) {
+  var processVisits = function (url, visitItems) {
     for (var i = 0, ie = visitItems.length; i < ie; ++i) {
       // Ignore items unless the user typed the URL.
-      if (visitItems[i].transition != 'link' ) {
+      if (visitItems[i].transition != "link") {
         continue;
       }
       if (!urlToCount[url]) {
@@ -113,16 +153,15 @@ function buildTypedUrlList(divName) {
     }
   };
   // This function is called when we have the final list of URls to display.
-  var onAllVisitsProcessed = function() {
+  var onAllVisitsProcessed = function () {
     // Get the top scorring urls.
-     urlArray = [];
+    urlArray = [];
     for (var url in urlToCount) {
       urlArray.push(url);
     }
- 
-    
+
     // Sort the URLs by the number of times the user typed them.
-    urlArray.sort(function(a, b) {
+    urlArray.sort(function (a, b) {
       return urlToCount[b] - urlToCount[a];
     });
 
@@ -130,7 +169,7 @@ function buildTypedUrlList(divName) {
   };
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
   buildTypedUrlList("typedUrl_div");
 });
 

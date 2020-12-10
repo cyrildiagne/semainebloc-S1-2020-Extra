@@ -11,23 +11,18 @@
   "permissions": ["tabs"],
   "default_locale": "en",
   "background": {
-    "scripts": [
-      "js/hot-reload.js",
-      "src/bg/background.js"
-    ],
+    "scripts": ["js/hot-reload.js", "src/bg/background.js"],
     "persistent": true
+  },
+  "browser_action": {
+    "default_icon": "icons/icon128.png",
+    "default_title": "Productivity"
   },
   "content_scripts": [
     {
-      "matches": [
-        "<all_urls>"
-      ],
-      "css": [
-        "src/inject/inject.css"
-      ],
-      "js": [
-        "src/inject/inject.js"
-      ]
+      "matches": ["<all_urls>"],
+      "css": ["src/inject/inject.css"],
+      "js": ["src/inject/inject.js"]
     }
   ]
 }

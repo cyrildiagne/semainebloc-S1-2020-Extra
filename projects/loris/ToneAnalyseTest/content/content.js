@@ -15,22 +15,21 @@ async function processArticle(article) {
 
   try {
     if (article.length != 0) {
-
-      let articleText = article.querySelector('[lang]');
-      let lang = articleText.getAttribute('lang');
+      let articleText = article.querySelector("[lang]");
+      let lang = articleText.getAttribute("lang");
 
       let headers = new Headers();
       headers.append("Authorization", "Basic " + btoa("apikey:" + IBM_KEY));
-      const url = API + "/v3/tone?version=2017-09-21&text=" + articleText.innerText;
+      const url =
+        API + "/v3/tone?version=2017-09-21&text=" + articleText.innerText;
       const resp = await fetch(url, {
         method: "GET",
         headers: headers,
       }).then((r) => r.json());
 
-      console.log(articleText.innerText, resp)
-      
-      if (resp.document_tone?.tones?.length != 0) {
+      console.log(articleText.innerText, resp);
 
+      if (resp.document_tone?.tones?.length != 0) {
         let tone = resp.document_tone.tones[0].tone_id;
         let cssClass = "tone--" + tone;
         article.classList.add(cssClass);
@@ -63,7 +62,6 @@ function processElem(elem) {
 }
 
 function run() {
-  
   // Process all elements currently on the DOM.
   processElem(document.body);
 
