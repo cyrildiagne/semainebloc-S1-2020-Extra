@@ -1,5 +1,4 @@
-let pointsCounter;
-
+let pointsCounter = 0;
 
 chrome.extension.sendMessage({}, function (response) {
   var readyStateCheckInterval = setInterval(function () {
@@ -26,8 +25,8 @@ function elemClicked(e) {
 
   let el = e.target;
   while (el) {
-    el.classList.add('show')
-    el = el.parentElement
+    el.classList.add('show');
+    el = el.parentElement;
   }
   // elemClicked.style.opacity = 0;
   //elemClicked.classList.add("hidden");
@@ -37,12 +36,13 @@ function elemClicked(e) {
   // urlPrecedente = urlActuelle;
   // urlActuelle = window.location.href;
 
+  chrome.extension.sendMessage({ event: 'click_score' });
+
   // if (urlActuelle == urlPrecedente) {
   //     compteurDeClick++;
   // } else {
   //     compteurDeClick = 0;
   // }
-
 }
 
 function openShutter() {
@@ -55,7 +55,6 @@ function openShutter() {
   // var element = document.querySelector(".door");
   // element.addEventListener("click", toggleDoor);
 }
-
 
 // function toggleDoor() {
 //   element.classList.toggle("doorOpen");
