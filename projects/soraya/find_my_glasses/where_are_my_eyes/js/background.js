@@ -1,4 +1,4 @@
-let blurs = [0, 5, 10, 20, 50, 100];
+let blurs = [0, 1,2,3,4,5,6,7,8,9, 10, 15, 20,25,30,35,40,45,50];
 let blurLevel = 0;
 
 chrome.browserAction.onClicked.addListener(buttonClicked);
@@ -21,5 +21,3 @@ function buttonClicked(tab) {
   };
   chrome.tabs.sendMessage(tab.id, msg);
 }
-
-//doit get message contenant les valeurs de la fonction doBlur(); afin de les rééinjecter et les incréementer
