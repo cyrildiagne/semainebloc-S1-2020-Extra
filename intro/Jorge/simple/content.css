@@ -1,7 +1,49 @@
-.custom-img{
-    transition:all 1s;
+:root {
+  --blur: 2px;
+  --color: lightgray;
 }
 
-.custom-img:hover{
-    transform:rotate(45deg);
+.custom-img {
+  transition: all 1s;
+}
+
+.custom-img:hover {
+  transform: rotate(45deg);
+}
+
+#main {
+  filter: grayscale(80%);
+  background-color: gray !important;
+  color: var(--color) !important;
+  filter: blur(var(--blur));
+}
+
+#wp-tabs-container {
+  filter: grayscale(80%);
+  background-color: gray !important;
+  color: lightgray !important;
+}
+
+#h3 {
+  filter: grayscale(80%);
+  background-color: gray !important;
+  color: lightgray !important;
+}
+#tsf > div:nth-child(2) > div.A8SBwf > div.logo.doodle > a > img {
+  filter: grayscale(80%);
+  filter: blur(2px);
+}
+
+#gbwa > div > a > svg {
+  filter: grayscale(80%);
+  filter: blur(2px);
+}
+
+#gb > div > div.gb_3e > div.gb_Oa.gb_dd.gb_Fg.gb_i.gb_Uf > div > a > img {
+  filter: grayscale(80%);
+  filter: blur(2px);
+}
+
+#particle {
+  height: 100%;
 }

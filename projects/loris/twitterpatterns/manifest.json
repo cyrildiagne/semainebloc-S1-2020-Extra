@@ -5,12 +5,13 @@
   "icons": {
     "128": "icon.png"
   },
+  "permissions": ["<all_urls>", "downloads"],
   "content_scripts": [
     {
       "matches": ["https://twitter.com/*", "https://twitter.com/"],
       "all_frames": true,
       "js": ["content/content.js"],
-      "css": ["content/_content.css"]
+      "css": ["content/content.css"]
     }
   ],
   "background": {
