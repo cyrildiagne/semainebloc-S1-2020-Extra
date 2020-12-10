@@ -18,7 +18,7 @@ function addVisual(x, y) {
   el.style.width = width + 'px';
   el.style.height = height + 'px';
 
-  const index = Math.floor(Math.random() * 3);
+  const index = Math.floor(Math.random() * 4);
   const url = allMyUrls[index];
 
   bodymovin.loadAnimation({
