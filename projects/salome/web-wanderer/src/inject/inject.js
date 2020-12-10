@@ -23,7 +23,7 @@ function drawCanvas(history) {
     const a = document.createElement('a');
     a.innerText = link.text;
     a.href = link.href;
-    a.classList.add('link')
+    a.classList.add('link');
     a.style.left = Math.floor(link.coords.x) + 'px';
     a.style.top = Math.floor(link.coords.y) + 'px';
     container.appendChild(a);
@@ -43,10 +43,7 @@ function drawCanvas(history) {
 async function load() {
   await waitForDocumentReady();
   chrome.runtime.sendMessage({ action: 'getHistory' }, (resp) => {
-    console.log('history is:', resp, test);
-    console.log(chrome.runtime.lastError);
     if (resp) {
-      console.log('history draw canvas');
       drawCanvas(resp.links);
     }
   });
