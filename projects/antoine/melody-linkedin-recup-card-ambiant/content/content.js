@@ -61,6 +61,9 @@ async function run() {
   //END
 
   // SELECT DIV NOTES
+  //EXAMPLE
+  let img = document.getElementsByTagName("presence-entity");
+  //BUG HERE
   const rows = document.body.querySelectorAll('div > div'),
     notes = ['G3', 'E3', 'C3', 'A3', 'E2', 'B2', 'D2'];
   let index = 0;
@@ -80,13 +83,13 @@ async function run() {
   //TIME = 120 DEFAULT
   function repeat(time) {
     let step = index % 32;
-  
+
     for (let i = 0; i < rows.length; i++) {
       let synth = synths[i],
         note = notes[i],
         row = rows[i],
         input = row.children[step];
-  
+
       if ($(input).hasClass('isOver')) {
         synth.triggerAttackRelease(note, '8n', time);
       }
@@ -95,18 +98,6 @@ async function run() {
   }
   //END LOOP
 
-  let img = document.getElementsByTagName("presence-entity");
-
-  $(".artdeco-card").mouseenter(function () {
-    Tone.Transport.start();
-    console.log("insinde");
-    // playing = true;
-  });
-  $(".artdeco-card").mouseout(function () {
-    // Tone.Transport.stop();
-    console.log("outside");
-    // playing = false;
-  });
 })();
 //LISTENER SCROLL LOAD 
 //NOT US

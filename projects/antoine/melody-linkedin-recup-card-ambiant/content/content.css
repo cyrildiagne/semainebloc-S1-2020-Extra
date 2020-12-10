@@ -4,7 +4,18 @@ h1:after, h2:after, h3:after {
   font-style: italic;
   display: block;
 }
-
-.presence-entity:hover{
+/* .presence-entity:hover{
   background: red;
+} */
+.isOver{
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-duration: 1s;
+  animation: morph 5s linear 0.3s;
+}
+
+/* BACKGROUND COLOR CHANGE SEQUENCE */
+@keyframes morph {
+  0% { background-color: blueviolet; }
+  50% { background-color: lightcyan; }
+  100% { background-color: blueviolet; }
 }
