@@ -42,7 +42,7 @@ const API_KEY = "dd7c38c7-9a46-48b3-8b78-0696a284771f";
 deepai.setApiKey(API_KEY);
 
 async function run() {
-  getPosts();
+  // getPosts();
 
   // let ps = document.body.querySelectorAll("p");
 
@@ -90,27 +90,24 @@ async function run() {
   // return
 }
 
-//LISTENER SCROLL LOAD
-//NOT US
-// Listen for background script message when the button has been clicked.
 chrome.runtime.onMessage.addListener((message, sender) => {
   if (message.action == "run") {
     run();
   }
 });
 
-function analyseText() {
+async function analyseText() {
   return "Positive";
 }
 
 function analyseNewPosts() {
   let posts = document.querySelectorAll("[data-urn]");
-  posts.forEach((post) => {
+  posts.forEach(async (post) => {
     if (isNewTextPost(post)) {
       let description = post.querySelector('[class*="commentary"]');
 
       setListener(post);
-      let output = analyseText(post);
+      let output = await analyseText(post);
       let note = NOTES[output];
       post.dataset.tonenote = note;
       // console.log(description, description.textContent);
