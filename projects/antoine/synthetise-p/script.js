@@ -29,7 +29,7 @@ gain.toMaster();
 synths.forEach((synth) => synth.connect(gain));
 
 const rows = document.body.querySelectorAll('div > div'),
-notes = ['G3', 'E3', 'C3', 'A3','E2','B2','D2'];
+  notes = ['G3', 'E3', 'C3', 'A3', 'E2', 'B2', 'D2'];
 let index = 0;
 
 Tone.Transport.scheduleRepeat(repeat, '8n');
