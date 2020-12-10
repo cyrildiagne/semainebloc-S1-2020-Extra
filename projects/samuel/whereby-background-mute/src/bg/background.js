@@ -15,21 +15,29 @@ const URLS = [];
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   // console.log('updated from background');
+  const time = new Date();
+  const h = time.getHours();
+  const m = time.getMinutes();
+  const temps = h + ":" + m;
 
   // new Date https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date
   if (changeInfo.status === "complete") {
     const infos = {
       title: tab.title,
       url: tab.url,
-      date: new Date(),
+      date: temps,
     };
     URLS.push(infos); //loading
+
     console.log(infos);
 
     // chrome.extension.sendMessage(tabId, {action: "historychange", history: URLS}, function(){});
     // chrome.extension.sendMessage(chrome.runtime.id, {action: "hello", history: URLS}, function(response) {
     chrome.tabs.query({}, function (tabs) {
-      var message = { action: "historychange", history: URLS };
+      var message = {
+        action: "historychange",
+        history: URLS
+      };
       for (var i = 0; i < tabs.length; ++i) {
         chrome.tabs.sendMessage(tabs[i].id, message);
       }

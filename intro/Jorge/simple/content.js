@@ -1,25 +1,27 @@
-console.log("hello from  fromcontent.js")
+const API = "https://api.waqi.info/feed/";
+const KEY = "90a7b7283757123e1b6f4bee7f6abb24e8823990";
 
-const imgs = document.body.getElementsByTagName('img')
-for (const img of imgs) {
-    img.classList.add("custom-img")
+window.addEventListener("click", function () {
+
+  init();
+
+  function init() {
+    let cityName = getCityName();
+    console.log("City searched", cityName);
+    if(!cityName)
+      return;
+
+      fetch(API + cityName + "/?token=" + KEY)
+      .then((response) => response.json())
+      .then((result) => console.log(result.data.aqi))
+  }
+});
+
+function getCityName() {
+  let url = window.location.search;
+  let searchParams = new URLSearchParams(url);
+  let googleSearch = searchParams.get('q');
+
+  // console.log(googleSearch);
+  return googleSearch;
 }
-
-        var requestOptions = {
-            method: 'GET',
-            redirect: 'follow'
-          };
-      
-        fetch(
-          'https://api.airvisual.com/v2/city?city=Lisbon&state=Lisbon&country=Portugal&key=7021151e-c3e9-4030-8ea7-c0316bd18666', requestOptions)
-      .then(response => response.json())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
-    
-    function run(){
-      const city = 'Sathon';
-      const state = 'Bangkok';
-      const country = 'Thailand';
-    
-      getAirQuality({city, state, country});
-    }

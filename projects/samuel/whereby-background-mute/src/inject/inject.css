@@ -1,3 +1,64 @@
 /**
  * Place your custom CSS styles here.
  **/
+body {
+  -webkit-transition: all ease 250ms;
+  transition: all ease 250ms;
+}
+.button {
+  background-color: black;
+  bottom: 0;
+  margin: 20px;
+  color: white;
+  position: fixed;
+  width: 100px;
+  height: 50px;
+  border: none;
+  border-radius: 12px;
+  z-index: 10003;
+  -webkit-transition: all ease 250ms;
+}
+
+.blur {
+  -webkit-transition: all ease 250ms;
+  filter: blur(20px);
+}
+
+.content {
+  background-color: black;
+  color: rgba(255, 255, 255, 1);
+  /* position: fixed; */
+  margin: 10px;
+  display: block;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  left: 35%;
+  font-size: 3vh;
+  padding: 30px;
+  border-radius: 0%;
+  z-index: 10001;
+  -webkit-transition: 250ms all ease;
+  transition: 250ms all ease;
+}
+.content:hover {
+  border-radius: 30px;
+
+  -webkit-transition: 250ms all ease;
+  transition: 250ms all ease;
+}
+.canvas {
+  background-color: yellow;
+  bottom: 0;
+  color: white;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 12px;
+  z-index: 10000;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-transition: all ease 250ms;
+  overflow: hidden;
+}
