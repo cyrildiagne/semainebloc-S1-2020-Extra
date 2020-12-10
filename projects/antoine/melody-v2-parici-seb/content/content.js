@@ -24,7 +24,7 @@ async function run() {
           text:p.innerText,
         });
 
-      console.log(respSen.output);
+      console.log(p.innerText+" ==  "+respSen.output);
       //END
 
       //SET UP SOUNDSCAPE
