@@ -23,8 +23,17 @@ async function run() {
         // text: "Today, the One Planet Sovereign Wealth Funds has demonstrated that reinforced cooperation between global financial actors is key to accelerate the path to a net zero economy and implement the Paris Agreement. Your announcement on Task Force on Climate-related Financial Disclosures recommendations is a pivotal moment. I count on all members, sovereign wealth funds, asset managers, private equity firms to continue to use their collective power and ambition to accelerate the financing of the ecological transition and mitigate climate change.",
         text: p.innerText,
       });
+      if(respSen.output == "Negative"){
+        console.log("Negative FILTER");
+      }else if(respSen.output == "Positive"){
+        console.log("Positive FILTER");
+      }else if(respSen.output == "Neutral"){
+        console.log("Neutral FILTER");
+      }else{
+        console.log("OUTSIDE FILTER BUG");
+      }
 
-      console.log(p.innerText + " ==  " + respSen.output);
+      // console.log(p.innerText + " ==  " + respSen.output);
       //END
 
       //CLICK TO SET UP SOUNDSCAPE
