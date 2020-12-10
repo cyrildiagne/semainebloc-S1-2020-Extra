@@ -12,6 +12,19 @@ const urls = [
   'https://google.com',
   'https://ecal.ch',
   'https://letemps.ch',
+  'https://www.facebook.com',
+  'https://www.amazon.fr/',
+  'https://www.reddit.com/',
+  'https://www.ebay.fr/',
+  'https://fr.linkedin.com/',
+  'https://www.twitch.tv/',
+  'https://www.easyjet.com/ch-fr',
+  'https://www.lemonde.fr/',
+  'https://whereby.com',
+  'https://www.pinterest.fr',
+  'https://time.com/',
+  'https://www.spotify.com/fr/'
+  
 ];
 
 //example of using a message handler from the inject scripts
@@ -25,9 +38,9 @@ chrome.extension.onMessage.addListener(function (
   if (request == 'getURL') {
     sendResponse(currentTab.url);
   } else if (request == 'win') {
-    //TODO: SET RANDOM URL INSTEAD:
-    let url = urls[1];
-    // 
+    let url = urls[Math.floor(Math.random()*urls.length)]
+    
+    // COMMENT JE CONNECTE AVEC LE TAB
     setTimeout(() => {
       sendResponse(url);
     }, 2000);

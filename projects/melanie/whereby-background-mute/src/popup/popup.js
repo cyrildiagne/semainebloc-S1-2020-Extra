@@ -1,35 +1,5 @@
-// function answer() {
-//   let elem = document.createElement('div');
-//   elem.classList.add(`answerSquare`);
-//   document.body.appendChild(elem);
-
-//   var y = document.createTextNode('Which website are you surfing on ?');
-//   elem.appendChild(y);
-
-//   addAnswer();
-//   validationButton();
-// }
-
-// function addAnswer() {
-//   let addText = document.createElement('div');
-//   addText.classList.add(`textDiv`);
-
-//   let write = document.createElement('INPUT');
-//   write.setAttribute('fillText', 'textDiv');
-//   // document.body.appendChild(write);
-//   document.body.appendChild(addText);
-// }
-
-// let button = validationButton('I got it !', 'button');
-
-// function validationButton(text) {
-//   let button = document.createElement('div');
-//   button.classList.add(`button`);
-//   button.textContent = text;
-//   document.body.appendChild(button);
-// }
-
 let currentURL;
+let pointsCounter;
 
 const answerInput = document.querySelector('.answer');
 const btOk = document.querySelector('.bt-ok');
@@ -67,4 +37,7 @@ function start() {
       answerInput.value = '';
     }
   });
+
 }
+
+
