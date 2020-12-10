@@ -6,6 +6,7 @@
   --bgColor: rgb(230, 230, 230);
   background-color: var(--bgColor);
   height: 100vh;
+  pointer-events: none;
 }
 
 .tone--0 {

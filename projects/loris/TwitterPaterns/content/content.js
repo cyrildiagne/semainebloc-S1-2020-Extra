@@ -77,14 +77,9 @@ function run() {
         for (let i = 0; i < divTable.length; i++) {
           divTable[i].style.width = divWidth + "px";
           divTable[i].style.height = 100 + "vh";
-          // divTable[i].style.opacity = "0.6";
-          // divTable[i].style.border = "5px solid black";
-
+          divTable[i].style.opacity = "0.6";
           divTable[i].style.left = i * divWidth + "px";
-          // divTable[i].style.top = Math.ceil(i / columns) * divHeight + "px";
         }
-        // let randomColor = Math.floor(Math.random() * 6);
-        // divTable.classList.add("tone--" + randomColor);
       });
     });
   });
