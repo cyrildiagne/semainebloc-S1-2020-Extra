@@ -1,0 +1,77 @@
+h1:after, h2:after, h3:after {
+  content: attr(data-rhyme);
+  color: magenta;
+  font-style: italic;
+  display: block;
+}
+/* .presence-entity:hover{
+  background: red;
+} */
+
+/* .isOver {
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-duration: 1s;
+  animation: morph 5s linear 0.3s;
+} */
+
+/* 
+.tone--isOver {
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-duration: 1s;
+  animation: morph 5s linear 0.3s;
+} */
+
+/* BACKGROUND COLOR CHANGE SEQUENCE */
+
+/* @keyframes morph {
+  0% {
+    background-color: red;
+  }
+  50% {
+    background-color: rgb(197, 211, 0);
+  }
+  100% {
+    background-color: red;
+  }
+} */
+
+/* .tone--active {
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-duration: 1s;
+  animation: morph infinite linear 1.3s;
+} */
+
+.tone--active div { 
+  /* transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-duration: 1s; */
+  opacity: 0; 
+ }
+ .tone--active article { 
+  opacity: 0; 
+}
+
+.tone--active {
+  border-radius: 500px;
+  height: 66vh;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+   background: linear-gradient(90deg, #ee7752, #e73c7e, #f1f50b, #ee7752);
+  background-size: 400% 400%; 
+
+  
+  animation: gradient 15s ease infinite; 
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
