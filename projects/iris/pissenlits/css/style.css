@@ -1,5 +1,17 @@
 .lottie-anim {
   position: fixed;
   z-index: 999;
-  background: rgba(128, 128, 128, 0.5);
+  /* background: rgba(128, 128, 128, 0.5); */
+  overflow: visible;
+
+
+  /* transition: transform 1s; */
+}
+
+/* .lottie-anim:hover {
+  transform: translate(200px, 500px);
+} */
+
+.lottie-anim {
+  overflow: visible;
 }
