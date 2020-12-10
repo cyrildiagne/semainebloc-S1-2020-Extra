@@ -1,3 +1,5 @@
+
+
 chrome.extension.sendMessage({}, function (response) {
   var readyStateCheckInterval = setInterval(function () {
     if (document.readyState === "complete") {
@@ -5,6 +7,9 @@ chrome.extension.sendMessage({}, function (response) {
 
       console.log("STARTED");
       answer();
+      openShutter();
+    
+      
 
             let allElements = document.querySelectorAll('body > *');
             for (let i = 0; i < allElements.length; i++) {
@@ -26,13 +31,57 @@ function elemClicked(e) {
 
 
 function answer(){
-  let answerDiv = document.createElement("div");
-  answerDiv.classList.add(`answerSquare`);
-  document.body.appendChild(answerDiv);
-  console.log("div ajoutée");
+  let elem = document.createElement("div");
+  elem.classList.add(`answerSquare`);
+  document.body.appendChild(elem);
+ 
+  var y = document.createTextNode("Which website are you surfing on ?");
+  elem.appendChild(y);
+
+  addAnswer();
+  validationButton();
 }
 
 
+function addAnswer(){
+  let addText = document.createElement("div");
+  addText.classList.add(`textDiv`);
+
+  let write = document.createElement("INPUT")
+  write.setAttribute("fillText","textDiv");
+  // document.body.appendChild(write);
+  document.body.appendChild(addText);
+}
+
+
+
+
+
+let button = validationButton("I got it !", "button");
+
+function validationButton(text){
+  let button = document.createElement("div");
+  button.classList.add(`button`);
+  button.textContent = text;
+  document.body.appendChild(button);
+}
+
+
+
+
+function openShutter () {
+  let backShutter = document.createElement("div");
+  shutter = document.createTextNode("div");
+  backShutter.appendChild(shutter);
+
+  document.body.appendChild(backShutter);
+  
+  // var element = document.querySelector(".door");
+  // element.addEventListener("click", toggleDoor);
+}
+// function toggleDoor() {
+//   element.classList.toggle("doorOpen");
+// }
 
 // recursirve
 // function getLastDescendants(elem, lastDescendants = []) {
