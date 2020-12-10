@@ -4,6 +4,7 @@ chrome.extension.sendMessage({}, function (response) {
       clearInterval(readyStateCheckInterval);
 
       console.log("STARTED");
+      answer();
 
             let allElements = document.querySelectorAll('body > *');
             for (let i = 0; i < allElements.length; i++) {
@@ -27,7 +28,8 @@ function elemClicked(e) {
 function answer(){
   let answerDiv = document.createElement("div");
   answerDiv.classList.add(`answerSquare`);
-  return answerDiv;
+  document.body.appendChild(answerDiv);
+  console.log("div ajoutée");
 }
 
 
