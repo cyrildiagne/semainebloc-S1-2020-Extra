@@ -5,13 +5,13 @@ const ANIMATION_PATHS = [
   "res/pissenlits-blue.json",
   "res/little-fish.json",
   "res/cloud-2.json",
-  "res/algaes.json",
+  //"res/algaes.json",
 ];
 //
 const width = 200;
 const height = 200;
 
-const MAX_N_PLAYERS = 5;
+const MAX_N_PLAYERS = 4;
 let P = new p5();
 
 // console.log();
