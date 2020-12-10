@@ -3,6 +3,7 @@ const allMyUrls = [
   'res/pissenlits.json',
   'res/pissenlits-blue.json',
   'res/fish.json',
+  'res/little-fish.json',
 ];
 
 //
