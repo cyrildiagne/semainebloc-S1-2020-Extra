@@ -28,7 +28,14 @@ function sendAction(tab, actionType) {
 }
 
 function draw (){
-  beginPath();
-  ellipse(100, 100, 50, 75, 45 * Math.PI/180, 0, 2 * Math.PI);
-  stroke();
+  
+  var canvas = document.getElementById('canvas');
+  if (canvas.getContext) {
+    var ctx = canvas.getContext('2d');
+
+    ctx.fillRect(250, 250, 100, 100);
+    ctx.clearRect(45, 45, 60, 60);
+    ctx.strokeRect(50, 50, 50, 50);
+  
+  }
 }
