@@ -1,0 +1,95 @@
+/**
+ * Place your custom CSS styles here.
+ **/
+ @font-face {
+  font-family: "NeueHaas";
+ src: url("../font/NeueHaasGrotesk-Roman.otf") format("opentype");
+}
+ 
+
+body {
+  -webkit-transition: all ease 250ms;
+  transition: all ease 250ms;
+  font-family: "NeueHaas";
+}
+
+a{
+  text-decoration: none;
+}
+
+.button {
+  font-family: sans-serif;
+  background-color: black;
+  bottom: 0;
+  margin: 20px;
+  color: white;
+  position: fixed;
+  width: 100px;
+  height: 50px;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  border-radius: 100px;
+  z-index: 10003;
+  -webkit-transition: all ease 250ms;
+  filter: drop-shadow(0 0 0.0rem rgb(0, 0, 0));
+
+}
+.button:hover {
+  filter: drop-shadow(0 0 0.50rem rgb(0, 0, 0));
+
+  -webkit-transition: all ease 250ms;
+}
+
+.blur {
+  -webkit-transition: all ease 250ms;
+  filter: blur(20px);
+
+}
+
+.content {
+  background-color: black;
+  color: rgba(255, 255, 255, 1);
+  /* position: fixed; */
+  /* margin: 10px; */
+  top: 0;
+  width: 20%;
+  text-align: center;
+  font-size: 2vh;
+  padding: 15px;
+  border-radius: 100px;
+  z-index: 10001;
+  -webkit-transition: 250ms all ease;
+  transition: 250ms all ease;
+}
+.content:hover {
+  background-color:transparent;
+  color:black;
+
+
+
+  /* border-radius: 100px; */
+
+  -webkit-transition: 250ms all ease;
+  transition: 250ms all ease;
+}
+.canvas {
+  background-color: yellow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  color: white;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 12px;
+  z-index: 10000;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-transition: all ease 250ms;
+  overflow: scroll;
+
+}

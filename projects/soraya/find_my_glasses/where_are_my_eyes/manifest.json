@@ -1,7 +1,7 @@
 {
-  "name": "Find my glasses",
+  "name": "Blind test",
   "version": "0.2",
-  "description": "Unblurr my vision",
+  "description": "Website knowledge muscular memory",
   "background": {
     "persistent": false,
     "scripts": ["js/hot-reload.js", "js/background.js"]

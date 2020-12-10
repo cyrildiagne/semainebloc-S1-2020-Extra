@@ -1,3 +1,87 @@
+var mouseX, mouseY;
+mouseX = mouseY = 0;
+var modal;
+
+document.onmousemove = (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    const elem = e.target
+    if (modal) {
+        modal.style.left = mouseX + "px";
+        modal.style.top = mouseY + "px";
+    }
+    if (!elem.alteredByCursor && elem.oldText && !checkForTags(elem.tagName)) {
+        registerMouseEvent(elem);
+    } else {
+        findAlterableChild(elem)
+    }
+}
+
+function registerMouseEvent(elem) {
+    /* console.log(elem) */
+    if (modal) {
+
+    } else {
+        modal = document.createElement("div");
+        modal.innerText = elem.oldText;
+        console.log(modal);
+        modal.style.position = "fixed";
+        modal.style.left = mouseX + "px";
+        modal.style.top = mouseY - 50 + "px";
+        modal.style.transform = "translate(-50%)"
+        modal.style.backgroundColor = "0x111111"
+        modal.style.borderRadius = "10px"
+        modal.style.pointerEvents = "none"
+        modal.classList.add("word2vec-modal")
+        document.body.appendChild(modal)
+    }
+
+    /* elem.alteredContent = elem.innerHTML; */
+    /* console.log(elem.oldText) */
+    /* elem.innerHTML = elem.oldText; */
+    elem.alteredByCursor = true;
+    elem.onmouseleave = (e) => {
+        /* elem.innerHTML = elem.alteredContent */
+        elem.alteredByCursor = false;
+        elem.removeEventListener("mouseleave", elem.onmouseleave);
+        var modals = document.getElementsByClassName("word2vec-modal");
+        console.log(modals)
+        modals[0].parentNode.removeChild(modals[0]);
+        modal = null;
+        console.log("removed modal")
+    }
+}
+
+function findAlterableChild(elem) {
+    /* console.log(elem) */
+}
+/* try {
+    
+    e.target.currentHTML = e.target.
+    e.target.onmouseleave = () => {
+        e.target.style.backgroundColor = e.target.originalColor;
+        console.log(e.target.originalColor)
+        console.log("removed")
+        e.target.removeEventListener("mouseleave", e.onmouseleave);
+    }
+} catch {
+    console.log("could not execute mouse move")
+} */
+
+
+
+function existsInIdMap(e) {
+    const keys = Object.keys(idMap);
+    for (var i = 0; i < keys.length; i++) {
+        const thing = idMap[keys[i]];
+        if (e == thing) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
 function ask(word, id) {
     chrome.runtime.sendMessage({ "type": "wordRequest", "word": word, "id": id });
     requests++;
@@ -89,7 +173,7 @@ function passesBanList(e) {
 
 var a = document.getElementsByTagName("*");
 console.log(a)
-const bannedTags = ["SCRIPT", "STYLE", "TEXTAREA", "svg", "path", "g", "circle", "VIDEO", "IMG"]
+const bannedTags = ["SCRIPT", "STYLE", "TEXTAREA", "svg", "path", "g", "circle", "VIDEO", "IMG", "HEAD"]
 sanitizeDOMList();
 
 function sanitizeDOMList() {
@@ -135,6 +219,8 @@ function buildIdMap() {
         const e = html[i];
         /* console.log(e) */
         if (e.ids && !e.modifiedByWord2Vec) {
+            e.originalContent = e.innerHTML;
+            e.oldText = e.innerHTML;
             e.ids.forEach((id) => {
                 idMap[id] = e;
                 if (!idMap[id].completePhrase) {
@@ -144,12 +230,14 @@ function buildIdMap() {
         }
     }
 }
-
+existsInIdMap(1)
 
 /* } */
 
 function convertElement(e) {
+    /* return false; */
     e.ids = [];
+    e.originalContent = e.innerHTML;
     var theseWords = e.innerText.split(" ");
     theseWords.forEach((word) => {
         if (!checkForTags(word)) {
@@ -229,6 +317,7 @@ for (var j = 0; j < a.length; j++) {
         var e = html;
         /* console.log(e) */
         e.ids = [];
+        e.originalContent = e.innerHTML;
         var theseWords = e.innerText.split(" ");
         theseWords.forEach((word) => {
             if (!checkForTags(word)) {
@@ -253,11 +342,16 @@ buildIdMap();
 
 
 
+let re = /^[a-z0-9]+$/i;
 const keys = Object.keys(words);
 for (var i = 0; i < keys.length; i++) {
     const key = keys[i];
     const word = words[key];
-    ask(word, key);
+    if (re.test(word)) {
+
+        /* console.log(word) */
+        ask(word, key);
+    }
 }
 var usedKeys = []
 var calls = 0;
@@ -265,7 +359,7 @@ var calls = 0;
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     callbacks++;
     if (request.word) {
-        console.log(request.originalWord, request.word[0].word)
+        /* console.log("original: " + request.originalWord + " modded: " + request.word[0].word, idMap[request.key]) */
         if (idMap[request.key]) {
             var elementId = idMap[request.key].ids.indexOf(parseFloat(request.key));
             /* console.log(idMap[request.key]) */
@@ -276,6 +370,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             /* console.log(request.key) */
 
             if (!idMap[request.key].modifiedByWord2Vec) {
+                idMap[request.key].originalContent = idMap[request.key].innerHTML
                 idMap[request.key].oldText = idMap[request.key].innerText
                 idMap[request.key].modifiedByWord2Vec = true;
             }
@@ -284,7 +379,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             const newText = replaceWithBase(idMap[request.key].innerText.split(" "), idMap[request.key].completePhrase);
             /* console.log(newText) */
             /* const newText = "waer" */
-            if (idMap[request.key].children) { console.log(idMap[request.key].children) }
+            /* if (idMap[request.key].children) { console.log(idMap[request.key].children) } */
             idMap[request.key].innerText = newText
             usedKeys.push(idMap[request.key])
                 /* console.log(usedKeys.length); */

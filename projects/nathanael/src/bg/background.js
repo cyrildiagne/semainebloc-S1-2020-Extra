@@ -31,7 +31,8 @@ var fails = 0;
 
 function w2v(word, tab, key) {
     var result = "fromage";
-    /* console.log("asking for " + word) */
+    console.log(word)
+        /* console.log("asking for " + word) */
     wordVectors.nearest(word, (e, r) => {
         result = r;
         if (r) {
