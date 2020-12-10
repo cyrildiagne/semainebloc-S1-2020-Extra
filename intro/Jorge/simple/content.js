@@ -22,13 +22,15 @@ window.addEventListener("click", function () {
         } else if (result.data.aqi > 50 && result.data.aqi < 100) {
           console.log('it is between 50 and 100')
           console.log(result.data.aqi)
-          document.documentElement.style.setProperty('--blur', '10px');
+          document.documentElement.style.setProperty('--blur', '4px');
         } else if (result.data.aqi > 100 && result.data.aqi < 200) {
           console.log('it is between 100 and 200')
           console.log(result.data.aqi)
+          document.documentElement.style.setProperty('--blur', '6px');
         } else if (result.data.aqi > 200 && result.data.aqi < 300) {
           console.log('it is between 200 and 300')
           console.log(result.data.aqi)
+          document.documentElement.style.setProperty('--blur', '10px');
         }
         })
       }
