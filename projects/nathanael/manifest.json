@@ -1,8 +1,8 @@
 {
-    "name": "Words2Vec",
-    "version": "0.0.1",
+    "name": "Artificial Stupidity",
+    "version": "9001",
     "manifest_version": 2,
-    "description": "This extension was created with the awesome extensionizr.com",
+    "description": "AI Exquisite Corpse Engine: replaces words by words with similar meaning. Example: from \"Machine Learning\" to \"Machine Dumb\".",
     "homepage_url": "http://extensionizr.com",
     "content_security_policy": "script-src 'self 'unsafe-eval' ; object-src 'self'; script-src-elem 'self' 'unsafe-eval' ",
     "icons": {
@@ -32,6 +32,9 @@
         "js": [
             "ml5.min.js",
             "src/inject/inject.js"
+        ],
+        "css":[
+            "style.css"
         ]
     }],
     "web_accessible_resources": [
