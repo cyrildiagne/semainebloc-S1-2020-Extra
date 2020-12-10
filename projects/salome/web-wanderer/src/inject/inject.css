@@ -1,0 +1,11 @@
+/**
+ * Place your custom CSS styles here.
+ **/
+
+ .wanderer--highlight {
+     transform: scale(2);
+     background: blue !important;
+     color: white !important;
+     border-radius: 5px;
+     box-shadow: 0px 7px 11px 0px rgba(0,0,0,0.75);
+ }
