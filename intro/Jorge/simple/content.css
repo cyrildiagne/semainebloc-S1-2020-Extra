@@ -1,5 +1,5 @@
 :root {
-  --blur: 2px;
+  --blur: 0px;
   --color: lightgray;
 }
 
@@ -31,17 +31,17 @@
 }
 #tsf > div:nth-child(2) > div.A8SBwf > div.logo.doodle > a > img {
   filter: grayscale(80%);
-  filter: blur(2px);
+  filter: blur(var(--blur));
 }
 
 #gbwa > div > a > svg {
   filter: grayscale(80%);
-  filter: blur(2px);
+  filter: blur(var(--blur));
 }
 
 #gb > div > div.gb_3e > div.gb_Oa.gb_dd.gb_Fg.gb_i.gb_Uf > div > a > img {
   filter: grayscale(80%);
-  filter: blur(2px);
+  filter: blur(var(--blur));
 }
 
 #particle {

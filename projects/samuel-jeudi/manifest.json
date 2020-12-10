@@ -10,7 +10,9 @@
     "128": "icons/icon128.png"
   },
   "permissions": [
+    "background",
     "tabs"
+
   ],
   "default_locale": "en",
   "background": {
@@ -18,19 +20,17 @@
       "js/hot-reload.js",
       "src/bg/background.js"
     ],
-    "persistent": true
+    "persistent": false
   },
-  "content_scripts": [
-    {
-      "matches": [
-        "<all_urls>"
-      ],
-      "js": [
-        "src/inject/inject.js"
-      ],
-      "css": [
-        "src/inject/inject.css"
-      ]
-    }
-  ]
+  "content_scripts": [{
+    "matches": [
+      "<all_urls>"
+    ],
+    "js": [
+      "src/inject/inject.js"
+    ],
+    "css": [
+      "src/inject/inject.css"
+    ]
+  }]
 }
