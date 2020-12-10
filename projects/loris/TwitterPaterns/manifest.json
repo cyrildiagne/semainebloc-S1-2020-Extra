@@ -1,0 +1,25 @@
+{
+  "name": "ToneAnnalysis",
+  "description": "watch your tone",
+  "version": "0.1",
+  "icons": {
+    "128": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://twitter.com/*", "https://twitter.com/"],
+      "all_frames": true,
+      "js": ["content/content.js"],
+      "css": ["content/_content.css"]
+    }
+  ],
+  "background": {
+    "scripts": ["libs/p5.min.js","libs/hot-reload.js", "background/background.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_title": "ToneAnnalysis",
+    "default_icon": "icon.png"
+  },
+  "manifest_version": 2
+}

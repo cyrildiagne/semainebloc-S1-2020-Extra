@@ -1,0 +1,11 @@
+html, body {
+    margin: 0;
+    width: 500px;
+    height: 500px;
+}
+
+video {
+    /* border: 1px solid black;
+    transform: scaleX(-1); */
+    width: 100%;
+}

@@ -1,10 +1,10 @@
 {
   "name": "Find my glasses",
-  "version": "0.1",
+  "version": "0.2",
   "description": "Unblurr my vision",
   "background": {
     "persistent": false,
-    "scripts": ["js/background.js"]
+    "scripts": ["js/hot-reload.js", "js/background.js"]
   },
   "content_scripts": [
     {
