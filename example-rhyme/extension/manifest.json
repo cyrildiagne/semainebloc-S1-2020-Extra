@@ -1,6 +1,6 @@
 {
   "name": "Headers Rhyme",
-  "description": "Adds rhymes to headers from a large corpus lyrics",
+  "description": "Try to remember all your Way to this page!",
   "version": "0.1",
   "icons": {
     "128": "icon.png"
@@ -18,7 +18,7 @@
     "persistent": false
   },
   "browser_action": {
-    "default_title": "Rhyme this!",
+    "default_title": "Keep an eyes on your survivor line!",
     "default_icon": "icon.png"
   },
   "manifest_version": 2

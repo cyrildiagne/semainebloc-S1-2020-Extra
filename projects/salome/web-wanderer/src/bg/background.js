@@ -26,3 +26,9 @@ function sendAction(tab, actionType) {
   let message = { action: actionType };
   chrome.tabs.sendMessage(tab, message);
 }
+
+function draw (){
+  beginPath();
+  ellipse(100, 100, 50, 75, 45 * Math.PI/180, 0, 2 * Math.PI);
+  stroke();
+}
