@@ -1,11 +1,23 @@
-/* 
-:not(:hover) {
+
+/* :not(:hover) {
     opacity: 0;
  }
 
  * {
     outline: 1px solid black !important;
  }
+  */
  
- 
- */
+  .hidden{
+   opacity: 0;
+}
+
+.answerSquare{
+   height: 500px;
+   width: 500px;
+   background-color: #555;
+   position: absolute;
+   top: 0;
+   left:0;
+   z-index: 100;
+}

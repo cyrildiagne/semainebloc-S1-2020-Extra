@@ -3,13 +3,36 @@ chrome.extension.sendMessage({}, function (response) {
     if (document.readyState === "complete") {
       clearInterval(readyStateCheckInterval);
 
-      // ----------------------------------------------------------
-      // This part of the script triggers when page is done loading
-      console.log("Hello. This message was sent from scripts/inject.js");
-      // ----------------------------------------------------------
+      console.log("STARTED");
+      answer();
+
+            let allElements = document.querySelectorAll('body > *');
+            for (let i = 0; i < allElements.length; i++) {
+                allElements[i].addEventListener("click", elemClicked);
+                allElements[i].style.opacity = 1;
+                //allElements[i].classList.remove("hidden");
+            };
     }
   }, 10);
 });
+
+function elemClicked(e) {
+  elemClicked = e.target;
+  elemClicked.style.opacity = 0;
+  //elemClicked.classList.add("hidden");
+  
+  console.log("element clicked");
+}
+
+
+function answer(){
+  let answerDiv = document.createElement("div");
+  answerDiv.classList.add(`answerSquare`);
+  document.body.appendChild(answerDiv);
+  console.log("div ajoutée");
+}
+
+
 
 // recursirve
 // function getLastDescendants(elem, lastDescendants = []) {
