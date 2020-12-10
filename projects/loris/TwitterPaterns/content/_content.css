@@ -4,7 +4,8 @@
   top: 0;
   left: 0;
   --bgColor: rgb(230, 230, 230);
-  background-color: var(--bgColor) !important;
+  background-color: var(--bgColor);
+  height: 100vh;
 }
 
 .tone--0 {
@@ -20,7 +21,7 @@
 }
 
 .tone--3 {
-  --bgColor: rgba(208, 255, 0, 0.767);
+  --bgColor: rgba(208, 255, 0);
 }
 .tone--4 {
   --bgColor: rgb(72, 59, 214);
