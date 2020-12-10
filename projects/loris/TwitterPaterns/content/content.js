@@ -76,7 +76,7 @@ function run() {
 
         for (let i = 0; i < divTable.length; i++) {
           divTable[i].style.width = divWidth + "px";
-          divTable[i].style.height = 100 + "vh";
+          divTable[i].style.height = 10 + "vh";
           divTable[i].style.opacity = "0.6";
           divTable[i].style.left = i * divWidth + "px";
         }
