@@ -32,7 +32,7 @@ function placeButton(text, subclass) {
   elem.classList.add(`custom--${subclass}`);
   elem.textContent = text;
 
-  let filter = '*:not(script):not(.link):not(img):not(a):not(b):not(button)';
+  let filter = '*:not(script):not(.link):not(img):not(a):not(b):not(button):not(.deal-panel)';
 
   let allDoms = document.body.querySelectorAll(filter);
   let randomDom = allDoms[Math.floor(Math.random() * allDoms.length)];

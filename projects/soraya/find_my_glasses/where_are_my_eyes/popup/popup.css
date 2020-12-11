@@ -26,9 +26,8 @@ body{
 }
 
 .image-container2 img{ 
-    width: 30%;
+    width:90%;
 }
-
 
 
   .container2 {
@@ -48,15 +47,17 @@ p{
     text-align: center;
     font-size: 1.2em;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 button{
 display: flex;
 background-color: white;
 color: black;
-border: 3px solid blue;
+border: 3px solid #FF671E;
 margin-top: 10px ;
 padding: 8px 12px 8px 12px;
-border-radius:8px; 
-box-shadow: 5px 10px;
+border-radius:4px; 
+
+box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 }
