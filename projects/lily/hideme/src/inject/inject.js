@@ -63,7 +63,7 @@ function updateMuteButton() {
 
   if (muteButton.querySelector('[class*="isOff"]')) {
     // connectedRoom.style["background-color"] = "red";
-    connectedRoom.dataset['msg'] = 'YOUR MICROPHONE IS OFF';
+    connectedRoom.dataset['msg1'] = 'YOUR MICROPHONE IS OFF';
     connectedRoom.classList.add('mute-background');
   } else {
     // connectedRoom.style["background-color"] = "rgb(0, 102, 84)";
@@ -79,7 +79,7 @@ function updateCamButton() {
 
   if (camButton.querySelector('[class*="isOff"]')) {
    
-    connectedRoom.dataset['msg'] = 'YOUR CAMERA IS OFF';
+    connectedRoom.dataset['msg2'] = 'YOUR CAMERA IS OFF';
     connectedRoom.classList.add('cam-background');
   } else {
     
