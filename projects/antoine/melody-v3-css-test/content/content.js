@@ -5,10 +5,10 @@ let ID = 0;
 let SYNTHTYPE = "triangle";
 
 let NOTES = {
-  Negative: "G3",
-  Positive: "D2",
-  Neutral: "A3",
-  Outside: "E3",
+  Negative: "Eb1",
+  Positive: "C3",
+  Neutral: "G3",
+  Outside: "B3",
 };
 
 
@@ -102,13 +102,14 @@ async function analyseText(e) {
     text: e,
 
   });
-  console.log(respSen.output.length);
+  // console.log(respSen.output.length);
   let negM = 0;
   let posM = 0;
   let neuM = 0;
-  for (let index = 0; index < respSen.output.length-1; index++) {
-    const elMoyenne = respSen.output[index];
-    if ( elMoyenne == "Negative") {
+  for (let index = 0; index < respSen.output.length - 1; index++) {
+    let elMoyenne = respSen.output[index];
+
+    if (elMoyenne == "Negative") {
       negM++;
     } else if (elMoyenne == "Positive") {
       posM++;
@@ -117,23 +118,24 @@ async function analyseText(e) {
       neuM++;
       // console.log("Neutral FILTER");
     } else {
-      console.log("OUTSIDE FILTER BUG");
+      // console.log("OUTSIDE FILTER BUG");
     }
-    console.log(" negM"+negM +" posM"+posM+" neuM"+neuM);
+
   }
-  //MOYENNE
-  let  eValue = "Outside";
-  if(negM>posM && negM>neuM){
-    console.log("Negative FILTER");
-    // eValue= "Negative";
-  }else if(posM>neuM && posM>negM){
-    console.log("Positive FILTER");
-  //  eValue = "Positive";
-  }else if(neuM>posM && neuM>negM){
-  //  eValue = "Outside";
-    console.log("Neutral FILTER");
+  //MOYENNE FAKE
+  let eValue = "Outside";
+  if (negM > posM && negM > neuM) {
+    // console.log("Negative FILTER");
+    eValue = "Negative";
   }
-    
+  if (posM > 0) {
+    // console.log("Positive FILTER");
+    eValue = "Positive";
+  } else if (neuM > posM && neuM > negM) {
+    eValue = "Outside";
+    // console.log("Neutral FILTER");
+  }
+  // console.log("eValue "+eValue+" negM "+negM +" posM "+posM+" neuM "+neuM);  
 
   return eValue;
 }
@@ -145,6 +147,8 @@ function analyseNewPosts() {
       let description = post.querySelector('[class*="commentary"]');
       setListener(post);
       let output = await analyseText(description.textContent);
+      console.log(output);
+      description.classList.toggle(output);
       let note = NOTES[output];
       post.dataset.tonenote = note;
       // console.log(description, description.textContent);

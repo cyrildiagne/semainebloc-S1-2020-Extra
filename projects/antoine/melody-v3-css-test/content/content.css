@@ -57,10 +57,28 @@ h1:after, h2:after, h3:after {
   -moz-transition: all 1s ease;
   -o-transition: all 1s ease;
   transition: all 1s ease;
-   background: linear-gradient(90deg, #ee7752, #e73c7e, #f1f50b, #ee7752);
+   /* background: linear-gradient(90deg, #ee7752, #e73c7e, #f1f50b, #ee7752);
   background-size: 400% 400%; 
-
-  
+  animation: gradient 15s ease infinite;  */
+}
+.Positive{
+  background: linear-gradient(90deg, #015aff, #0270ff, #f1f50b, #087bff, #015aff);
+  background-size: 400% 400%; 
+  animation: gradient 15s ease infinite; 
+}
+.Negatif{
+  background: linear-gradient(90deg, #ee7752, #e73c7e, #f1f50b, #ee7752);
+  background-size: 400% 400%; 
+  animation: gradient 15s ease infinite; 
+}
+.Neutral{
+  background: linear-gradient(90deg, #a06fb4, #c46fc7, #d6d86e, #a06fb4);
+  background-size: 400% 400%; 
+  animation: gradient 15s ease infinite; 
+}
+.Outside{
+  background: linear-gradient(90deg, #ee7752, #e73c7e, #f1f50b, #ee7752);
+  background-size: 400% 400%; 
   animation: gradient 15s ease infinite; 
 }
 
