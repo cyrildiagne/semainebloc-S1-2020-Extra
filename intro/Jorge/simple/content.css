@@ -30,7 +30,7 @@
     height: 300vh;
     top: 0;
     left: 0;
-    z-index: -10 !important;
+    z-index: 10 !important;
     animation-name: APPEAR;
     animation-duration: 10s;
     filter: blur(var(--blur));

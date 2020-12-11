@@ -25,7 +25,8 @@ document.body.appendChild(container);
           document.documentElement.style.setProperty('--color', (0, 0, 0));
           document.documentElement.style.setProperty('--background-color', (0,0,0));
           document.documentElement.style.setProperty('--grayscale', (0));
-          particlesJS('particles-js', particlesSettings);
+          particlesJS('particles-js', particlesSettings4);
+          
 
         } else if (result.data.aqi > 50 && result.data.aqi < 100) {
           console.log('it is between 50 and 100')
@@ -33,7 +34,7 @@ document.body.appendChild(container);
           document.documentElement.style.setProperty('--blur', '1px');
           document.documentElement.style.setProperty('--color', (0, 0, 0));
           document.documentElement.style.setProperty('--background-color', (0,0,0));
-          document.documentElement.style.setProperty('--grayscale', (80));
+          document.documentElement.style.setProperty('--grayscale', (30));
           particlesJS('particles-js', particlesSettings2);
 
         } else if (result.data.aqi > 100 && result.data.aqi < 200) {
@@ -42,7 +43,7 @@ document.body.appendChild(container);
           document.documentElement.style.setProperty('--blur', '2px');
           document.documentElement.style.setProperty('--color', (0, 0, 0));
           document.documentElement.style.setProperty('--background-color', (0,0,0));
-          document.documentElement.style.setProperty('--grayscale', (80));
+          document.documentElement.style.setProperty('--grayscale', (70));
           particlesJS('particles-js', particlesSettings3);
           
 
@@ -52,7 +53,7 @@ document.body.appendChild(container);
           document.documentElement.style.setProperty('--blur', '5px');
           document.documentElement.style.setProperty('--color', (0, 0, 0));
           document.documentElement.style.setProperty('--background-color', (0,0,0));
-          document.documentElement.style.setProperty('--grayscale', (80));
+          document.documentElement.style.setProperty('--grayscale', (100));
           particlesJS('particles-js', particlesSettings4);
           
         }
