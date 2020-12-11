@@ -103,22 +103,39 @@ async function analyseText(e) {
 
   });
   console.log(respSen.output.length);
+  let negM = 0;
+  let posM = 0;
+  let neuM = 0;
   for (let index = 0; index < respSen.output.length-1; index++) {
     const elMoyenne = respSen.output[index];
     if ( elMoyenne == "Negative") {
-      console.log("Negative FILTER");
+      negM++;
     } else if (elMoyenne == "Positive") {
-      console.log("Positive FILTER");
+      posM++;
+      // console.log("Positive FILTER");
     } else if (elMoyenne == "Neutral") {
-      console.log("Neutral FILTER");
+      neuM++;
+      // console.log("Neutral FILTER");
     } else {
       console.log("OUTSIDE FILTER BUG");
     }
-
+    console.log(" negM"+negM +" posM"+posM+" neuM"+neuM);
   }
+  //MOYENNE
+  let  eValue = "Outside";
+  if(negM>posM && negM>neuM){
+    console.log("Negative FILTER");
+    // eValue= "Negative";
+  }else if(posM>neuM && posM>negM){
+    console.log("Positive FILTER");
+  //  eValue = "Positive";
+  }else if(neuM>posM && neuM>negM){
+  //  eValue = "Outside";
+    console.log("Neutral FILTER");
+  }
+    
 
-
-  return "Positive";
+  return eValue;
 }
 
 function analyseNewPosts() {
