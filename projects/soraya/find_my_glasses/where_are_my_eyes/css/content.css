@@ -1,19 +1,33 @@
 body {
     filter: contrast(100%) blur(0px);
+    
+}
+
+.game-transition {
     transition: filter 1s ease-in-out;
 }
 
-
 .custom--game-button {
+    position: absolute;
+    background-image: url("https://image.flaticon.com/icons/png/512/65/65000.png");
     display: inline-block !important;
     background-color: #FF671E;
     /* border-radius: 10px !important; */
     /* outline: #FF671E 5px solid !important; */
-    border-radius:2px;
+    width: 10px;
+    height: 10px;
+    border-radius: 100% !important;
+    background-size: cover;
     padding:10px !important;
     cursor: pointer !important; 
     color: #ffffff;
     z-index: 1000 !important;
+    opacity: 0;
+    transition: opacity .2s;
+}
+
+.make-visible {
+    opacity: 1;
 }
 
 

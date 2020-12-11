@@ -185,9 +185,10 @@ function newLeftEyePos(face) {
 
   const currDown = EYES.left[3].y > 250;
   if (currDown != isDown) {
-    console.log('down changed');
+    
     const action = currDown ? 'down-on' : 'down-off';
     chrome.tabs.query({ active: true }, function (tabs) {
+      console.log('down changed');
       chrome.tabs.sendMessage(tabs[0].id, { action: action });
     });
     isDown = currDown;
