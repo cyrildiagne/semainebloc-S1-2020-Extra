@@ -1,11 +1,10 @@
 let contrast = [100, 150];
 let index = 1;
-   
+
 function doBlur(blur = 0, contrast = 100) {
   document.body.style.cssText = /*back ticks, template strings */ `
     filter: contrast(${contrast}%) blur(${blur}px) !important;
 `;
-
 }
 
 let elem = placeButton('Here', 'game-button');
@@ -93,14 +92,13 @@ async function delay(millis = 0) {
 }
 
 //tester message
-chrome.extension.onMessage.addListener(gotMessage);
+chrome.runtime.onMessage.addListener(gotMessage);
 
 function gotMessage(message, sender, sendResponse) {
-  console.log(message.txt);
-  if (message.txt === 'hello') {
-    doBlur();
+  if (message.action === 'gameover') {
     console.log('game over');
-  } 
+    doBlur();
+  }
 }
 
 // document.body.

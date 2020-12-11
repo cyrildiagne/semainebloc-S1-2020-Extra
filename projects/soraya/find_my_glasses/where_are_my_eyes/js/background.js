@@ -1,9 +1,11 @@
-let blurs = [0, 1,2,3];
+let blurs = [0, 1, 2, 3];
 let blurLevel = 0;
 
 // chrome.browserAction.onClicked.addListener(buttonClicked);
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+  console.log('Got message', msg);
+
   if (msg.action == 'getBlur') {
     sendResponse(blurs[blurLevel]);
   } else if (msg.action == 'onWin') {
@@ -11,29 +13,13 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     if (blurLevel >= blurs.length) {
       console.log('RESET');
       blurLevel = 0;
-      alert("Congrats ! You successfully passed the blind test. You really have an eye for spotting the intruder!")
+      alert(
+        'Congrats ! You successfully passed the blind test. You really have an eye for spotting the intruder!'
+      );
     }
+  } else if (msg.action == 'gameover') {
+    chrome.tabs.query({ active: true }, function (tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, { action: 'gameover' });
+    });
   }
 });
-
-
-
-function onClicked(tab) {
-  chrome.windows.create({
-    url: chrome.runtime.getURL("popup/popup.html"),
-    type: "popup",
-    focused: true,
-  });
-}
-
-chrome.extension.onMessage.addListener(gotMessage);
-
-function gotMessage(message, sender, sendResponse) {
-  console.log(message.txt);
-  if (message.txt === 'hello') {
-    doBlur();
-    console.log('game over');
-  } 
-}
-
-chrome.browserAction.onClicked.addListener(onClicked);
