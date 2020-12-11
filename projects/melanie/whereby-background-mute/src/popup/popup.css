@@ -25,8 +25,10 @@ p{
   }
 
 .score{
+    position: relative;
+    left: 400px;
     text-align: right;
-    margin:  30px;
+    
 }
 
 .message{
@@ -47,14 +49,32 @@ p{
     margin: auto;
     }
     
+
+    .container2 {
+        display: flex;
+        
+        margin: 0px;
+      }
+
 .p1{
-        text-align: left;
+    
+    position: relative;
+    margin-left:30px;
+    left: 0px;
     }
 
 .p2{
-    text-align: right;
+    position: relative;
+    left: 300px;
 }
 .restart{
     display: flex;
     justify-content: center;
+    margin-left: 40%;
+}
+
+.stage{
+    position: relative;
+    
+    left: 0px;
 }

@@ -8,10 +8,11 @@ chrome.extension.onMessage.addListener(function (
   request,
   sender,
   sendResponse
+  
 ) {
   console.log("received message", request);
   // chrome.pageAction.show(sender.tab.id);
-
+ 
   if (request.event == "get_url") {
     console.log(getCurrentWebsite())
     sendResponse(getCurrentWebsite());
@@ -36,6 +37,13 @@ chrome.extension.onMessage.addListener(function (
     setTimeout(() => {
       sendResponse({ url: url, score: globalScore });
     }, 2000);
+  // } else if (request.event == "click_score"){
+  //   globalScore = (-50);
+  //   let url = getNextWebsite();
+  //   updateTab(url);
+  //   console.log(globalScore);
+
+
   } else {
 
     sendResponse();
