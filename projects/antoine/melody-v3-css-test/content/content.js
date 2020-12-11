@@ -147,10 +147,11 @@ function analyseNewPosts() {
       let description = post.querySelector('[class*="commentary"]');
       setListener(post);
       let output = await analyseText(description.textContent);
-      console.log(output);
-      description.classList.toggle(output);
+      console.log(post);
       let note = NOTES[output];
       post.dataset.tonenote = note;
+      console.log(output);
+      post.classList.toggle(output);
       // console.log(description, description.textContent);
     }
   });
