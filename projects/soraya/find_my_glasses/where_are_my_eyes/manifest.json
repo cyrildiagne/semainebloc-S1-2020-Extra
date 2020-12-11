@@ -1,7 +1,7 @@
 {
-  "name": "Find my glasses",
+  "name": "Blind test",
   "version": "0.2",
-  "description": "Unblurr my vision",
+  "description": "Website knowledge muscular memory",
   "background": {
     "persistent": false,
     "scripts": ["js/hot-reload.js", "js/background.js"]
@@ -16,7 +16,8 @@
     }
   ],
   "browser_action": {
-    "default_icon": "icon_eye.png"
+    "default_icon": "icon_eye.png",
+    "default_popup": "popup/popup.html"
   },
   "manifest_version": 2
 }
