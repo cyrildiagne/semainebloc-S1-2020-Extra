@@ -16,7 +16,7 @@ document.body.appendChild(container);
 
       fetch(API + cityName + "/?token=" + KEY)
       .then((response) => response.json())
-      //.then((result) => console.log(result.data.aqi))
+
       .then((result) => {
         if(result.data.aqi > 0 && result.data.aqi < 50){
           console.log('it is between 0 and 50') 
