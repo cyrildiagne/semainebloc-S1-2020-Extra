@@ -30,7 +30,6 @@ chrome.extension.onMessage.addListener(function (
 function start() {
   chrome.runtime.sendMessage({ event: 'get_url' }, (url) => {
     currentURL = url;
-    console.log(url);
   });
 
   btOk.addEventListener('click', (ev) => {
@@ -38,7 +37,7 @@ function start() {
 
     console.log(`anwser given: ${answer} (correct url: ${currentURL})`);
 
-    if (currentURL.includes(answer)) {
+    if (currentURL.indexOf(answer) > -1) {
       console.log('GOOD ANSWER!');
       messageEl.innerHTML = 'GOOD ANSWER!';
       chrome.extension.sendMessage({ event: 'win' }, (response) => {
