@@ -45,6 +45,13 @@ h1:after, h2:after, h3:after {
   position: absolute;
   text-align: center;
   top: 50%;
+  font-size: 7rem;
+  line-height: 0;
+  color: black;
+}
+.emotion-des-opacity{
+  opacity: 0;
+  /* color: red; */
 }
 .tone--active div { 
   /* transition: cubic-bezier(0.075, 0.82, 0.165, 1);

@@ -1,7 +1,6 @@
 let TAB_ID = Date.now().toString();
 
 let ID = 0;
-
 let SYNTHTYPE = "triangle";
 
 let NOTES = {
@@ -147,11 +146,12 @@ function analyseNewPosts() {
       let description = post.querySelector('[class*="commentary"]');
       setListener(post);
       let output = await analyseText(description.textContent);
-      console.log(post);
+      // console.log(post);
       let note = NOTES[output];
       post.dataset.tonenote = note;
       // console.log(output);
       post.classList.toggle(output);
+      $(post).append( "<h1 class='emotion-des emotion-des-opacity'>"+output+"</h1>" );
       // console.log(description, description.textContent);
     }
   });
@@ -161,9 +161,18 @@ function setListener(post) {
   post.addEventListener("mouseenter", () => {
     // post.classList.toggle("tone--active");
     $(post).toggleClass("pre--active");
-    $(post).append( "<h1 class='emotion-des'>Sadness</h1>" );
+    let postDes = post.querySelector('h1');
+    // console.log($(postDes));
+      $(postDes).toggleClass("emotion-des-opacity");
+
+   
+    // $(post).append( "<h1 class='emotion-des'>Sadness</h1>" );
   });
+  
   post.addEventListener("click", () => {
+    let postDes = post.querySelector('h1');
+    // $(postDes).toggleClass("emotion-des-opacity");
+    // $( post+ ".emotion-des" ).remove();
     // post.classList.toggle("tone--active");
     $(post).toggleClass("tone--active");
     post.classList.toggle("artdeco-card");
