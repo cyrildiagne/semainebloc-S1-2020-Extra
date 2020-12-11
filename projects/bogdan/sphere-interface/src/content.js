@@ -19,9 +19,10 @@ const API_KEY = "8609708-a661654ee4e5cad9c12571d32";
 
 let texture1;
 let textureTransferLink;
+let searchWord;
 
 async function texturer() {
-  const searchWord = "cake";
+  searchWord = "cake";
   try {
     const url = API + "?key=" + API_KEY + "&q=" + searchWord;
     const resp = await fetch(url).then((r) => r.json());
@@ -42,13 +43,12 @@ async function texturer() {
     }
 
     toDataURL(textureTransferLink, function (dataUrl) {
-      console.log("RESULT:", dataUrl);
+      // console.log("RESULT:", dataUrl);
     });
   } catch (e) {
     console.log(e);
   }
 }
-console.log(result);
 
 function init() {
   //SCENE
@@ -96,9 +96,9 @@ function init() {
 
   for (let i = 0; i < 10; i++) {
     const geometry = new THREE.SphereBufferGeometry(
-      Math.random(20, 100),
+      .1,
       32,
-      32
+      16
     );
 
     const sphere = new THREE.Mesh(geometry, material); // Add to scene
@@ -111,6 +111,8 @@ function init() {
     spheres.push(sphere);
   }
   camera.position.z = 10;
+
+  window.addEventListener("resize", onWindowResize, false);
 }
 
 //ANIMATE
@@ -144,10 +146,17 @@ function onWindowResize() {
   // After making changes to aspect
   camera.updateProjectionMatrix();
   // Reset size
-  SCREEN_HEIGHT = renderer.height = document.documentElement.scrollHeight;
-  SCREEN_WIDTH = renderer.width = document.body.offsetWidth;
+  renderer.setSize(
+    document.documentElement.scrollHeight,
+    document.body.offsetWidth
+  );
 
-  renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+  renderer.setSize(w, s_h);
+}
+
+function onDocumentMouseMove(event) {
+  mouseX = (event.clientX - windowHalfX) / 100;
+  mouseY = (event.clientY - windowHalfY) / 100;
 }
 
 window.addEventListener("resize", onWindowResize, false);

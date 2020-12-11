@@ -9,7 +9,7 @@
   },
 
   "background": {
-    "scripts": ["libs/hot-reload.js", "background/eventPage.js"],
+    "scripts": ["libs/hot-reload.js"],
     "persistent": false
   },
 
