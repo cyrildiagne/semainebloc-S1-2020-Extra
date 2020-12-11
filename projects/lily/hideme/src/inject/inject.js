@@ -66,6 +66,7 @@ function updateMuteButton() {
     connectedRoom.dataset['msg1'] = 'YOUR MICROPHONE IS OFF';
     connectedRoom.classList.add('mute-background');
   } else {
+
     // connectedRoom.style["background-color"] = "rgb(0, 102, 84)";
     connectedRoom.classList.remove('mute-background');
   }
@@ -81,9 +82,15 @@ function updateCamButton() {
    
     connectedRoom.dataset['msg2'] = 'YOUR CAMERA IS OFF';
     connectedRoom.classList.add('cam-background');
+
+    // camButton.dataset['msg3'] = 'Show View';
+    // camButton.classList.add('hideme--hide-button');
   } else {
     
     connectedRoom.classList.remove('cam-background');
+
+    // camButton.dataset['msg3'] = 'Hide View';
+    // camButton.classList.add('hideme--hide-button');
   }
 }
 

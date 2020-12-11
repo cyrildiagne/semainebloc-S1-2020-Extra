@@ -102,12 +102,13 @@
 }
 
 .hideme--hide-button:hover::after {
-  content: 'Hide View';
+  /* content: attr(data-msg3); */
+  content: 'Hide / View';
   font: 1.3rem Inconsolata, monospace;
   font-size: 2em;
   justify-content: center;
   text-align: center;
-padding: 17px;
+padding: 3px;
   align-items: center;
   line-height: 1em;
   position: absolute;
