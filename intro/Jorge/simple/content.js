@@ -21,10 +21,10 @@ document.body.appendChild(container);
         if(result.data.aqi > 0 && result.data.aqi < 50){
           console.log('it is between 0 and 50') 
           console.log(result.data.aqi)
-          document.documentElement.style.setProperty('--blur', '1px');
+          document.documentElement.style.setProperty('--blur', '0.2px');
           document.documentElement.style.setProperty('--color', (0, 0, 0));
           document.documentElement.style.setProperty('--background-color', (0,0,0));
-          document.documentElement.style.setProperty('--grayscale', (80));
+          document.documentElement.style.setProperty('--grayscale', (0));
           particlesJS('particles-js', particlesSettings);
 
         } else if (result.data.aqi > 50 && result.data.aqi < 100) {
@@ -39,7 +39,7 @@ document.body.appendChild(container);
         } else if (result.data.aqi > 100 && result.data.aqi < 200) {
           console.log('it is between 100 and 200')
           console.log(result.data.aqi)
-          document.documentElement.style.setProperty('--blur', '1px');
+          document.documentElement.style.setProperty('--blur', '2px');
           document.documentElement.style.setProperty('--color', (0, 0, 0));
           document.documentElement.style.setProperty('--background-color', (0,0,0));
           document.documentElement.style.setProperty('--grayscale', (80));
@@ -49,7 +49,7 @@ document.body.appendChild(container);
         } else if (result.data.aqi > 200 && result.data.aqi < 300) {
           console.log('it is between 200 and 300')
           console.log(result.data.aqi)
-          document.documentElement.style.setProperty('--blur', '1px');
+          document.documentElement.style.setProperty('--blur', '5px');
           document.documentElement.style.setProperty('--color', (0, 0, 0));
           document.documentElement.style.setProperty('--background-color', (0,0,0));
           document.documentElement.style.setProperty('--grayscale', (80));

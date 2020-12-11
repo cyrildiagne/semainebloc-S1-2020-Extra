@@ -1,10 +1,40 @@
+@keyframes APPEARbigSETTING {
+    0%   {opacity: 0%;}
+    25%  {opacity: 00%;}
+    50%  {opacity: 25%;}
+    75%  {opacity: 75%;}
+    100% {opacity: 100%;}
+  }
+
+
 :root {
   --blur: 0px;
   --color: rgb(255, 255, 255);
   --background-color: rgb(255, 255, 255);
   --grayscale:(0%);
   --background: rgb(255, 255, 255);
+
 }
+
+@keyframes APPEAR {
+    0%   {opacity: 0%;}
+    25%  {opacity: 00%;}
+    50%  {opacity: 25%;}
+    75%  {opacity: 75%;}
+    100% {opacity: 100%;}
+  }
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 300vh;
+    top: 0;
+    left: 0;
+    z-index: -10 !important;
+    animation-name: APPEAR;
+    animation-duration: 10s;
+    filter: blur(var(--blur));
+  }
 
 #searchform > div.sfbg > div{
     filter: grayscale(var(--grayscale));
@@ -110,23 +140,4 @@ a {
     filter: grayscale(var(--grayscale));
   filter: blur(var(--blur));
 }
-
-@keyframes APPEAR {
-    0%   {opacity: 0%;}
-    25%  {opacity: 00%;}
-    50%  {opacity: 25%;}
-    75%  {opacity: 75%;}
-    100% {opacity: 100%;}
-  }
-
-#particles-js {
-    position: absolute;
-    width: 100%;
-    height: 300vh;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    animation-name: APPEAR;
-    animation-duration: 10s;
-  }
 
