@@ -1,11 +1,11 @@
 /**
  * Place your custom CSS styles here.
  **/
- @font-face {
+@font-face {
   font-family: "NeueHaas";
- src: url("../font/NeueHaasGrotesk-Roman.otf") format("opentype");
+  src: url("../font/NeueHaasGrotesk-Roman.otf") format("opentype");
 }
- 
+
 
 body {
   -webkit-transition: all ease 250ms;
@@ -13,7 +13,7 @@ body {
   font-family: "NeueHaas";
 }
 
-a{
+a {
   text-decoration: none;
 }
 
@@ -24,8 +24,8 @@ a{
   margin: 20px;
   color: white;
   position: fixed;
-  width: 100px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border: none;
   outline: none;
   text-decoration: none;
@@ -35,6 +35,7 @@ a{
   filter: drop-shadow(0 0 0.0rem rgb(0, 0, 0));
 
 }
+
 .button:hover {
   filter: drop-shadow(0 0 0.50rem rgb(0, 0, 0));
 
@@ -50,21 +51,23 @@ a{
 .content {
   background-color: black;
   color: rgba(255, 255, 255, 1);
+  position: relative;
   /* position: fixed; */
   /* margin: 10px; */
   top: 0;
   width: 20%;
   text-align: center;
   font-size: 2vh;
-  padding: 15px;
+  padding: 20px;
   border-radius: 100px;
   z-index: 10001;
   -webkit-transition: 250ms all ease;
   transition: 250ms all ease;
 }
+
 .content:hover {
-  background-color:transparent;
-  color:black;
+  background-color: transparent;
+  color: black;
 
 
 
@@ -73,13 +76,13 @@ a{
   -webkit-transition: 250ms all ease;
   transition: 250ms all ease;
 }
+
 .canvas {
   background-color: yellow;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  bottom: 0;
+  left: 0;
+  top: 0;
   color: white;
   position: fixed;
   width: 100%;

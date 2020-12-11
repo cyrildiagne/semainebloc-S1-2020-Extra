@@ -4,13 +4,14 @@ const ANIMATION_PATHS = [
   "res/pissenlits.json",
   "res/pissenlits-blue.json",
   "res/little-fish.json",
-  "res/cloud-2.json",
-  "res/plante-flaque.json",
+  // "res/cloud-2.json",
+  "res/bouquet-dore.json",
+  "res/bouquet-green.json",
   //"res/algaes.json",
 ];
 //
-const width = 500;
-const height = 500;
+const width = 800;
+const height = 800;
 
 const MAX_N_PLAYERS = 5;
 let P = new p5();

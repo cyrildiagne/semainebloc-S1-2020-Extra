@@ -10,7 +10,7 @@
     {
       "matches": ["https://google.com/*", "https://google.ch/*", "https://*.google.com/*", "https://*.google.ch/*"],
       "all_frames": true,
-      "js": ["content.js"],
+      "js": ["content.js", "libs/particles.min.js", "particles-settings.js"],
       "css": ["content.css"]
     }
   ],

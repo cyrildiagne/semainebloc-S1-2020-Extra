@@ -20,7 +20,7 @@ canvas.classList.add('canvas');
 // Add show map button
 const button = document.createElement('button');
 button.classList.add('button');
-button.innerText = 'WALKWAY';
+// button.innerText = '';
 document.body.appendChild(button);
 
 // var linkText = document.createTextNode('my title text');
@@ -29,15 +29,40 @@ document.body.appendChild(button);
 // var body = document.body;
 
 function createMap(history) {
-  for (const page of history) {
-    const content = document.createElement('a');
-    console.log("bullecrée");
+  for (let page of history) {
+    let content = document.createElement('a');
+    // console.log(page.url);
     content.href = page.url;
     content.innerText = page.title + ' - ' + page.date;
     content.classList.add('content');
     canvas.appendChild(content);
+
+    let urlCheck = [page.url]
+    // let urlCheck = page.url;
+    let newUrl = urlCheck;
+
+    console.log(urlCheck);
   }
+
+
+  // let newUrl = urlCheck;
+  // if (oldurl != urltest) {
+  //   console.log("ok");
+  //   // content.style.left = "400px"
+  // }
 }
+
+// function changeUrl(history) {
+//   for (const page of history) {
+//     const content = document.createElement('a');
+//     console.log("bullecrée");
+//     // content.style.left = "40px"
+//     content.href = page.url;
+//     content.innerText = page.title + ' - ' + page.date;
+//     content.classList.add('content');
+//     canvas.appendChild(content);
+//   }
+// }
 
 button.addEventListener('click', function (e) {
   // body.classList.add("blur");
@@ -63,14 +88,13 @@ button.addEventListener('click', function (e) {
   }
 });
 
-
 // console.log("testdiv");
 
 chrome.extension.onMessage.addListener(function (msg, sender, sendResponse) {
   // console.log('onmessage', msg)
-  console.log(msg.history);
 
   if (msg.action == 'historychange') {
+
     // console.log('history changed', msg)
 
     // console.log(msg.history[0].title);
