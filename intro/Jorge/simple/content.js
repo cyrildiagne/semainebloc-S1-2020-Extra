@@ -37,8 +37,8 @@ document.body.appendChild(container);
           document.documentElement.style.setProperty('--grayscale', (30));
           particlesJS('particles-js', particlesSettings2);
 
-        } else if (result.data.aqi > 100 && result.data.aqi < 200) {
-          console.log('it is between 100 and 200')
+        } else if (result.data.aqi > 100 && result.data.aqi < 159) {
+          console.log('it is between 100 and 159')
           console.log(result.data.aqi)
           document.documentElement.style.setProperty('--blur', '2px');
           document.documentElement.style.setProperty('--color', (0, 0, 0));
@@ -47,8 +47,8 @@ document.body.appendChild(container);
           particlesJS('particles-js', particlesSettings3);
           
 
-        } else if (result.data.aqi > 200 && result.data.aqi < 300) {
-          console.log('it is between 200 and 300')
+        } else if (result.data.aqi > 160 && result.data.aqi < 300) {
+          console.log('it is between 160 and 300')
           console.log(result.data.aqi)
           document.documentElement.style.setProperty('--blur', '2px');
           document.documentElement.style.setProperty('--color', (0, 0, 0));
