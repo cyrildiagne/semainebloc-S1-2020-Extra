@@ -8,7 +8,7 @@
  } */
   
 *:hover {
-  outline: 1px solid black !important;
+  outline: 2px solid red !important;
 }
 
 .hidden {
@@ -51,11 +51,7 @@
   z-index: 100000;
 }
 
-#fillText {
-}
 
-.p {
-}
 
 .backShutter {
   background-color: #333;

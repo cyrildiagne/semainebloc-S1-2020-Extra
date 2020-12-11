@@ -1,15 +1,47 @@
+@keyframes APPEARbigSETTING {
+    0%   {opacity: 0%;}
+    25%  {opacity: 00%;}
+    50%  {opacity: 25%;}
+    75%  {opacity: 75%;}
+    100% {opacity: 100%;}
+  }
+
+
 :root {
   --blur: 0px;
   --color: rgb(255, 255, 255);
   --background-color: rgb(255, 255, 255);
   --grayscale:(0%);
   --background: rgb(255, 255, 255);
+
 }
+
+@keyframes APPEAR {
+    0%   {opacity: 0%;}
+    25%  {opacity: 00%;}
+    50%  {opacity: 25%;}
+    75%  {opacity: 75%;}
+    100% {opacity: 100%;}
+  }
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 300vh;
+    top: 0;
+    left: 0;
+    z-index: -10 !important;
+    animation-name: APPEAR;
+    animation-duration: 10s;
+    filter: blur(var(--blur));
+  }
 
 #searchform > div.sfbg > div{
     filter: grayscale(var(--grayscale));
     background-color: var(--background-color)!important;
     color: var(--color) !important;
+    z-index: -5;
+
 }
 
 #hdtb > div.yg51vc{
@@ -21,6 +53,7 @@
 #searchform > div.sfbg > div{
     filter: grayscale(var(--grayscale));
     background-color: var(--background-color)!important;
+    z-index: -5;
 }
 
 h1, h2, h3{
@@ -61,12 +94,14 @@ a {
 #searchform > div.sfbg{
     filter: grayscale(var(--grayscale));
     background: var(--background)!important;
+    z-index: -5;
 }
 
 #slim_appbar{
     filter: grayscale(var(--grayscale));
     background-color: var(--background-color)!important;
     color: var(--color) !important; 
+    z-index: -5;
 }
 
 #main {
@@ -74,6 +109,11 @@ a {
   background-color: var(--background-color)!important;
   color: var(--color) !important;
   filter: blur(var(--blur));
+}
+
+
+#searchform > div.sfbg > div{
+    opacity:0%
 }
 
 #wp-tabs-container {
@@ -101,9 +141,3 @@ a {
   filter: blur(var(--blur));
 }
 
-#particles-js {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-  }
