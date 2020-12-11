@@ -1,6 +1,10 @@
 const API = "https://api.waqi.info/feed/";
 const KEY = "90a7b7283757123e1b6f4bee7f6abb24e8823990";
 
+const container = document.createElement('div');
+container.id = 'particles-js';
+document.body.appendChild(container);
+
 window.addEventListener("click", function () {
 
   init();
@@ -10,6 +14,7 @@ window.addEventListener("click", function () {
     console.log("City searched", cityName);
     if(!cityName)
       return;
+
 
       fetch(API + cityName + "/?token=" + KEY)
       .then((response) => response.json())
@@ -22,8 +27,7 @@ window.addEventListener("click", function () {
           document.documentElement.style.setProperty('--color', (0, 0, 0));
           document.documentElement.style.setProperty('--background-color', (0,0,0));
           document.documentElement.style.setProperty('--grayscale', (80));
-
-
+          particlesJS('particles-js', particlesSettings);
 
         } else if (result.data.aqi > 50 && result.data.aqi < 100) {
           console.log('it is between 50 and 100')
@@ -50,4 +54,3 @@ function getCityName() {
   // console.log(googleSearch);
   return googleSearch;
 }
-
