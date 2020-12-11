@@ -1,0 +1,80 @@
+body{
+    background: #ffffff;
+}
+
+h1,h2,h3{
+    font-family: 'Teko', sans-serif;
+    font-size: 3em;
+    text-align: center;
+    color: blue;
+  
+}
+
+p{
+    color: black;
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 0px;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+  }
+
+.score{
+    position: relative;
+    left: 400px;
+    text-align: right;
+    
+}
+
+.message{
+    text-align: center;
+}
+
+.bt-ok,.restart {
+    background-color:blue; /* Green */
+    border: none;
+    color: white;
+    padding: 4px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Teko', sans-serif;
+    font-size: 2em;
+}
+.answer{
+    margin: auto;
+    }
+    
+
+    .container2 {
+        display: flex;
+        
+        margin: 0px;
+      }
+
+.p1{
+    
+    position: relative;
+    margin-left:30px;
+    left: 0px;
+    }
+
+.p2{
+    position: relative;
+    left: 300px;
+}
+.restart{
+    display: flex;
+    justify-content: center;
+    margin-left: 40%;
+}
+
+.stage{
+    position: fixed;
+    
+    left: 30px;
+}

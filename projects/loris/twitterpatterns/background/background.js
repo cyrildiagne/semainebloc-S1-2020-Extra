@@ -1,27 +1,29 @@
-function onClicked(tab) {
-  const message = { action: "run" };
-  chrome.tabs.sendMessage(tab.id, message);
+chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+  if (msg.action == "run") {
+    const message = { action: "run" };
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, message);
+    });
 
-  setTimeout((e) => {
+    console.log("run");
+  } else if (msg.action == "export") {
     takeSnapshot();
-  }, 2000);
-}
+  }
+});
+
+function onClicked(tab) {}
 
 // Send a message to the content script when button is clicked.
 chrome.browserAction.onClicked.addListener(onClicked);
 
 function takeSnapshot() {
-
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     chrome.tabs.sendMessage(
       tabs[0].id,
       { action: "show-background" },
-       (response) => {
-         
+      (response) => {
         setTimeout(() => {
-
           chrome.tabs.captureVisibleTab((screenshotDataSrc) => {
-      
             const url = screenshotDataSrc;
 
             chrome.downloads.download({
@@ -30,17 +32,9 @@ function takeSnapshot() {
               conflictAction: "overwrite",
               saveAs: true,
             });
-        
           });
-  
-
         }, 100);
-
-      
-
       }
     );
   });
-
-  
 }

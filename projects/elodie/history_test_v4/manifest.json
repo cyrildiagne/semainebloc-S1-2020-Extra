@@ -1,17 +1,18 @@
 {
-    "name": "Typed URL History",
+    "name": "History Bubble",
     "version": "1.2",
-    "description": "Reads your history, and shows the top ten pages you go to by typing the URL.",
+    "description": "Look into your day-to-day history and see what websites you visit the most.",
     "permissions": [
       "history", "tabs"
     ],
     "browser_action": {
-      "default_icon": "clock.png"
+      "default_icon": "icon.png"
     },
     "background": {
         "persistent": false,
         "scripts": ["background.js"]
       },
-      "content_security_policy": "script-src 'self' https://code.jquery.com/jquery-3.5.1.min.js; object-src 'self'", 
+      
+      "content_security_policy": "script-src 'self' https://code.jquery.com/jquery-3.5.1.min.js https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js; object-src 'self'", 
     "manifest_version": 2
   }
