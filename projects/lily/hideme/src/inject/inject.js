@@ -1,9 +1,9 @@
-console.log("Hide Me Extension Running");
+console.log('Hide Me Extension Running');
 
 chrome.extension.sendMessage({}, (response) => {
   // arrow functions
   let readyStateCheckInterval = setInterval(() => {
-    if (document.readyState === "complete") {
+    if (document.readyState === 'complete') {
       clearInterval(readyStateCheckInterval);
 
       requestAnimationFrame(update);
@@ -12,37 +12,33 @@ chrome.extension.sendMessage({}, (response) => {
       // // This part of the script triggers when page is done loading
       // console.log("Hello. This message was sent from scripts/inject.js");
       // // ----------------------------------------------------------
-    
-
-    
     }
   }, 10);
 });
-
 
 function tryAddHideButton() {
   let videoCells = document.querySelectorAll('[class*="gridVideoCell"]');
 
   for (let videoCell of videoCells) {
-    if (videoCell.querySelector(".hideme--hide-button")) continue;
+    if (videoCell.querySelector('.hideme--hide-button')) continue;
 
     let hideButton = createHideButton(videoCell);
 
-    hideButton.addEventListener("click", () => {
-      videoCell.classList.toggle("hideme--hide-video-cell");
+    hideButton.addEventListener('click', () => {
+      videoCell.classList.toggle('hideme--hide-video-cell');
       // let webcam = videoCell.querySelector('video');
-      
+
       // webcam.autoplay = false;
       // webcam.pause();
-      
+
       console.log(webcam);
     });
   }
 }
 
 function createHideButton(container) {
-  let button = document.createElement("div");
-  button.classList.add("hideme--hide-button");
+  let button = document.createElement('div');
+  button.classList.add('hideme--hide-button');
 
   container.appendChild(button);
 
@@ -71,10 +67,11 @@ function updateMuteButton() {
 
   if (muteButton.querySelector('[class*="isOff"]')) {
     // connectedRoom.style["background-color"] = "red";
-    connectedRoom.classList.add("mute-background");
+    connectedRoom.dataset['msg'] = 'YOUR MICROPHONE IS OFF';
+    connectedRoom.classList.add('mute-background');
   } else {
     // connectedRoom.style["background-color"] = "rgb(0, 102, 84)";
-    connectedRoom.classList.remove("mute-background");
+    connectedRoom.classList.remove('mute-background');
   }
 }
 
@@ -86,18 +83,15 @@ function updateCamButton() {
 
   if (camButton.querySelector('[class*="isOff"]')) {
     // connectedRoom.style["background-color"] = "red";
-    connectedRoom.classList.add("cam-background");
+    connectedRoom.dataset['msg'] = 'YOUR CAMERA IS OFF';
+    connectedRoom.classList.add('cam-background');
   } else {
     // connectedRoom.style["background-color"] = "rgb(0, 102, 84)";
-    connectedRoom.classList.remove("cam-background");
+    connectedRoom.classList.remove('cam-background');
   }
 }
 
-
 // function alertMic(){
-  
-
-  
 
 // }
 
@@ -133,9 +127,9 @@ function tryAddMenuButton() {
 function hideSelfView() {
   let video = document.querySelector('[class*="mediaWrapper"]');
 
-  if (document.getElementById("SelfView").clicked == true) {
-    video.classList.add("cam-hide");
+  if (document.getElementById('SelfView').clicked == true) {
+    video.classList.add('cam-hide');
   } else {
-    video.classList.remove("cam-hide");
+    video.classList.remove('cam-hide');
   }
 }

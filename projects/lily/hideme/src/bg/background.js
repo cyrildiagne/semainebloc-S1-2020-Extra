@@ -14,33 +14,31 @@ function onClicked(tab) {
 
 chrome.browserAction.onClicked.addListener(onClicked);
 
-chrome.runtime.onInstalled.addListener(scheduleAlarm);
+// chrome.runtime.onInstalled.addListener(scheduleAlarm);
 
+// function scheduleAlarm() {
+//   var params = {
+//     delayInMinutes: 1,
+//     periodInMinutes: 0.1
+//   }
+//   chrome.alarms.create("helloooooo", params);
+// }
 
+// // Now add a function for when the alarm is triggered
+// chrome.alarms.onAlarm.addListener(alarmEvent);
 
-function scheduleAlarm() {
-  var params = {
-    delayInMinutes: 1,
-    periodInMinutes: 0.1
-  }
-  chrome.alarms.create("helloooooo", params);
-}
+// // What to do when the alarm is triggered
+// function alarmEvent() {
+//   let modal = document.createElement("div");
 
-// Now add a function for when the alarm is triggered
-chrome.alarms.onAlarm.addListener(alarmEvent);
+//   modal.classList.add("modal");
 
-// What to do when the alarm is triggered
-function alarmEvent() {
-  let modal = document.createElement("div");
-
-  modal.classList.add("modal");
-
-  body.appendChild(modal);
-  // return modal;
-  modal.style.display = "block";
+//   body.appendChild(modal);
+//   // return modal;
+//   modal.style.display = "block";
 
   
-  // There is metadata associated with the alarm
-  console.log(modal);
-}
+//   // There is metadata associated with the alarm
+//   console.log(modal);
+// }
 
