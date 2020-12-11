@@ -29,11 +29,12 @@ function addVisual(x, y) {
   PLAYERS.push(player);
 }
 
-function moveVisual(x, y) {
-  let v = createVector(x - mouseX, y - mouseY);
-  let speed = map(v.mag(), 0, 200, 5, 0);
-  v.setMag(speed);
-}
+// function moveVisual(x, y) {
+//   let v = createVector(x - mouseX, y - mouseY);
+//   let speed = map(v.mag(), 0, 200, 5, 0);
+//   v.setMag(speed);
+// }
+
 setInterval(() => {
   addVisual(P.random(window.innerWidth), P.random(window.innerHeight));
 }, 1000);

@@ -3,13 +3,13 @@ class Visual {
     this.x = x;
     this.y = y;
 
-    const el = document.createElement("div");
+    const el = document.createElement('div');
     this.el = el;
-    el.classList.add("lottie-anim");
-    el.style.left = -width * 0.5 + "px";
-    el.style.top = -height * 0.5 + "px";
-    el.style.width = width + "px";
-    el.style.height = height + "px";
+    el.classList.add('lottie-anim');
+    el.style.left = -width * 0.5 + 'px';
+    el.style.top = -height * 0.5 + 'px';
+    el.style.width = width + 'px';
+    el.style.height = height + 'px';
 
     // const index = Math.floor(Math.random() * 4);
     // let url = allMyUrls[index];
@@ -18,7 +18,7 @@ class Visual {
 
     let player = bodymovin.loadAnimation({
       container: el,
-      renderer: "svg",
+      renderer: 'svg',
       loop: true,
       autoplay: true,
       rendererSettings: {
@@ -35,7 +35,8 @@ class Visual {
   avoid(targX, targY) {
     let v = P.createVector(this.x - targX, this.y - targY);
     let speed = P.map(v.mag(), 100, 200, 5, 0);
-    v.setMag(speed);
+    // console.log(speed)
+    v.setMag(speed < 0 ? 0 : speed);
 
     this.x += v.x;
     this.y += v.y;
@@ -44,8 +45,7 @@ class Visual {
   }
 
   computeCSS() {
-
     this.el.style.transform = `translate(${this.x}px, ${this.y}px)`;
-
+    // this.el.style.backgroundColor = 'red';
   }
 }
