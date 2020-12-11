@@ -4,20 +4,86 @@
 //     "sample_setting": "This is how you use Store.js to remember values"
 // });
 
+let currentURL;
+let currentTab;
+
+let globalScore;
+
+const urls = [
+  'https://fr.wikipedia.org/wiki/Natoufien',
+  'https://google.com',
+  'https://ecal.ch',
+  'https://letemps.ch',
+  'https://www.facebook.com',
+  'https://www.amazon.fr/',
+  'https://www.reddit.com/',
+  'https://www.ebay.fr/',
+  'https://fr.linkedin.com/',
+  'https://www.twitch.tv/',
+  'https://www.easyjet.com/ch-fr',
+  'https://www.lemonde.fr/m-le-mag/article/2020/12/07/gabriela-hearst-devient-directrice-artistique-de-chloe_6062544_4500055.html',
+  'https://whereby.com',
+  'https://www.pinterest.fr',
+  'https://time.com/',
+  'https://www.spotify.com/fr/',
+  'https://translate.google.fr/?ui=tob',
+  'https://fr.zalando.ch/accueil-femme/',
+  'https://stackoverflow.com/questions/31468794/how-to-show-random-color-on-hover-in-css',
+  'http://ikea.com',
+  'https://www.google.ch/maps',
+  
+];
+
 //example of using a message handler from the inject scripts
 chrome.extension.onMessage.addListener(function (
   request,
   sender,
   sendResponse
 ) {
-  chrome.pageAction.show(sender.tab.id);
-  sendResponse();
+  console.log('received message', request);
+  // chrome.pageAction.show(sender.tab.id);
+  
+  if (request.event == 'get_url') {
+    sendResponse(currentTab.url);
+  } else if (request.event == 'click_score') {
+    globalScore -= 10;
+    chrome.extension.sendMessage({ score: globalScore });
+  } else if (request.event == 'win') {
+    // Get new URL
+    let url = urls[Math.floor(Math.random() * urls.length)];
+    chrome.tabs.update(currentTab.id, { url: url });
+
+    // Increment score
+    globalScore += 100;
+
+    // Send new url & score
+    setTimeout(() => {
+      sendResponse({ url: url, score: globalScore });
+    }, 2000);
+  } else {
+    sendResponse();
+  }
+  return true;
 });
 
-chrome.tabs.query({ currentWindow: true, active: true }, (tabs) => {
-  chrome.windows.update(tabs[0].windowId, { state: "fullscreen" });
+// console.log(chrome.browserAction);
+
+chrome.browserAction.onClicked.addListener((tab) => {
+  globalScore = 0;
+
+  currentTab = tab;
+  chrome.windows.create({
+    url: chrome.runtime.getURL('src/popup/popup.html'),
+    type: 'popup',
+    width: 500,
+    height: 1920,
+    focused: true,
+  });
 });
 
+// chrome.tabs.query({ currentWindow: true, active: true }, (tabs) => {
+//   chrome.windows.update(tabs[0].windowId, { state: "fullscreen" });
+// });
 
 // 1. elements sont cachés mais avec une bordure/outline (hitbox) apparente.
 // 2. bouton play
