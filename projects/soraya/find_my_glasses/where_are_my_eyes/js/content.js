@@ -1,10 +1,20 @@
+// function onClicked(tab) {
+//   const message = { action: 'run' };
+//   chrome.tabs.sendMessage(tab.id, message);
+// }
+
+// // Send a message to the content script when button is clicked.
+// chrome.browserAction.onClicked.addListener(onClicked);
+
+
 let contrast = [100, 150];
 let index = 1;
-
+   
 function doBlur(blur = 0, contrast = 100) {
   document.body.style.cssText = /*back ticks, template strings */ `
     filter: contrast(${contrast}%) blur(${blur}px) !important;
 `;
+
 }
 
 let elem = placeButton('HERE', 'game-button');
@@ -98,6 +108,7 @@ function gotMessage(message, sender, sendResponse) {
   console.log(message.txt);
   if (message.txt === 'hello') {
     doBlur();
+    alert("Better one eye than quite blind. Right? Try again.");
   }
 }
 

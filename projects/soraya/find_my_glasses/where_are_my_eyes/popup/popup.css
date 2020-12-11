@@ -1,0 +1,48 @@
+body{
+    background: #ffffff;
+}
+
+h1,h2{
+    font-family: 'Teko', sans-serif;
+    font-size: 3em;
+    text-align: center;
+    color: blue;
+  
+}
+
+p{
+    color: black;
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 0px;
+}
+
+
+.score{
+    text-align: right;
+}
+
+.message{
+    text-align: center;
+}
+
+/* input{
+     display: flex;
+     margin: 0 auto;
+}
+
+button{
+    display: flex;
+    margin-left: 0px !important;
+} */
+
+
+.p2{
+    text-align: right;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+  }
