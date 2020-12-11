@@ -1,23 +1,89 @@
-* {
+/* * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    /*transform: unset !important;*/
-    scroll-behavior: auto !important;
-}
+    transition: all 0.01ms ease 0s !important;
 
-canvas {
-	display: none !important;
-}
+} */
 
-/*canvas.getDataURL()*/
-
-.pixi {
+#banner-xksiadwekod{
     position: fixed;
-    z-index: 10000;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
+    width:100vw;
+    height: 40px;
+    display: grid;
+    text-align: center;
+    font-size: 12px;
+    align-items: center;
+    align-self: center;
+    color: #fafafa;
+    z-index:1001;
+    background-color: blue;
 }
+
+.no-translate{
+    transform: translate3d(0px,0px,0px) !important;
+}
+
+.headline__inner{
+    transform: unset !important;
+
+}
+
+.flag-transitions-true .vanishingpoint .entry-images,
+.flag-transitions-true .container-panel .entry.entry-item.switch-panel-open,
+.flag-transitions-true.switch-panel-firstimagegrow .container-panel .entry .entry-images .entry-image{
+    animation-duration: 0s !important;
+    transition: 0s !important;
+
+
+}
+*{
+        scroll-behavior: auto !important;
+
+
+}
+
+@-webkit-keyframes no {
+    from {translate:(0); scale:(1);}
+    to {translate:(0); scale:(1);}
+}
+#circles circle,
+#lines line,
+#rects rect{
+    animation-duration: 0s !important;
+}
+
+.stop-animate{
+    animation-duration: 0s !important;
+
+}
+
+@keyframes no {
+    from {translate:(0); scale:(1);}
+    to {translate:(0); scale:(1);}
+}
+    /* --product-transition:1 !important; */
+    /* scroll-behavior: auto !important; */
+    /* transform: unset !important; */
+
+
+    /* transform: matrix(0,0,0,0,0,0) !important; */
+    /* background-color:black; */
+
+    
+    /* transform-style: flat !important; */
+
+    
+    
+    /*background-color: black; */
+    /* translate:(100%,0); */
+
+
+/* canvas {
+	display: none !important;
+} */
+
+/* html{
+    background-color:black;
+} */
+/*canvas.getDataURL()*/

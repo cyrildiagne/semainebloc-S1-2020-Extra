@@ -12,16 +12,29 @@
 //   });
 
 const URLS = [];
-chrome.tabs.onCreated.addListener(function () {
-  alert('hello new tab')
-});
+
+
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+
+  if (changeInfo.url) {
+    chrome.tabs.sendMessage(tabId, {
+      message: 'hello!',
+      url: changeInfo.url
+    })
+  }
   // console.log('updated from background');
   const time = new Date();
   const h = time.getHours();
   const m = time.getMinutes();
   const temps = h + ":" + m;
+
+  if (m < 10) {
+    const temps = h + ":0" + m;
+  }
+  // } else {
+  //   const temps = h + ":" + m;
+  // }
 
   // new Date https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date
   if (changeInfo.status === "complete") {

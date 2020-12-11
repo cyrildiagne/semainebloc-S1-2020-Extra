@@ -1,0 +1,18 @@
+html, body {
+    margin: 0;
+    width: 500px;
+    height: 500px;
+    background-color: blue;
+}
+
+video {
+     border: 1px solid red;
+    transform: scaleX(-1); 
+    width: 100%;
+}
+
+.custom-body{
+  
+    background-color: blue;
+
+}

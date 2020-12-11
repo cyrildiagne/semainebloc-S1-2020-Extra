@@ -1,4 +1,193 @@
+var mouseX, mouseY;
+mouseX = mouseY = 0;
+var modal;
+var modalOffset = { x: 0, y: -20 }
+const bannedWords = ["why", "my", "is", "a", "an", "the", "be", "of", "and", "that", "to", "from"]
+
+document.onmousemove = (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    const elem = e.target
+    if (modal) {
+        /* modal.style.left = mouseX + modalOffset.x + "px"; */
+        modal.style.top = mouseY + modalOffset.y + "px";
+        modalOffset.y = (modal.clientHeight / 2 + 10) * (mouseY - modal.clientHeight < 0 ? 1 : -1)
+            /* console.log(modalOffset) */
+            // WHY OUR PAISEH HEAR THEY WIN SHALL COWL ANOTHER FAINTED TRENDY-ASS CORDUROY CARPET WHERE I HOVER AROUND WHICH DESPERATE METAL BODY SHIT? UH ???
+            //                                                                                                          this comment about the code was brought to you by word2vec ✨
+    }
+    if (!elem.alteredByCursor && !checkForTags(elem.tagName) && elem.innerText /* && elem.modifiedByWord2Vec */ ) {
+        registerMouseEvent(elem);
+        /* console.log(elem) */
+    } else {
+        findAlterableChild(elem)
+    }
+}
+
+function registerMouseEvent(elem) {
+    /* console.log(elem) */
+    if (modal) {
+
+    } else {
+        modal = document.createElement("div");
+        if (elem.oldText) {
+            modal.innerText = elem.oldText;
+        } else { modal.innerText = elem.innerText }
+
+        modal.style.position = "fixed";
+        modal.style.height = "fit-content"
+        modal.style.fontFamily = "Helvetica"
+        modal.style.transform = "translate(-50%)"
+        modal.style.backdropFilter = "blur(10px)"
+        modal.style.borderRadius = "20px"
+        modal.style.pointerEvents = "none"
+            /* modal.style.width = "fit-content" */
+        modal.style.paddingLeft = "15px"
+        modal.style.paddingRight = "15px"
+        modal.style.paddingTop = "10px"
+        modal.style.paddingBottom = "10px"
+            /* try {
+                modal.style.fontFamily = elem.style.fontFamily;
+                modal.style.fontSize = elem.size.fontSize;
+            } catch {} */
+        modal.style.transform = "translate(0, -50%)";
+        /* modal.style.left = mouseX + modalOffset.x + "px"; */
+        modal.style.left = "20px"
+        modal.style.right = "fit-content"
+        modal.style.margin.right = "20px"
+        modal.style.top = mouseY + modalOffset.y + "px";
+        modal.style.position = "fixed";
+        modal.style.zIndex = 999999
+        modal.classList.add("word2vec-modal")
+        document.body.appendChild(modal)
+            /* console.log(modal); */
+    }
+
+    /* elem.alteredContent = elem.innerHTML; */
+    /* console.log(elem.oldText) */
+    /* elem.innerHTML = elem.oldText; */
+    elem.alteredByCursor = true;
+    elem.onmouseleave = (e) => {
+        /* elem.innerHTML = elem.alteredContent */
+        elem.removeEventListener("mouseleave", elem.onmouseleave);
+        try {
+            var modals = document.getElementsByClassName("word2vec-modal");
+            /* console.log(modals) */
+            modals[0].parentNode.removeChild(modals[0]);
+            modal = null;
+            /*             console.log("removed modal") */
+            elem.alteredByCursor = false;
+        } catch {}
+    }
+}
+
+function getOffset(el) {
+    var position = {
+        top: el.offsetTop,
+        left: el.offsetLeft
+    };
+    if (el.offsetParent) {
+        var parentPosition = getOffset(el.offsetParent);
+        position.top += parentPosition.top;
+        position.left += parentPosition.left;
+    }
+    return position;
+
+}
+
+function findAlterableChild(elem) {
+    /* console.log(elem) */
+}
+/* try {
+    
+    e.target.currentHTML = e.target.
+    e.target.onmouseleave = () => {
+        e.target.style.backgroundColor = e.target.originalColor;
+        console.log(e.target.originalColor)
+        console.log("removed")
+        e.target.removeEventListener("mouseleave", e.onmouseleave);
+    }
+} catch {
+    console.log("could not execute mouse move")
+} */
+
+var loadbar = document.createElement("div");
+var loadbar_bar = document.createElement("div");
+loadbar.style.width = "100%";
+loadbar.style.height = "6px";
+loadbar.style.backgroundColor = "lightgrey";
+loadbar.style.position = "fixed";
+loadbar.style.top = "0px";
+loadbar.style.left = "0px"
+loadbar.style.margin = "0px";
+loadbar.style.padding = "0px"
+loadbar.style.zIndex = 99999;
+
+
+
+loadbar_bar.style = loadbar.style;
+loadbar_bar.style.width = "0px";
+loadbar_bar.style.backgroundColor = "#b0ffc5";
+loadbar_bar.style.zIndex = 100000;
+loadbar_bar.style.height = "5px";
+loadbar_bar.style.position = "fixed";
+loadbar_bar.style.top = "0px";
+loadbar_bar.style.left = "0px"
+loadbar_bar.style.margin = "0px";
+loadbar_bar.style.padding = "0px"
+
+loadbar.classList.add("word2vec_loadbar")
+loadbar_bar.classList.add("word2vec_loadbar")
+document.body.appendChild(loadbar);
+document.body.appendChild(loadbar_bar);
+
+
+
+function existsInIdMap(e) {
+    const keys = Object.keys(idMap);
+    for (var i = 0; i < keys.length; i++) {
+        const thing = idMap[keys[i]];
+        if (e == thing) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function refreshCraziness(craziness) {
+    /* const keys = Object.keys(idMap); */
+    usedKeys.forEach(key => {
+        const idx = idMap[key].ids.indexOf(parseFloat(key)) // index of word in array
+        const newWord = idMap[key].words[idx][craziness].word;
+        /* console.log(idMap[key].completePhrase)
+        console.log(newWord); */
+        idMap[key].completePhrase[idx] = newWord;
+        const newText = replaceWithBase(idMap[key].innerText.split(" "), idMap[key].completePhrase);
+        idMap[key].innerText = newText;
+    })
+}
+
+var partialRefreshIndex = 0;
+
+function refreshSome(howMany) {
+    while (partialRefreshIndex < partialRefreshIndex + howMany && partialRefreshIndex < usedKeys.length) {
+        const key = usedKeys[partialRefreshIndex];
+        const idx = idMap[key].ids.indexOf(parseFloat(key)) // index of word in array
+        const craziness = Math.floor(Math.random() * 10);
+        const newWord = idMap[key].words[idx][craziness].word;
+        console.log(idMap[key].completePhrase)
+        console.log(newWord);
+        idMap[key].completePhrase[idx] = newWord;
+        const newText = replaceWithBase(idMap[key].innerText.split(" "), idMap[key].completePhrase);
+        idMap[key].innerText = newText;
+    }
+}
+
+
 function ask(word, id) {
+    /* if (!respectsList(word, bannedWords)) {
+        console.log(word)
+    } */
     chrome.runtime.sendMessage({ "type": "wordRequest", "word": word, "id": id });
     requests++;
 }
@@ -9,10 +198,19 @@ const bannedKeyWords = ["function()", "@media", "{"]
 
 function respectsList(thing, list) {
     for (i in list) {
-        if (thing.innerText.includes[list[i]]) {
-            console.log(list[i]);
-            console.log("bad word")
-            return false;
+        if (typeof(thing) == "string") {
+            if (thing.includes[list[i]]) {
+                console.log(list[i]);
+                console.log("bad word")
+                return false;
+            }
+
+        } else {
+            if (thing.innerText.includes[list[i]]) {
+                console.log(list[i]);
+                console.log("bad word")
+                return false;
+            }
         }
     }
     return true;
@@ -135,21 +333,27 @@ function buildIdMap() {
         const e = html[i];
         /* console.log(e) */
         if (e.ids && !e.modifiedByWord2Vec) {
+            e.originalContent = e.innerHTML;
+            e.oldText = e.innerText;
             e.ids.forEach((id) => {
                 idMap[id] = e;
                 if (!idMap[id].completePhrase) {
                     idMap[id].completePhrase = [];
+                }
+                if (!idMap[id].words) {
+                    idMap[id].words = []
                 }
             })
         }
     }
 }
 
-
 /* } */
 
 function convertElement(e) {
+    /* return false; */
     e.ids = [];
+    e.originalContent = e.innerHTML;
     var theseWords = e.innerText.split(" ");
     theseWords.forEach((word) => {
         if (!checkForTags(word)) {
@@ -169,11 +373,16 @@ function convertElement(e) {
             if (!idMap[id].completePhrase) {
                 idMap[id].completePhrase = [];
             }
+            if (!idMap[id].words) {
+                idMap[id].words = []
+            }
         })
     }
     e.ids.forEach((id) => {
         /* console.log(words[id]) */
-        ask(words[id], id);
+        if (!e.classList.contains("word2vec-modal")) {
+            ask(words[id], id);
+        }
     })
 }
 
@@ -182,7 +391,7 @@ function convertElement(e) {
 const observer = new MutationObserver((records) => {
     /* buildIdMap(); */
     records.forEach((record) => {
-        if (!record.target.modifiedByWord2Vec) {
+        if (!record.target.modifiedByWord2Vec && !record.target.classList.contains("word2vec-modal")) {
             record.addedNodes.forEach((elem) => {
                 if (elem.children) {
                     for (var i = 0; i < elem.children.length; i++) {
@@ -229,6 +438,7 @@ for (var j = 0; j < a.length; j++) {
         var e = html;
         /* console.log(e) */
         e.ids = [];
+        e.originalContent = e.innerHTML;
         var theseWords = e.innerText.split(" ");
         theseWords.forEach((word) => {
             if (!checkForTags(word)) {
@@ -253,11 +463,16 @@ buildIdMap();
 
 
 
+let re = /^[a-z0-9]+$/i;
 const keys = Object.keys(words);
 for (var i = 0; i < keys.length; i++) {
     const key = keys[i];
     const word = words[key];
-    ask(word, key);
+    if (re.test(word)) {
+
+        /* console.log(word) */
+        ask(word, key);
+    }
 }
 var usedKeys = []
 var calls = 0;
@@ -265,17 +480,19 @@ var calls = 0;
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     callbacks++;
     if (request.word) {
-        console.log(request.originalWord, request.word[0].word)
+        /* console.log("original: " + request.originalWord + " modded: " + request.word[0].word, idMap[request.key]) */
         if (idMap[request.key]) {
             var elementId = idMap[request.key].ids.indexOf(parseFloat(request.key));
             /* console.log(idMap[request.key]) */
             var craziness = Math.floor(Math.random() * 10);
-            craziness = 9;
+            craziness = 0;
             /* idMap[request.key].completePhrase[elementId] = "<i>" + request.word[craziness].word + "</i>"; */
+            idMap[request.key].words[elementId] = request.word;
             idMap[request.key].completePhrase[elementId] = request.word[craziness].word;
             /* console.log(request.key) */
 
             if (!idMap[request.key].modifiedByWord2Vec) {
+                idMap[request.key].originalContent = idMap[request.key].innerHTML
                 idMap[request.key].oldText = idMap[request.key].innerText
                 idMap[request.key].modifiedByWord2Vec = true;
             }
@@ -284,9 +501,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             const newText = replaceWithBase(idMap[request.key].innerText.split(" "), idMap[request.key].completePhrase);
             /* console.log(newText) */
             /* const newText = "waer" */
-            if (idMap[request.key].children) { console.log(idMap[request.key].children) }
+            /* if (idMap[request.key].children) { console.log(idMap[request.key].children) } */
             idMap[request.key].innerText = newText
-            usedKeys.push(idMap[request.key])
+            usedKeys.push(request.key)
                 /* console.log(usedKeys.length); */
 
             /* console.log(usedKeys) */
@@ -294,8 +511,38 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         }
     }
     calls++;
-    /* console.log(callbacks + " out of " + requests + " received"); */
+    if (callbacks % 25 == 0 || callbacks == requests) {
+        console.log(callbacks + " out of " + requests + " received");
+        /* refreshCraziness(Math.ceil(Math.random() * 9)) */
+    }
+    loadbar_bar.style.width = Math.floor((callbacks / requests) * innerWidth) + "px"
+    if (callbacks == requests) {
+        console.log(callbacks, requests)
+        loadbar.style.display = "none";
+        loadbar_bar.style.display = "none";
+    } else if (loadbar.style.display == "none") {
+        loadbar.style.display = "inline";
+        loadbar_bar.style.display = "inline";
+    }
+    /* console.log(loadbar_bar.style.width) */
+
+    if (request.message) {
+        console.log(request)
+    }
+
 })
+
+function readCorpus() {
+    const keys = Object.keys(idMap)
+    var corpus = ""
+    keys.forEach(key => {
+        idMap[key].completePhrase.forEach(word => {
+            corpus += word;
+            corpus += " "
+        })
+    })
+    return corpus
+}
 
 function replaceWithBase(base, mod) {
 

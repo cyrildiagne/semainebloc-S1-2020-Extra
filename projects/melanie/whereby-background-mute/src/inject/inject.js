@@ -1,10 +1,28 @@
-chrome.extension.sendMessage({}, function (response) {
+let pointsCounter = 0;
+
+chrome.extension.sendMessage({event: "get_forbidden_words"}, function (response) {
+
+  
+
   var readyStateCheckInterval = setInterval(function () {
     if (document.readyState === 'complete') {
       clearInterval(readyStateCheckInterval);
 
       console.log('STARTED');
+
+      getWords(response).forEach(word => {
+        replaceText(word, '');
+      });
+
+
       // answer();
+      
+      // console.log(findCurrentWebsite());
+
+      // window.location.split(' ').forEach(word => {
+      //   replaceText(word, 'HIDDEN');
+      // });
+
       openShutter();
 
       let allElements = document.querySelectorAll('*');
@@ -17,19 +35,48 @@ chrome.extension.sendMessage({}, function (response) {
   }, 10);
 });
 
+function getWords(url) {
+  // let result;
+
+  for (let website of urls) {
+    if(website.url === url) {
+      result = website
+      break;
+    }
+  }
+
+  return result.hideWords;
+}
+
 function elemClicked(e) {
   e.stopPropagation();
   e.preventDefault();
 
   let el = e.target;
   while (el) {
-    el.classList.add('show')
-    el = el.parentElement
+    el.classList.add('show');
+    el = el.parentElement;
   }
   // elemClicked.style.opacity = 0;
   //elemClicked.classList.add("hidden");
 
   console.log('element clicked');
+
+  // urlPrecedente = urlActuelle;
+  // urlActuelle = window.location.href;
+
+  chrome.extension.sendMessage({ event: 'click_score' });
+
+  // if (urlActuelle == urlPrecedente) {
+  //     compteurDeClick++;
+  // } else {
+  //     compteurDeClick = 0;
+  // }
+}
+
+function replaceText(searchText, replaceText) {
+  const reg = new RegExp(`${searchText}`, 'ig')
+  document.body.innerHTML = document.body.innerHTML.replace(reg, replaceText);
 }
 
 function openShutter() {
@@ -42,6 +89,7 @@ function openShutter() {
   // var element = document.querySelector(".door");
   // element.addEventListener("click", toggleDoor);
 }
+
 // function toggleDoor() {
 //   element.classList.toggle("doorOpen");
 // }

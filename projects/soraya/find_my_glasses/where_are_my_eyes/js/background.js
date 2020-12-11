@@ -1,9 +1,11 @@
-let blurs = [0, 1,2,3,4,5,6,7,8,9, 10, 15, 20,25,30,35,40,45,50];
+let blurs = [0, 1, 5,10,15,18,20,35,50,80];
 let blurLevel = 0;
 
-chrome.browserAction.onClicked.addListener(buttonClicked);
+// chrome.browserAction.onClicked.addListener(buttonClicked);
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+  console.log('Got message', msg);
+
   if (msg.action == 'getBlur') {
     sendResponse(blurs[blurLevel]);
   } else if (msg.action == 'onWin') {
@@ -11,13 +13,13 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     if (blurLevel >= blurs.length) {
       console.log('RESET');
       blurLevel = 0;
+      alert(
+        'Congrats ! You successfully passed the blind test. You really have an eye for spotting the intruder!'
+      );
     }
+  } else if (msg.action == 'gameover') {
+    chrome.tabs.query({ active: true }, function (tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, { action: 'gameover' });
+    });
   }
 });
-
-function buttonClicked(tab) {
-  let msg = {
-    txt: 'hello',
-  };
-  chrome.tabs.sendMessage(tab.id, msg);
-}
