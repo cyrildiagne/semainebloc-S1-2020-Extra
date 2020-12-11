@@ -10,7 +10,7 @@ let currentTab;
 let globalScore;
 
 const urls = [
-  'https://wikipedia.org',
+  'https://fr.wikipedia.org/wiki/Natoufien',
   'https://google.com',
   'https://ecal.ch',
   'https://letemps.ch',
@@ -21,11 +21,17 @@ const urls = [
   'https://fr.linkedin.com/',
   'https://www.twitch.tv/',
   'https://www.easyjet.com/ch-fr',
-  'https://www.lemonde.fr/',
+  'https://www.lemonde.fr/m-le-mag/article/2020/12/07/gabriela-hearst-devient-directrice-artistique-de-chloe_6062544_4500055.html',
   'https://whereby.com',
   'https://www.pinterest.fr',
   'https://time.com/',
   'https://www.spotify.com/fr/',
+  'https://translate.google.fr/?ui=tob',
+  'https://fr.zalando.ch/accueil-femme/',
+  'https://stackoverflow.com/questions/31468794/how-to-show-random-color-on-hover-in-css',
+  'http://ikea.com',
+  'https://www.google.ch/maps',
+  
 ];
 
 //example of using a message handler from the inject scripts
@@ -36,6 +42,7 @@ chrome.extension.onMessage.addListener(function (
 ) {
   console.log('received message', request);
   // chrome.pageAction.show(sender.tab.id);
+  
   if (request.event == 'get_url') {
     sendResponse(currentTab.url);
   } else if (request.event == 'click_score') {
@@ -69,7 +76,7 @@ chrome.browserAction.onClicked.addListener((tab) => {
     url: chrome.runtime.getURL('src/popup/popup.html'),
     type: 'popup',
     width: 500,
-    height: 200,
+    height: 1920,
     focused: true,
   });
 });
