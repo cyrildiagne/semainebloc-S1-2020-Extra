@@ -669,7 +669,7 @@
                 e.preventDefault();
             }
 
-            if (e.target != this.detailsButton) {
+            // if (e.target != this.detailsButton) {
                 if (!this.crashed && (Runner.keycodes.JUMP[e.keyCode] ||
                     e.type == Runner.events.TOUCHSTART)) {
                     if (!this.playing) {
@@ -691,7 +691,7 @@
                     e.currentTarget == this.containerEl) {
                     this.restart();
                 }
-            }
+            // }
 
             if (this.playing && !this.crashed && Runner.keycodes.DUCK[e.keyCode]) {
                 e.preventDefault();
@@ -2709,16 +2709,18 @@
 
 
 function onDocumentLoad() {
+    
     const runner = new Runner('.interstitial-wrapper');
     const R = window['Runner']
     chrome.runtime.onMessage.addListener((msg) => {
+
         console.log(msg)
         switch(msg.action) {
             case 'up-on':
-                R.onKeyDown({keyCode: '38'})
+                runner.onKeyDown({keyCode: '38'})
                 break;
             case 'up-off':
-                R.onKeyUp({keyCode: '38'})
+                runner.onKeyUp({keyCode: '38'})
                 break;
             case 'down-on':
                 break;
