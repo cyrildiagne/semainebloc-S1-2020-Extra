@@ -1,10 +1,12 @@
 let currentURL;
 let pointsCounter;
+let stage;
 
 const answerInput = document.querySelector('.answer');
 const btOk = document.querySelector('.bt-ok');
 const messageEl = document.querySelector('.message');
 const scoreEl = document.querySelector('.score');
+const stageEl = document.querySelector('.stage');
 
 chrome.extension.sendMessage({}, function (response) {
   var readyStateCheckInterval = setInterval(function () {
@@ -31,6 +33,11 @@ function start() {
   chrome.runtime.sendMessage({ event: 'get_url' }, (url) => {
     currentURL = url;
     console.log(url);
+    
+    stage=1;
+    stageEl.innerText = stage + '/10';
+   
+    
   });
 
   btOk.addEventListener('click', (ev) => {
@@ -47,10 +54,14 @@ function start() {
         messageEl.innerHTML = '';
         answerInput.value = '';
         currentURL = nextURL;
+        stage++;
+        stageEl.innerText = stage + '/10';
+        console.log(stage);
+        
       });
     } else {
       console.log('BAD ANSWER!');
-      messageEl.innerHTML = 'Bad Answer ' + answer;
+      messageEl.innerHTML = answer + ' = Bad Answer ';
       answerInput.value = '';
     }
   });
