@@ -14,7 +14,7 @@
 }
 
 .tone--column {
-  --bgColor: rgb(255, 255, 255, 0);
+  --bgColor: rgb(230, 230, 230);
   height: 100%;
   width: 0;
   flex-grow: 1;
@@ -30,27 +30,4 @@
   background-color: var(--bgColor);
   height: 100vh;
   pointer-events: none;
-}
-
-.tone--0 {
-  --bgColor: rgb(255, 80, 0);
-}
-
-.tone--1 {
-  --bgColor: rgb(47, 0, 56);
-}
-
-.tone--2 {
-  --bgColor: rgb(156, 255, 205);
-}
-
-.tone--3 {
-  --bgColor: rgba(208, 255, 0);
-}
-.tone--4 {
-  --bgColor: rgb(72, 59, 214);
-}
-
-.tone--5 {
-  --bgColor: pink;
 }
