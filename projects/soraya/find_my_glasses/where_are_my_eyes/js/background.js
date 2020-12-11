@@ -1,9 +1,11 @@
-let blurs = [0, 5, 10, 20, 50, 100];
+let blurs = [0, 1, 2, 3];
 let blurLevel = 0;
 
-chrome.browserAction.onClicked.addListener(buttonClicked);
+// chrome.browserAction.onClicked.addListener(buttonClicked);
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+  console.log('Got message', msg);
+
   if (msg.action == 'getBlur') {
     sendResponse(blurs[blurLevel]);
   } else if (msg.action == 'onWin') {
@@ -11,15 +13,13 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     if (blurLevel >= blurs.length) {
       console.log('RESET');
       blurLevel = 0;
+      alert(
+        'Congrats ! You successfully passed the blind test. You really have an eye for spotting the intruder!'
+      );
     }
+  } else if (msg.action == 'gameover') {
+    chrome.tabs.query({ active: true }, function (tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, { action: 'gameover' });
+    });
   }
 });
-
-function buttonClicked(tab) {
-  let msg = {
-    txt: 'hello',
-  };
-  chrome.tabs.sendMessage(tab.id, msg);
-}
-
-//doit get message contenant les valeurs de la fonction doBlur(); afin de les rééinjecter et les incréementer

@@ -1,11 +1,14 @@
 {
-  "name": "Simple PIXI",
+  "name": "Bullshit Animation",
   "version": "1.0",
-  "description": "Basic PIXI Example",
+  "description": "Basic Bullshit animation blocker",
+  "icons": {
+    "128": "icon.png"
+  },
   "permissions": ["<all_urls>"],
   "background": {
-    "scripts": ["libs/hot-reload.js"]
-  },
+    "scripts": ["libs/hot-reload.js", "src/background.js"]
+  }, 
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
@@ -14,5 +17,8 @@
       "css": ["css/content.css"]
     }
   ],
+  "browser_action": {
+    "default_popup": "popup/popup.html"
+  },
   "manifest_version": 2
 }

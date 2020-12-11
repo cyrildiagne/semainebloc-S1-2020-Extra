@@ -39,6 +39,12 @@ function drawCanvas(history) {
   }
   ctx.stroke();
 }
+  //draw boxe
+//   ctx.beginPath();
+//   ctx.strokeStyle = 'black';
+//   ctx.fillRect(250, 250, 100, 100);
+
+// }
 
 async function load() {
   await waitForDocumentReady();

@@ -5,11 +5,13 @@ body {
 
 
 .custom--game-button {
-    display: inline-block;
-    background-color: red;
-    outline: blue 1px solid;
-    padding: 10px;
-    cursor: pointer;
+    display: inline-block !important;
+    background-color: rgba(255, 255, 255) !important;
+    border-radius: 5px;
+    outline: rgb(221,83,164) 5px solid !important;
+    padding: 10px !important;
+    cursor: pointer !important;
+    z-index: 1000 !important;
 }
 
 

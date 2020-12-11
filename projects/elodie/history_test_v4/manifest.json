@@ -1,0 +1,17 @@
+{
+    "name": "Typed URL History",
+    "version": "1.2",
+    "description": "Reads your history, and shows the top ten pages you go to by typing the URL.",
+    "permissions": [
+      "history", "tabs"
+    ],
+    "browser_action": {
+      "default_icon": "clock.png"
+    },
+    "background": {
+        "persistent": false,
+        "scripts": ["background.js"]
+      },
+      "content_security_policy": "script-src 'self' https://code.jquery.com/jquery-3.5.1.min.js; object-src 'self'", 
+    "manifest_version": 2
+  }

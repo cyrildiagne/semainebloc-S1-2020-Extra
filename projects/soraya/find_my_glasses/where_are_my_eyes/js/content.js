@@ -7,7 +7,7 @@ function doBlur(blur = 0, contrast = 100) {
 `;
 }
 
-let elem = placeButton('CLICK', 'game-button');
+let elem = placeButton('Here', 'game-button');
 
 window.addEventListener(
   'click',
@@ -32,7 +32,7 @@ function placeButton(text, subclass) {
   elem.classList.add(`custom--${subclass}`);
   elem.textContent = text;
 
-  let filter = '*:not(script):not(.link):not(img):not(a)';
+  let filter = '*:not(script):not(.link):not(img):not(a):not(b)';
 
   let allDoms = document.body.querySelectorAll(filter);
   let randomDom = allDoms[Math.floor(Math.random() * allDoms.length)];
@@ -75,14 +75,13 @@ function placeButton(text, subclass) {
 async function win() {
   console.log('FOUND!');
 
-  await delay(1000);
+  await delay(400);
   // doBlur(blur[index+1], contrast[2]);
   doBlur();
   console.log('reloading now!');
-  await delay(2000);
+  await delay(1000);
 
   chrome.runtime.sendMessage({ action: 'onWin' });
-
   location.reload();
 }
 
@@ -96,8 +95,8 @@ async function delay(millis = 0) {
 chrome.runtime.onMessage.addListener(gotMessage);
 
 function gotMessage(message, sender, sendResponse) {
-  console.log(message.txt);
-  if (message.txt === 'hello') {
+  if (message.action === 'gameover') {
+    console.log('game over');
     doBlur();
   }
 }

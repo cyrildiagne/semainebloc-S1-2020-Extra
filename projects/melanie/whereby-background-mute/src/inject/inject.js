@@ -1,84 +1,95 @@
+let pointsCounter = 0;
 
+chrome.extension.sendMessage({event: "get_forbidden_words"}, function (response) {
 
-chrome.extension.sendMessage({}, function (response) {
+  
+
   var readyStateCheckInterval = setInterval(function () {
-    if (document.readyState === "complete") {
+    if (document.readyState === 'complete') {
       clearInterval(readyStateCheckInterval);
 
-      console.log("STARTED");
-      answer();
-      openShutter();
-    
-      
+      console.log('STARTED');
 
-            let allElements = document.querySelectorAll('body > *');
-            for (let i = 0; i < allElements.length; i++) {
-                allElements[i].addEventListener("click", elemClicked);
-                allElements[i].style.opacity = 1;
-                //allElements[i].classList.remove("hidden");
-            };
+      getWords(response).forEach(word => {
+        replaceText(word, '');
+      });
+
+
+      // answer();
+      
+      // console.log(findCurrentWebsite());
+
+      // window.location.split(' ').forEach(word => {
+      //   replaceText(word, 'HIDDEN');
+      // });
+
+      openShutter();
+
+      let allElements = document.querySelectorAll('*');
+      for (let i = 0; i < allElements.length; i++) {
+        allElements[i].addEventListener('click', elemClicked);
+        // allElements[i].style.opacity = 1;
+        //allElements[i].classList.remove("hidden");
+      }
     }
   }, 10);
 });
 
+function getWords(url) {
+  // let result;
+
+  for (let website of urls) {
+    if(website.url === url) {
+      result = website
+      break;
+    }
+  }
+
+  return result.hideWords;
+}
+
 function elemClicked(e) {
-  elemClicked = e.target;
-  elemClicked.style.opacity = 0;
+  e.stopPropagation();
+  e.preventDefault();
+
+  let el = e.target;
+  while (el) {
+    el.classList.add('show');
+    el = el.parentElement;
+  }
+  // elemClicked.style.opacity = 0;
   //elemClicked.classList.add("hidden");
-  
-  console.log("element clicked");
+
+  console.log('element clicked');
+
+  // urlPrecedente = urlActuelle;
+  // urlActuelle = window.location.href;
+
+  chrome.extension.sendMessage({ event: 'click_score' });
+
+  // if (urlActuelle == urlPrecedente) {
+  //     compteurDeClick++;
+  // } else {
+  //     compteurDeClick = 0;
+  // }
 }
 
-
-function answer(){
-  let elem = document.createElement("div");
-  elem.classList.add(`answerSquare`);
-  document.body.appendChild(elem);
- 
-  var y = document.createTextNode("Which website are you surfing on ?");
-  elem.appendChild(y);
-
-  addAnswer();
-  validationButton();
+function replaceText(searchText, replaceText) {
+  const reg = new RegExp(`${searchText}`, 'ig')
+  document.body.innerHTML = document.body.innerHTML.replace(reg, replaceText);
 }
 
-
-function addAnswer(){
-  let addText = document.createElement("div");
-  addText.classList.add(`textDiv`);
-
-  let write = document.createElement("INPUT")
-  write.setAttribute("fillText","textDiv");
-  // document.body.appendChild(write);
-  document.body.appendChild(addText);
-}
-
-
-
-
-
-let button = validationButton("I got it !", "button");
-
-function validationButton(text){
-  let button = document.createElement("div");
-  button.classList.add(`button`);
-  button.textContent = text;
-  document.body.appendChild(button);
-}
-
-
-
-
-function openShutter () {
-  let backShutter = document.createElement("div");
-  shutter = document.createTextNode("div");
+function openShutter() {
+  let backShutter = document.createElement('div');
+  shutter = document.createTextNode('div');
   backShutter.appendChild(shutter);
 
   document.body.appendChild(backShutter);
-  
+
   // var element = document.querySelector(".door");
   // element.addEventListener("click", toggleDoor);
 }
+
 // function toggleDoor() {
 //   element.classList.toggle("doorOpen");
 // }
@@ -116,7 +127,6 @@ function openShutter () {
 // 	  }
 
 // 	}
-  
+
 // 	return lastDescendants;
 //   }
-  
