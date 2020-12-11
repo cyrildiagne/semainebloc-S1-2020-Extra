@@ -1,0 +1,127 @@
+h1:after, h2:after, h3:after {
+  content: attr(data-rhyme);
+  color: magenta;
+  font-style: italic;
+  display: block;
+}
+/* .presence-entity:hover{
+  background: red;
+} */
+
+/* .isOver {
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-duration: 1s;
+  animation: morph 5s linear 0.3s;
+} */
+
+/* 
+.tone--isOver {
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-duration: 1s;
+  animation: morph 5s linear 0.3s;
+} */
+
+/* BACKGROUND COLOR CHANGE SEQUENCE */
+
+/* @keyframes morph {
+  0% {
+    background-color: red;
+  }
+  50% {
+    background-color: rgb(197, 211, 0);
+  }
+  100% {
+    background-color: red;
+  }
+} */
+
+/* .tone--active {
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-duration: 1s;
+  animation: morph infinite linear 1.3s;
+} */
+.emotion-des{
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  font-size: 7rem;
+  line-height: 0;
+  color: black;
+}
+.emotion-des-opacity{
+  opacity: 0;
+  /* color: red; */
+}
+.tone--active div { 
+  /* transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-duration: 1s; */
+  opacity: 0; 
+ }
+ .tone--active article { 
+  opacity: 0; 
+ 
+}
+.pre--active a{
+  pointer-events: none;
+}
+
+.pre--active article{
+  pointer-events: none;
+  opacity: 0; 
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+.pre--active div{
+  pointer-events: none;
+  opacity: 0; 
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+.tone--active {
+  border-radius: 500px;
+  /* height: 66vh; */
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+   /* background: linear-gradient(90deg, #ee7752, #e73c7e, #f1f50b, #ee7752);
+  background-size: 400% 400%; 
+  animation: gradient 15s ease infinite;  */
+}
+.Positive.tone--active{
+  background: linear-gradient(90deg, #35a15e, #6cd1c0, #f3f2ef, #8fcee7, #273c69);
+  background-size: 400% 400%; 
+  animation: gradient 15s ease infinite; 
+}
+.Negative.tone--active {
+  background: linear-gradient(90deg, #7e242b, #544db8, #f3f2ef, #9b81ca, #ab59b6);
+  background-size: 400% 400%; 
+  animation: gradient 15s ease infinite; 
+}
+.Neutral.tone--active{
+  background: linear-gradient(90deg, #ab59b6, #544db8, #83dd97,#f3f2ef, #a06fb4, #ab59b6);
+  background-size: 400% 400%; 
+  animation: gradient 15s ease infinite; 
+}
+.Outside.tone--active{
+  background: linear-gradient(90deg, #544db8, #8fcee7, #1f29c2, #f3f2ef, #8fcee7,#544db8);
+  background-size: 400% 400%; 
+  animation: gradient 15s ease infinite; 
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
