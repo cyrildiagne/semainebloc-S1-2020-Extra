@@ -1,0 +1,23 @@
+body{
+    background: #ffffff;
+}
+
+h1{
+    font-size: 5em;
+    text-align: center;
+    color: blue;
+  
+}
+
+p{
+    color: black;
+    text-align: center;
+    font-size: 3em;
+    margin-top: 0px;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+  }

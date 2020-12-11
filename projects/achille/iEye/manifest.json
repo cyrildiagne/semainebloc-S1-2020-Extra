@@ -1,0 +1,40 @@
+{
+  "manifest_version": 2,
+  "name": "iEye",
+  "version": "0.0.1",
+  "icons": {
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+},
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/content.js"],
+      "run_at": "document_start"
+      
+    }
+  ],
+  
+  "background": {
+    "page": "background/index.html",
+    "persistent": true,
+    "matches": [ "http://*/*", "https://*/*"]
+  },
+  "author": "Achille Masson",
+
+  "browser_action": {
+    "default_popup": "popup/index.html"
+    
+  },
+
+  "web_accessible_resources": ["models/*"],
+
+  "options_page": "options/index.html",
+  "permissions": ["activeTab", "declarativeContent", "storage","tabs","input","debugger", "<all_urls>"]
+  
+}
+
+
+
+
