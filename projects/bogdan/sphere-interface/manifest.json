@@ -1,8 +1,8 @@
 {
-  "name": "ThreeJS Cubes on Image Test",
+  "name": "ThreeJS Spheres Test",
   "version": "1.0",
   "description": "Does  what it says",
-  "permissions": ["*://*.ecal.ch/*"],
+  "permissions": ["<all_urls>"],
   
   "icons": {
     "128": "icon.png"
@@ -20,13 +20,12 @@
         "libs/three.js",
         "src/CSS3DRenderer.js",
         "src/TrackBallControls.js",
-        "src/cubescene.js",
         "src/content.js",
         "src/imagecropper.js"
       ],
       "css": ["css/content.css"]
     }
   ],
-  "web_accessible_resources": ["res/map.png"],
+  "web_accessible_resources": ["textures/*"],
   "manifest_version": 2
 }

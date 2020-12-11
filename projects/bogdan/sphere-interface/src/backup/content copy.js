@@ -3,9 +3,7 @@ let CUBE_SCENES = [];
 function init() {
   let elems = document.body.querySelectorAll("img");
 
-  // new CubeScene(document.querySelector("body"));
-
-  for (let i = 0; i < 13; i++) {
+  for (let i = 0; i < 10; i++) {
     let elem = elems[i];
     let cubeScene = new CubeScene(elem);
     CUBE_SCENES.push(cubeScene);
@@ -29,3 +27,4 @@ function animate() {
   requestAnimationFrame(animate);
   // renderer.render(scene, camera);
 }
+
