@@ -1,5 +1,7 @@
 let VIDEO, CANVAS;
 
+let baseY
+
 window.addEventListener('load', load);
 
 async function load() {
@@ -121,7 +123,7 @@ async function launchFaceAPI(video) {
     //faceapi.draw.drawDetections(canvas, resizedDetections);
     faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
     //faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
-  }, 1000);
+  }, 100);
 }
 
 let EYES = {
@@ -138,6 +140,10 @@ function getEyesFromFace(face) {
 
   //console.log(EYES.left[3].x);
   //console.log(EYES.left[3].y);
+}
+
+if (isNaN(baseY)) {
+  baseY = EYES.left[3].y
 }
 
 let isDown = false;
@@ -186,7 +192,7 @@ function newLeftEyePos(face) {
   const currDown = EYES.left[3].y > 250;
   if (currDown != isDown) {
     
-    const action = currDown ? 'down-on' : 'down-off';
+    const action = currDown ? 'up-on' : 'up-off';
     chrome.tabs.query({ active: true }, function (tabs) {
       console.log('down changed');
       chrome.tabs.sendMessage(tabs[0].id, { action: action });
@@ -194,13 +200,13 @@ function newLeftEyePos(face) {
     isDown = currDown;
   }
 
-  const currUp = EYES.left[3].y < 210;
-  if (currUp != isUp) {
-    console.log('up changed');
-    const action = currUp ? 'up-on' : 'up-off';
-    chrome.tabs.query({ active: true }, function (tabs) {
-      chrome.tabs.sendMessage(tabs[0].id, { action: action });
-    });
-    isUp = currUp;
-  }
+  // const currUp = EYES.left[3].y < 210;
+  // if (currUp != isUp) {
+  //   console.log('up changed');
+  //   const action = currUp ? 'up-on' : 'up-off';
+  //   chrome.tabs.query({ active: true }, function (tabs) {
+  //     chrome.tabs.sendMessage(tabs[0].id, { action: action });
+  //   });
+  //   isUp = currUp;
+  // }
 }
