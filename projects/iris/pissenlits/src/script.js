@@ -2,11 +2,11 @@
 const PLAYERS = [];
 const ANIMATION_PATHS = [
   "res/pissenlits.json",
-  "res/pissenlits-blue.json",
-  "res/little-fish.json",
+  "res/black-flower.json",
+  "res/gold-flower.json",
   // "res/cloud-2.json",
   "res/bouquet-dore.json",
-  "res/bouquet-green.json",
+  "res/gold-flower-bouquet.json",
   //"res/algaes.json",
 ];
 //
