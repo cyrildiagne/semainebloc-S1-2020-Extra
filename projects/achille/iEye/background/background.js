@@ -142,9 +142,9 @@ function getEyesFromFace(face) {
   //console.log(EYES.left[3].y);
 }
 
-if (isNaN(baseY)) {
-  baseY = EYES.left[3].y
-}
+// if (isNaN(baseY)) {
+//   baseY = EYES.left[3].y
+// }
 
 let isDown = false;
 let isUp = false;
