@@ -1,8 +1,8 @@
 let pointsCounter = 0;
 
-chrome.extension.sendMessage({event: "get_forbidden_words"}, function (response) {
+chrome.extension.sendMessage({event: "get_current_url"}, function (response) {
 
-  
+  console.log(arguments);
 
   var readyStateCheckInterval = setInterval(function () {
     if (document.readyState === 'complete') {
@@ -10,13 +10,9 @@ chrome.extension.sendMessage({event: "get_forbidden_words"}, function (response)
 
       console.log('STARTED');
 
-      getWords(response).forEach(word => {
-        replaceText(word, '');
-      });
-
-
-      // answer();
       
+      // answer();
+      // replaceText('*', 'Wikipedia', 'TEST', 'g')
       // console.log(findCurrentWebsite());
 
       // window.location.split(' ').forEach(word => {
@@ -35,17 +31,18 @@ chrome.extension.sendMessage({event: "get_forbidden_words"}, function (response)
   }, 10);
 });
 
-function getWords(url) {
+function findCurrentWebsite() {
   // let result;
 
-  for (let website of urls) {
-    if(website.url === url) {
-      result = website
-      break;
-    }
-  }
+  // for (let website of urls) {
+  //   console.log(window.location.host, website.url);
+  //   if(website.url.includes(window.location.hostname)) {
+  //     result = website
+  //     break;
+  //   }
+  // }
 
-  return result.hideWords;
+  return result;
 }
 
 function elemClicked(e) {

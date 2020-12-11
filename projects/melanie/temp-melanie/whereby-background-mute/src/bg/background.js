@@ -15,8 +15,8 @@ chrome.extension.onMessage.addListener(function (
   if (request.event == "get_url") {
     console.log(getCurrentWebsite())
     sendResponse(getCurrentWebsite());
-  } else if (request.event == "get_forbidden_words") {
-    // currentTab = sender.tab.id;
+  } else if (request.event == "get_current_url") {
+    currentTab = sender.tab.id;
     sendResponse(getCurrentWebsite());
   } else if (request.event == "click_score") {
 
@@ -27,14 +27,16 @@ chrome.extension.onMessage.addListener(function (
     // Get new URL
     
     let url = getNextWebsite();
-    console.log(url);
-    updateTab(url);
+    // updateTab(url);
+    chrome.tabs.update(currentTab.id, { url: url });
     // Increment score
     globalScore += 100;
 
     // Send new url & score
     setTimeout(() => {
+
       sendResponse({ url: url, score: globalScore });
+
     }, 2000);
   } else {
 
@@ -45,18 +47,18 @@ chrome.extension.onMessage.addListener(function (
 });
 
 function getNextWebsite() {
-  urlIndex = (urlIndex + 1) % urls.length;
   let url = urls[urlIndex].url;
+  urlIndex = (urlIndex + 1) % urls.length;
+
   return url;
 }
 
-function updateTab(url) {
-  chrome.tabs.query({active: true, windowType: "normal"}, function (tabs) {
-    chrome.tabs.update(tabs[0].id, { url });
+function updateTab() {
+  let url = getCurrentWebsite();
+  chrome.tabs.get(currentTab, function (tabs) {
+    // chrome.tabs.update(tabs[0].id, { url });
+    console.log(tabs);
   });
-  // chrome.tabs.query({active: true, windowType: "popup"}, function (tabs) {
-  //   chrome.tabs.update(tabs[0].url, { url: tabs[0].url });
-  // });
 }
 
 function getCurrentWebsite() {
@@ -79,6 +81,7 @@ chrome.browserAction.onClicked.addListener((tab) => {
     height: 1920,
     focused: false,
   });
+
   updateTab(url);
 });
 
