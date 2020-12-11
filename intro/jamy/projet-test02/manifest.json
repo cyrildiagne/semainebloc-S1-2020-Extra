@@ -1,0 +1,35 @@
+{
+  "name": "Trail",
+  "version": "2.0",
+  "description": "Play with PIXI.",
+  "background": {
+    "persistent": false,
+    "scripts": [
+      "src/background.js",
+      "src/hot-reload.js"
+    ]
+  },
+  "permissions": ["<all_urls>","history"],
+  
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "all_frames": true,
+      "js": [
+        "libs/pixi.min.js",
+        "src/ripple.js",
+        "src/pixi.js",
+        "src/content.js",
+        "src/circle.js"
+      ],
+      "css": ["css/content.css"]
+    }
+  ],
+  "web_accessible_resources": ["res/cursor02.png"],
+
+  "browser_action": {
+    "default_icon": "res/icon.png"
+  },
+
+  "manifest_version": 2
+}

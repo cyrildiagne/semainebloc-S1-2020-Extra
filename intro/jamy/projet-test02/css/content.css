@@ -1,0 +1,31 @@
+
+html::-webkit-scrollbar {
+    display: none;
+  }
+  
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+p,a,h1,h2,h3,h4,h5,h6{
+    z-index: 2 !important;
+}
+
+#myCanvasTrail{
+    position: fixed !important;
+    z-index: 999 !important;
+    left: 0 !important;
+    top: 99vh!important;
+    opacity: 1 !important;
+    transition: 0.5s ease !important;
+    border-top: 2px black solid;
+    background: white;
+    padding-top: 5vh !important;
+}
+
+#myCanvasTrail:hover{
+    top:1vh !important;
+    transition: 0.5s ease !important;
+    padding-top: 0 !important;
+}
