@@ -50,6 +50,18 @@ h1:after, h2:after, h3:after {
   opacity: 0; 
  
 }
+.pre--active a{
+  pointer-events: none;
+}
+
+.pre--active article{
+  pointer-events: none;
+  opacity: 0; 
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
 .pre--active div{
   pointer-events: none;
   opacity: 0; 
