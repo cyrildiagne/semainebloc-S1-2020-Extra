@@ -19,6 +19,12 @@ window.addEventListener("click", function () {
           console.log('it is between 0 and 50') 
           console.log(result.data.aqi)
           document.documentElement.style.setProperty('--blur', '2px');
+          document.documentElement.style.setProperty('--color', (0, 0, 0));
+          document.documentElement.style.setProperty('--background-color', (0,0,0));
+          document.documentElement.style.setProperty('--grayscale', (80));
+
+
+
         } else if (result.data.aqi > 50 && result.data.aqi < 100) {
           console.log('it is between 50 and 100')
           console.log(result.data.aqi)

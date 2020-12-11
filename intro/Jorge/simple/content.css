@@ -1,49 +1,109 @@
 :root {
   --blur: 0px;
-  --color: lightgray;
+  --color: rgb(255, 255, 255);
+  --background-color: rgb(255, 255, 255);
+  --grayscale:(0%);
+  --background: rgb(255, 255, 255);
 }
 
-.custom-img {
-  transition: all 1s;
+#searchform > div.sfbg > div{
+    filter: grayscale(var(--grayscale));
+    background-color: var(--background-color)!important;
+    color: var(--color) !important;
 }
 
-.custom-img:hover {
-  transform: rotate(45deg);
+#hdtb > div.yg51vc{
+    filter: grayscale(var(--grayscale));
+    background-color: var(--background-color)!important;
+    color: var(--color) !important;
+}
+
+#searchform > div.sfbg > div{
+    filter: grayscale(var(--grayscale));
+    background-color: var(--background-color)!important;
+}
+
+h1, h2, h3{
+    color: rgb(0, 0, 0);
+    filter: grayscale(var(--grayscale));
+}
+a {
+    filter: grayscale(var(--grayscale));
+    color: #000000 !important;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.10);
+}
+
+#hdtb-msb .hdtb-mitem.hdtb-msel {
+    filter: grayscale(var(--grayscale));
+    border-bottom: 1px solid !important;
+    color: #000000 !important;
+}
+
+#rso > div:nth-child(2) > div > g-section-with-header > div.wFKnCb > g-more-link > a > div{
+    background:transparent !important;
+    filter: grayscale(var(--grayscale));
+    border: 1px solid transparent !important;
+}
+
+#extabar > div{
+
+    filter: grayscale(var(--grayscale));
+    background-color: var(--background-color)!important;
+    color: var(--color) !important;
+}
+
+#searchform{
+    filter: grayscale(var(--grayscale));
+    background: gray;
+}
+
+#searchform > div.sfbg{
+    filter: grayscale(var(--grayscale));
+    background: var(--background)!important;
+}
+
+#slim_appbar{
+    filter: grayscale(var(--grayscale));
+    background-color: var(--background-color)!important;
+    color: var(--color) !important; 
 }
 
 #main {
-  filter: grayscale(80%);
-  background-color: gray !important;
+  filter: grayscale(var(--grayscale));
+  background-color: var(--background-color)!important;
   color: var(--color) !important;
   filter: blur(var(--blur));
 }
 
 #wp-tabs-container {
-  filter: grayscale(80%);
-  background-color: gray !important;
-  color: lightgray !important;
+    filter: grayscale(var(--grayscale));
+    background-color: var(--background-color)!important;
+  color: var(--color) !important;
 }
 
 #h3 {
-  filter: grayscale(80%);
-  background-color: gray !important;
-  color: lightgray !important;
+    color: black;  
+    filter: grayscale(var(--grayscale));
 }
 #tsf > div:nth-child(2) > div.A8SBwf > div.logo.doodle > a > img {
-  filter: grayscale(80%);
+    filter: grayscale(var(--grayscale));
   filter: blur(var(--blur));
 }
 
 #gbwa > div > a > svg {
-  filter: grayscale(80%);
+    filter: grayscale(var(--grayscale));
   filter: blur(var(--blur));
 }
 
 #gb > div > div.gb_3e > div.gb_Oa.gb_dd.gb_Fg.gb_i.gb_Uf > div > a > img {
-  filter: grayscale(80%);
+    filter: grayscale(var(--grayscale));
   filter: blur(var(--blur));
 }
 
-#particle {
-  height: 100%;
-}
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+  }
