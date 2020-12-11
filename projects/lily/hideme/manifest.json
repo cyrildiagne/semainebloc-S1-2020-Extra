@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "manifest_version": 2,
   "browser_action": {
+    "default_title": "Whereby Extension",
     "default_icon": "icons/icon128.png",
-    "default_title": "Whereby Extension"
+    "default_popup": "src/browser_action/browser_action.html"
   },
   "description": "Customize Whereby with this extension.",
   "icons": {
@@ -12,6 +13,9 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
+  "permissions": [
+    "alarms"
+  ],
   "default_locale": "en",
   "background": {
     "scripts": [
@@ -38,3 +42,4 @@
     }
   ]
 }
+

@@ -12,9 +12,13 @@ chrome.extension.sendMessage({}, (response) => {
       // // This part of the script triggers when page is done loading
       // console.log("Hello. This message was sent from scripts/inject.js");
       // // ----------------------------------------------------------
+    
+
+    
     }
   }, 10);
 });
+
 
 function tryAddHideButton() {
   let videoCells = document.querySelectorAll('[class*="gridVideoCell"]');
@@ -48,8 +52,8 @@ function createHideButton(container) {
 function update() {
   requestAnimationFrame(update);
   tryAddHideButton();
-  // updateMuteButton();
-  // updateCamButton();
+  updateMuteButton();
+  updateCamButton();
   // tryAddMenuButton();
 
   // if (
@@ -88,6 +92,14 @@ function updateCamButton() {
     connectedRoom.classList.remove("cam-background");
   }
 }
+
+
+// function alertMic(){
+  
+
+  
+
+// }
 
 function tryAddMenuButton() {
   // let menu = document.querySelector('[class*="hoverMenuWrapper"]');
