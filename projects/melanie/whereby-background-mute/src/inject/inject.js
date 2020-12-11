@@ -1,12 +1,28 @@
 let pointsCounter = 0;
 
-chrome.extension.sendMessage({}, function (response) {
+chrome.extension.sendMessage({event: "get_forbidden_words"}, function (response) {
+
+  
+
   var readyStateCheckInterval = setInterval(function () {
     if (document.readyState === 'complete') {
       clearInterval(readyStateCheckInterval);
 
       console.log('STARTED');
+
+      getWords(response).forEach(word => {
+        replaceText(word, '');
+      });
+
+
       // answer();
+      
+      // console.log(findCurrentWebsite());
+
+      // window.location.split(' ').forEach(word => {
+      //   replaceText(word, 'HIDDEN');
+      // });
+
       openShutter();
 
       let allElements = document.querySelectorAll('*');
@@ -18,6 +34,19 @@ chrome.extension.sendMessage({}, function (response) {
     }
   }, 10);
 });
+
+function getWords(url) {
+  // let result;
+
+  for (let website of urls) {
+    if(website.url === url) {
+      result = website
+      break;
+    }
+  }
+
+  return result.hideWords;
+}
 
 function elemClicked(e) {
   e.stopPropagation();
@@ -45,26 +74,9 @@ function elemClicked(e) {
   // }
 }
 
-var word = "wikipedia",
-    queue = [document.body],
-    curr
-;
-while (curr = queue.pop()) {
-    if (!curr.textContent.match(word)) continue;
-    for (var i = 0; i < curr.childNodes.length; ++i) {
-        switch (curr.childNodes[i].nodeType) {
-            case Node.TEXT_NODE : // 3
-                if (curr.childNodes[i].textContent.match(word)) {
-                    console.log("Found!");
-                    console.log(curr);
-                    // you might want to end your search here.
-                }
-                break;
-            case Node.ELEMENT_NODE : // 1
-                queue.push(curr.childNodes[i]);
-                break;
-        }
-    }
+function replaceText(searchText, replaceText) {
+  const reg = new RegExp(`${searchText}`, 'ig')
+  document.body.innerHTML = document.body.innerHTML.replace(reg, replaceText);
 }
 
 function openShutter() {
