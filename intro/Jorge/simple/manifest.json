@@ -8,7 +8,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://google.com/*", "https://google.ch/*", "https://*.google.com/*", "https://*.google.ch/*"],
+      "matches": ["https://google.com/search?sxsrf=*", "https://google.ch/search?sxsrf=*", "https://*.google.com/search?sxsrf=*", "https://*.google.ch/search?sxsrf=*"],
       "all_frames": true,
       "js": ["content.js", "libs/particles.min.js", "particles-settings.js"],
       "css": ["content.css"]
