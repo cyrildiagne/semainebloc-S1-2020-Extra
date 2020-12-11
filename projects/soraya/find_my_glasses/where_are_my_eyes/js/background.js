@@ -1,4 +1,4 @@
-let blurs = [0, 1, 2, 3];
+let blurs = [0, 1, 5,10,15,18,20,35,50,80];
 let blurLevel = 0;
 
 // chrome.browserAction.onClicked.addListener(buttonClicked);

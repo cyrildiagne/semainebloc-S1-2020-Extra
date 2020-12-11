@@ -6,11 +6,13 @@ body {
 
 .custom--game-button {
     display: inline-block !important;
-    background-color: rgba(255, 255, 255) !important;
-    border-radius: 5px;
-    outline: rgb(221,83,164) 5px solid !important;
-    padding: 10px !important;
-    cursor: pointer !important;
+    background-color: #FF671E;
+    /* border-radius: 10px !important; */
+    /* outline: #FF671E 5px solid !important; */
+    border-radius:2px;
+    padding:10px !important;
+    cursor: pointer !important; 
+    color: #ffffff;
     z-index: 1000 !important;
 }
 
