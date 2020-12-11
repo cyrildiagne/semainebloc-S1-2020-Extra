@@ -22,3 +22,13 @@ function buttonClicked(tab) {
   };
   chrome.tabs.sendMessage(tab.id, msg);
 }
+
+// function onClicked(tab) {
+//   chrome.windows.create({
+//     url: chrome.runtime.getURL("popup/popup.html"),
+//     type: "popup",
+//     focused: true,
+//   });
+// }
+
+// chrome.browserAction.onClicked.addListener(onClicked);

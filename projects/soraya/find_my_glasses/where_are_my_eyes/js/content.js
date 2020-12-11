@@ -1,12 +1,3 @@
-// function onClicked(tab) {
-//   const message = { action: 'run' };
-//   chrome.tabs.sendMessage(tab.id, message);
-// }
-
-// // Send a message to the content script when button is clicked.
-// chrome.browserAction.onClicked.addListener(onClicked);
-
-
 let contrast = [100, 150];
 let index = 1;
    
@@ -17,7 +8,7 @@ function doBlur(blur = 0, contrast = 100) {
 
 }
 
-let elem = placeButton('HERE', 'game-button');
+let elem = placeButton('Here', 'game-button');
 
 window.addEventListener(
   'click',
