@@ -9,11 +9,19 @@
 
 :root {
   --blur: 0px;
-  --color: rgb(255, 255, 255);
-  --background-color: rgb(255, 255, 255);
   --grayscale:(0%);
-  --background: rgb(255, 255, 255);
+  animation-name:APPEARGRIS;
+  animation-duration:5s;
 
+}
+
+#iur > div:nth-child(2) > div > div > div:nth-child(5) > a > g-img > div{
+    filter: grayscale(30%);
+    --blur: 0px;
+}
+
+#rcnt{
+    filter: grayscale(30%);
 }
 
 @keyframes APPEAR {
@@ -25,6 +33,7 @@
   }
 
 #particles-js {
+    pointer-events: none;
     position: absolute;
     width: 100%;
     height: 300vh;
