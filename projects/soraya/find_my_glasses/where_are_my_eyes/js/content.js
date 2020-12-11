@@ -7,7 +7,7 @@ function doBlur(blur = 0, contrast = 100) {
 `;
 }
 
-let elem = placeButton('HERE', 'game-button');
+let elem = placeButton('Here', 'game-button');
 
 window.addEventListener(
   'click',
@@ -95,8 +95,8 @@ async function delay(millis = 0) {
 chrome.runtime.onMessage.addListener(gotMessage);
 
 function gotMessage(message, sender, sendResponse) {
-  console.log(message.txt);
-  if (message.txt === 'hello') {
+  if (message.action === 'gameover') {
+    console.log('game over');
     doBlur();
   }
 }
