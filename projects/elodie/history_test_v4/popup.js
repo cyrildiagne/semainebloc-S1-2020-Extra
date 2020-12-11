@@ -102,13 +102,28 @@ function buildHistoryDivs() {
     // var day = myDate.toLocaleString("fr-FR");
   }
 
-
-  $(".site_bar").hover(function () {
+  $(".site_bar").mouseenter(function () {
     $("#site_title").text($(this).attr("site_title"));
     // $("#site_visits").text($(this).attr("site_visits"));
     $("#site_url").text($(this).attr("site_link"));
     $("#url_src").attr("href", $(this).attr("site_link"));
     $("#site_time").text($(this).attr("last_visit"));
+  });
+
+  $(".site_bar").mouseover(function () {
+    $("#site_title").text($(this).attr("site_title"));
+    // $("#site_visits").text($(this).attr("site_visits"));
+    $("#site_url").text($(this).attr("site_link"));
+    $("#url_src").attr("href", $(this).attr("site_link"));
+    $("#site_time").text($(this).attr("last_visit"));
+  });
+
+  $(".site_bar").mouseout(function () {
+    $("#site_title").text("");
+    // $("#site_visits").text($(this).attr("site_visits"));
+    $("#site_url").text("");
+    $("#url_src").attr("href", "");
+    $("#site_time").text("");
   });
 
  
