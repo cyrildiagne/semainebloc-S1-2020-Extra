@@ -39,16 +39,5 @@ async function sendAction(tab, actionType) {
   chrome.tabs.sendMessage(tab, message);
 }
 
-function draw (){
-  
-  var canvas = document.getElementById('canvas');
-  if (canvas.getContext) {
-    var ctx = canvas.getContext('2d');
 
-    ctx.fillRect(250, 250, 100, 100);
-    ctx.clearRect(45, 45, 60, 60);
-    ctx.strokeRect(50, 50, 50, 50);
-  
-  }
-}
 
