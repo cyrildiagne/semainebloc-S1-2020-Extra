@@ -93,14 +93,14 @@ async function delay(millis = 0) {
 }
 
 //tester message
-chrome.runtime.onMessage.addListener(gotMessage);
+chrome.extension.onMessage.addListener(gotMessage);
 
 function gotMessage(message, sender, sendResponse) {
   console.log(message.txt);
   if (message.txt === 'hello') {
     doBlur();
-    alert("Better one eye than quite blind. Right? Try again.");
-  }
+    console.log('game over');
+  } 
 }
 
 // document.body.
