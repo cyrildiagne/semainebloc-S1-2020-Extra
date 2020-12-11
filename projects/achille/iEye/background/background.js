@@ -1,6 +1,6 @@
 let VIDEO, CANVAS;
 
-window.addEventListener("load", load);
+window.addEventListener('load', load);
 
 async function load() {
   VIDEO = await enableWebcam();
@@ -37,7 +37,7 @@ function getStreamVideo() {
 //ask for webcam permissions the first time
 function enableWebcam() {
   return new Promise((resolve) => {
-    let video = document.createElement("video");
+    let video = document.createElement('video');
     document.body.appendChild(video);
     chrome.runtime.onMessage.addListener(request);
     request();
@@ -51,7 +51,7 @@ function enableWebcam() {
         })
         .catch((e) => {
           chrome.runtime.openOptionsPage(() => {
-            console.log("Option page opened");
+            console.log('Option page opened');
           });
         });
     }
@@ -66,7 +66,7 @@ function requestWebcam(video) {
       .getUserMedia(options)
       .then((stream) => {
         video.addEventListener(
-          "loadedmetadata",
+          'loadedmetadata',
           (_) => {
             video.play();
             resolve(video);
@@ -88,13 +88,13 @@ function requestWebcam(video) {
 
 async function launchFaceAPI(video) {
   await Promise.all([
-    faceapi.nets.tinyFaceDetector.loadFromUri("../models"),
-    faceapi.nets.faceLandmark68Net.loadFromUri("../models"),
-    faceapi.nets.faceRecognitionNet.loadFromUri("../models"),
-    faceapi.nets.faceExpressionNet.loadFromUri("../models"),
+    faceapi.nets.tinyFaceDetector.loadFromUri('../models'),
+    faceapi.nets.faceLandmark68Net.loadFromUri('../models'),
+    faceapi.nets.faceRecognitionNet.loadFromUri('../models'),
+    faceapi.nets.faceExpressionNet.loadFromUri('../models'),
   ]);
 
-  console.log("models loaded");
+  console.log('models loaded');
 
   let { width, height } = video.srcObject.getVideoTracks()[0].getSettings();
 
@@ -116,7 +116,7 @@ async function launchFaceAPI(video) {
     }
 
     const resizedDetections = faceapi.resizeResults(detections, displaySize);
-    canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
+    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
 
     //faceapi.draw.drawDetections(canvas, resizedDetections);
     faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
@@ -136,46 +136,17 @@ function getEyesFromFace(face) {
   if (newLeftEyePos) EYES.left = newLeftEyePos;
   if (newRightEyePos) EYES.right = newRightEyePos;
 
-  
-
   //console.log(EYES.left[3].x);
   //console.log(EYES.left[3].y);
 }
-Podium = {};
-Podium.keydown = function(k) {
-    var oEvent = document.createEvent('KeyboardEvent');
 
-    // Chromium Hack
-    Object.defineProperty(oEvent, 'keyCode', {
-                get : function() {
-                    return this.keyCodeVal;
-                }
-    });     
-    Object.defineProperty(oEvent, 'which', {
-                get : function() {
-                    return this.keyCodeVal;
-                }
-    });     
-
-    if (oEvent.initKeyboardEvent) {
-        oEvent.initKeyboardEvent("keydown", true, true, document.defaultView, false, false, false, false, k, k);
-    } else {
-        oEvent.initKeyEvent("keydown", true, true, document.defaultView, false, false, false, false, k, 0);
-    }
-
-    oEvent.keyCodeVal = k;
-
-    if (oEvent.keyCode !== k) {
-        alert("keyCode mismatch " + oEvent.keyCode + "(" + oEvent.which + ")");
-    }
-
-    document.dispatchEvent(oEvent);
-}
+let isDown = false;
+let isUp = false;
 
 function newLeftEyePos(face) {
   if (EYES.left[3].x > 250) {
-    console.log("left");
-   
+    console.log('left');
+
     /*chrome.tabs.query({ currentWindow: true }, function (tabsArray) {
 
       if (tabsArray.length === 1) return;
@@ -196,7 +167,7 @@ function newLeftEyePos(face) {
   }
 
   if (EYES.left[3].x < 160) {
-    console.log("right");
+    console.log('right');
 
     /* chrome.tabs.query({ currentWindow: true }, function (tabsArray) {
       if (tabsArray.length === 1) return;
@@ -211,17 +182,24 @@ function newLeftEyePos(face) {
       });
     });*/
   }
- 
-  if (EYES.left[3].y > 250) {
-    console.log("down");
-    Podium.keydown(40)
-    console.log(Podium.keydown(40));
-    
+
+  const currDown = EYES.left[3].y > 250;
+  if (currDown != isDown) {
+    console.log('down changed');
+    const action = currDown ? 'down-on' : 'down-off';
+    chrome.tabs.query({ active: true }, function (tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, { action: action });
+    });
+    isDown = currDown;
   }
 
-  if (EYES.left[3].y < 210) {
-    console.log("up");
-    Podium.keydown(38)
-   console.log(Podium.keydown());
+  const currUp = EYES.left[3].y < 210;
+  if (currUp != isUp) {
+    console.log('up changed');
+    const action = currUp ? 'up-on' : 'up-off';
+    chrome.tabs.query({ active: true }, function (tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, { action: action });
+    });
+    isUp = currUp;
   }
 }

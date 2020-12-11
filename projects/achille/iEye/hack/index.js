@@ -2709,7 +2709,22 @@
 
 
 function onDocumentLoad() {
-    new Runner('.interstitial-wrapper');
+    const runner = new Runner('.interstitial-wrapper');
+    const R = window['Runner']
+    chrome.runtime.onMessage.addListener((msg) => {
+        switch(msg.action) {
+            case 'up-on':
+                R.onKeyDown({keyCode: '38'})
+                break;
+            case 'up-off':
+                R.onKeyUp({keyCode: '38'})
+                break;
+            case 'down-on':
+                break;
+            case 'down-off':
+                break;
+        }
+    })
 }
 
 document.addEventListener('DOMContentLoaded', onDocumentLoad);
