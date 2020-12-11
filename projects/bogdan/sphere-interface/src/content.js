@@ -22,7 +22,7 @@ const API = "https://pixabay.com/api/";
 const API_KEY = "8609708-a661654ee4e5cad9c12571d32";
 
 let textureTransferLink;
-let searchWord = "mystbreaery";
+let searchWord = "photography";
 
 const numberOfSpheres = 10;
 const sphereSize = 0.5;
@@ -31,6 +31,17 @@ document.addEventListener("mousemove", onDocumentMouseMove, false);
 
 init();
 animate();
+
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    if (request.action == "changeImages") {
+      searchWord = request.inputString;
+      removeSpheres();
+      createSpheres();
+    }
+  }
+);
+
 
 async function getImages(searchWord) {
   const url = API + "?key=" + API_KEY + "&q=" + searchWord;
@@ -67,13 +78,6 @@ async function init() {
   container.appendChild(renderer.domElement);
   document.body.insertBefore(container, document.body.firstChild);
 
-  //MATERIAL / TEXTURE
-  const images = await getImages(searchWord);
-  const materials = images.map((imageURL) => {
-    const texture = new THREE.TextureLoader().load(imageURL);
-    const material = new THREE.MeshLambertMaterial({ map: texture });
-    return material;
-  });
 
   //LIGHTS
   var light = new THREE.AmbientLight(0x404040);
@@ -82,6 +86,34 @@ async function init() {
   directionalLight.position.set(1, 1, 1).normalize();
   scene.add(directionalLight);
 
+
+  // await createSpheres();
+
+  camera.position.z = 10;
+
+  onWindowResize();
+  window.addEventListener("resize", onWindowResize, false);
+}
+
+function removeSpheres() {
+  spheres.forEach(sphere => {
+    scene.remove(sphere);
+  });
+
+  spheres.length = 0;
+}
+
+async function createSpheres() {
+
+  //MATERIAL / TEXTURE
+  const images = await getImages(searchWord);
+  const materials = images.map((imageURL) => {
+    const texture = new THREE.TextureLoader().load(imageURL);
+    const material = new THREE.MeshLambertMaterial({ map: texture });
+    return material;
+  });
+
+  
   //GENERATE SPHERES
   for (let i = 0; i < numberOfSpheres; i++) {
     const geometry = new THREE.SphereBufferGeometry(sphereSize, 32, 16);
@@ -98,9 +130,6 @@ async function init() {
     scene.add(sphere);
     spheres.push(sphere);
   }
-  camera.position.z = 10;
-
-  window.addEventListener("resize", onWindowResize, false);
 }
 
 //ANIMATE
@@ -155,20 +184,22 @@ function render() {
 }
 
 function onWindowResize() {
+  w = document.body.scrollWidth;
+  h = document.body.scrollHeight
+
   // Camera frustum aspect ratio
   camera.aspect = w / h;
   // After making changes to aspect
   camera.updateProjectionMatrix();
   // Reset size
   renderer.setSize(
-    document.documentElement.scrollHeight,
-    document.body.offsetWidth
+    w,
+    h,
   );
-  renderer.setSize(w, s_h);
 }
 
 function onDocumentMouseMove(event) {
-  event.preventDefault();
+  // event.preventDefault();
 
   // mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   // mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
