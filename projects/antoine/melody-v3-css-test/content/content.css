@@ -40,7 +40,12 @@ h1:after, h2:after, h3:after {
   transition-duration: 1s;
   animation: morph infinite linear 1.3s;
 } */
-
+.emotion-des{
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+}
 .tone--active div { 
   /* transition: cubic-bezier(0.075, 0.82, 0.165, 1);
   transition-duration: 1s; */

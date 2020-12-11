@@ -161,6 +161,7 @@ function setListener(post) {
   post.addEventListener("mouseenter", () => {
     // post.classList.toggle("tone--active");
     $(post).toggleClass("pre--active");
+    $(post).append( "<h1 class='emotion-des'>Sadness</h1>" );
   });
   post.addEventListener("click", () => {
     // post.classList.toggle("tone--active");
