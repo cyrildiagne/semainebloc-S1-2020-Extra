@@ -150,7 +150,7 @@ function analyseNewPosts() {
       console.log(post);
       let note = NOTES[output];
       post.dataset.tonenote = note;
-      console.log(output);
+      // console.log(output);
       post.classList.toggle(output);
       // console.log(description, description.textContent);
     }
@@ -160,9 +160,13 @@ function analyseNewPosts() {
 function setListener(post) {
   post.addEventListener("mouseenter", () => {
     // post.classList.toggle("tone--active");
+    $(post).toggleClass("pre--active");
+  });
+  post.addEventListener("click", () => {
+    // post.classList.toggle("tone--active");
     $(post).toggleClass("tone--active");
     post.classList.toggle("artdeco-card");
-    post.classList.toggle("full-height");
+    // post.classList.toggle("full-height");
     let activePosts = getAllPlayingPosts();
     port.postMessage({
       tabId: TAB_ID,
