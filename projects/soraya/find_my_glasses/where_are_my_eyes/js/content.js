@@ -7,40 +7,34 @@ function doBlur(blur = 0, contrast = 100) {
 `;
 }
 
-let elem = placeButton('Here', 'game-button');
+let elem = placeButton("", "game-button");
 
-window.addEventListener(
-  'click',
-  (evt) => {
-    if (evt.target !== elem) return;
-    elem = undefined;
-    win();
-  },
-  true
-);
+
 
 // doBlur(10, 150);
-chrome.runtime.sendMessage({ action: 'getBlur' }, (blurValue) => {
+chrome.runtime.sendMessage({ action: "getBlur" }, (blurValue) => {
   console.log(blurValue);
   doBlur(blurValue, contrast[2]);
+
+  // requestAnimationFrame(_ => {document.body.classList.remove('game-no-transition')});
 });
 //doit envoyer les valeur de doBlur au background pour qu'il les stocke chrome.extension.sendMessage()
 //doit récupérer les valeurus stockées dans le background pour les incérementer.
 
-function placeButton(text, subclass) {
-  let elem = document.createElement('div');
+async function placeButton(text, subclass) {
+
+  let elem = document.createElement("div");
   elem.classList.add(`custom--${subclass}`);
   elem.textContent = text;
 
-  let filter = '*:not(script):not(.link):not(img):not(a):not(b)';
+  let filter =
+    "*:not(script):not(input):not(.link):not(img):not(a):not(b):not(button):not(.deal-panel)";
 
   let allDoms = document.body.querySelectorAll(filter);
-  let randomDom = allDoms[Math.floor(Math.random() * allDoms.length)];
+  let selectedContainer = allDoms[Math.floor(Math.random() * allDoms.length)];
 
   //   let allTexts = randomDom.childNodes;
   // let randomText = allTexts[Math.floor(Math.random() * allTexts.length)];
-
-  let selectedContainer;
 
   //   if (allTexts.length > 0) {
   //     let randomI = Math.floor(Math.random() * allTexts.length);
@@ -58,31 +52,65 @@ function placeButton(text, subclass) {
   //     selectedContainer = randomDom;
   //   }
 
-  selectedContainer = randomDom;
+  if (!selectedContainer) return placeButton(text, subclass);
+
+  // selectedContainer = randomDom;
 
   let bounds = selectedContainer.getBoundingClientRect();
 
-  if (bounds.width < 10 || bounds.height < 10)
-    return placeButton(text, subclass);
+  let x = bounds.left + Math.random() * bounds.width;
+  let y = bounds.top + Math.random() * bounds.height; 
 
-  if (!selectedContainer?.offsetParent) return placeButton(text, subclass);
+  // if (x < 0 || x > document.body.scrollWidth)
+    x = Math.random() * document.body.scrollWidth;
 
-  selectedContainer.appendChild(elem);
+  // if (y < 0 || y > document.body.scrollHeight)
+    y = Math.random() * document.body.scrollHeight;
+
+  elem.style.left = x + "px";
+  elem.style.top = y + "px";
+
+  // return placeButton(text, subclass);
+
+  // if (!selectedContainer?.offsetParent) return placeButton(text, subclass);
+
+  // // if (!selectedContainer.offsetHeight || !selectedContainer.offsetWidth)
+  // // return placeButton(text, subclass);
+
+  document.body.appendChild(elem);
+
+  await delay(1);
+  elem.classList.add('make-visible');
+  
+
+  window.addEventListener(
+    "click",
+    (evt) => {
+      if (evt.target !== elem) return;
+      elem = undefined;
+      win();
+    },
+    true
+  );
 
   return elem;
 }
 
 async function win() {
-  console.log('FOUND!');
+  console.log("FOUND!");
+
+  chrome.runtime.sendMessage({ action: "onWin" });
+  document.body.classList.add('game-transition');
 
   await delay(400);
   // doBlur(blur[index+1], contrast[2]);
   doBlur();
-  console.log('reloading now!');
+  console.log("reloading now!");
   await delay(1000);
 
-  chrome.runtime.sendMessage({ action: 'onWin' });
-  location.reload();
+  
+  await delay(100);
+  window.location.reload();
 }
 
 async function delay(millis = 0) {
@@ -95,98 +123,9 @@ async function delay(millis = 0) {
 chrome.runtime.onMessage.addListener(gotMessage);
 
 function gotMessage(message, sender, sendResponse) {
-  if (message.action === 'gameover') {
-    console.log('game over');
+  if (message.action === "gameover") {
+    console.log("game over");
+    
     doBlur();
   }
 }
-
-// document.body.
-
-// console.log('hello from content.js');
-// //document.body.style.transform="rotate(1deg)";
-
-// // const ps = document.body.querySelectorAll("p");
-// // for (const p of ps) {
-// //     p.style.transform="rotate(90deg)";
-// // }
-
-// const ps = document.body.getElementsByTagName("p");
-// for (const p of ps) {
-//     p.classList.add('custom-p');
-// }
-
-// const hs1 = document.body.getElementsByTagName("h1");
-// for (const h of hs1) {
-//     h.classList.add('custom-h');
-// }
-
-// const hs2 = document.body.getElementsByTagName("h2");
-// for (const h of hs2) {
-//     h.classList.add('custom-h');
-// }
-
-// const hs3 = document.body.getElementsByTagName("h3");
-// for (const h of hs3) {
-//     h.classList.add('custom-h');
-// }
-
-// const as = document.body.getElementsByTagName("a");
-// for (const a of as) {
-//     a.classList.add('custom-a');
-// }
-
-// const imgs = document.body.getElementsByTagName("img");
-// for (const img of imgs) {
-//    // img.style.transform="rotate(45deg)";
-//     img.classList.add('custom-img');
-// }
-
-// const lis = document.body.getElementsByTagName("li");
-// for (const li of lis) {
-//    // img.style.transform="rotate(45deg)";
-//     li.classList.add('custom-li');
-// }
-
-// const spans = document.body.getElementsByTagName("span");
-// for (const span of spans) {
-//    // img.style.transform="rotate(45deg)";
-//     span.classList.add('custom-span');
-// }
-
-// const tds = document.body.getElementsByTagName("td");
-// for (const td of tds) {
-//    // img.style.transform="rotate(45deg)";
-//     td.classList.add('custom-td');
-// }
-
-// const ths = document.body.getElementsByTagName("th");
-// for (const th of ths) {
-//     th.classList.add('custom-th');
-// }
-
-// const buttons = document.body.getElementsByTagName("button");
-// for (const button of buttons) {
-//     button.classList.add('custom-button');
-// }
-
-// // const divs = document.body.getElementsByTagName("div");
-// // for (const div of divs) {
-// //    // img.style.transform="rotate(45deg)";
-// //     div.classList.add('custom-div');
-// // }
-
-// const labels = document.body.getElementsByTagName("label");
-// for (const label of labels) {
-//     label.classList.add('custom-label');
-// }
-
-// const is = document.body.getElementsByTagName("i");
-// for (const i of is) {
-//     i.classList.add('custom-i');
-// }
-
-// const texts = document.body.getElementsByTagName('#text');
-// for (const text of texts) {
-//     text.classList.add('custom-text');
-// }

@@ -1,60 +1,121 @@
-@import url('https://rsms.me/inter/inter.css');
-html { font-family: 'Inter', sans-serif;
-text-transform: uppercase; }
-@supports (font-variation-settings: normal) {
-  html { font-family: 'Inter var', sans-serif; }
-}
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
 
+
+html{
+ 
+  font-family: 'Heebo', sans-serif;
+  height: 100%;
+  height: 100%;
+  font-weight:300;
+ 
+}
 body {
   background-color: #ffffff;
-  padding:1%;
-  height:100vh;
+  height: 100%;
   overflow: hidden;
+  height: 100%;
 }
 
 #navbar {
+  z-index: 11;
   overflow: hidden;
   background-color: rgb(228, 228, 228);
-  margin-bottom: 3vh;
-  position:sticky;
+  position: sticky;
+  border-bottom: solid 1px #a7a7a7;
   padding-top: 20px;
   padding-bottom: 20px;
   font-size: 15px;
   color: #616161;
 }
 
-#historyInfo{
-  z-index:10;
-  padding-top:3%;
-  height:20vh;
-  position:sticky;
+#historyInfo {
+  z-index: 10;
+  padding-top: 3%;
+  height: 10vh;
+  position: sticky;
   background-color: rgb(228, 228, 228);
- 
+
   font-size: 15px;
   color: #616161;
-  overflow: hidden;
+  
   
 }
 
+
+#historyInfo p:nth-child(1){
+  height:4vh;
+}
+
 .column {
-  padding-left:5%;
+  padding-left: 5%;
   float: left;
   width: 20%;
 }
 
-.column:nth-child(2){
-  width:64%;
+.column:nth-child(2) {
+  width: 64%;
 }
 
-
-#historyInfo a{
+#historyInfo a {
   word-wrap: break-word;
 
   -ms-word-break: break-all;
   /* This is the dangerous one in WebKit, as it breaks things wherever */
   word-break: break-all;
   /* Instead use this non-standard one: */
-  word-break: break-word;
+  
+}
+
+
+
+.info_title{
+  color: rgb(136, 136, 136);
+  margin:0px;
+  padding:0px;
+ 
+  font-size:12px;
+  letter-spacing: 0.15em;
+}
+
+.info_title a, .info_title span{
+  color: #616161;
+  font-size: 15px;
+  letter-spacing: normal;
+}
+
+#site_title{
+  text-transform: capitalize;
+}
+.max2lines{
+  width:100%;
+  height:4vh;
+  overflow:hidden;
+
+  /* Required for text-overflow to do anything */
+
+}
+
+.max2lines a{
+  display:inline-block; 
+  width: inherit;
+
+  padding:0px;
+  margin:0px;
+  
+}
+.max2lines span{
+  width: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.max2lines p{
+  padding:0px;
+  margin:0px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 /* Clear floats after the columns */
 .row:after {
@@ -63,44 +124,68 @@ body {
   clear: both;
 }
 
-
-
 #navbar a:hover {
   background-color: #ddd;
   color: black;
 }
+#navbar{
+  height:4vh;
+}
+
+.wrapper{
+  height: 78vh;
+  
+}
+
+
+
+
+#main::-webkit-scrollbar {
+  width: 5px;
+}
+ 
+#main::-webkit-scrollbar-thumb {
+  background: rgb(208, 208, 208); 
+  border-radius: 20px;
+}
+
 
 #main {
-  margin-top: -7vh;
-  margin-bottom: 8vh;
-  padding-top:12vh;
-  /* padding-bottom:2vh; */
+  
+  margin-bottom:-5vh;
+  width:90%;
+  padding-top: 2vh;
+  padding-bottom:2vh;
   padding-left: 5%;
   padding-right: 5%;
   display: flex;
   flex-direction: row;
-  align-content:flex-start;
+  align-content: flex-start;
   flex-wrap: wrap;
   justify-content: center;
-  overflow-y:scroll;
-  height:100%;
+  overflow-y: scroll;
+  height: 100%;
 }
 
-#gradient{
-  z-index:10;
-  height:25vh;
+#gradient {
+  z-index: 10;
+  height: 23vh;
   position: absolute;
-  top:15vh;
-  left:0;
-  width:100vw;
-  background:transparent;
-  background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 80%, rgba(255,255,255,0) 100%);
+  top: 0vh;
+  left: 0;
+  width: 100vw;
+  background: transparent;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 80%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 .site_bar {
-  font-family: Inter, sans-serif;
   font-weight: 300;
-    position: relative;
+  position: relative;
   margin-top: 5px;
   margin-right: 5px;
   height: 70px;
@@ -108,59 +193,80 @@ body {
   --main-bg-color: #252525;
   background-color: var(--main-bg-color);
   border-radius: 40px;
-  border:solid transparent 1px;
+  border: solid transparent 1px;
   /* background-color:--main-bg-color; */
- color:rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
+  text-overflow: ellipsis;
   transition: all 0.2s ease-in-out;
   overflow: hidden;
-  -webkit-box-shadow: 17px 21px 30px -11px rgba(0,0,0,0.46);
--moz-box-shadow: 17px 21px 30px -11px rgba(0,0,0,0.46);
-box-shadow: 17px 21px 30px -11px rgba(0,0,0,0.46);
+  -webkit-box-shadow: 17px 21px 30px -11px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: 17px 21px 30px -11px rgba(0, 0, 0, 0.46);
+  box-shadow: 17px 21px 30px -11px rgba(0, 0, 0, 0.46);
 }
 
-.site_bar:hover{
-    
-    background-color: #ffffff !important;
-    border:solid #969696 1px;
-    
-    
+.site_bar:hover {
+  background-color: #ffffff !important;
+  border: solid #969696 1px;
 }
 
 .site_name {
   height: 100%;
   width: 100%;
   margin: 0 auto;
-  text-transform: uppercase;
-  font-family: Inter, sans-serif;
+  
   font-size: 20px;
-  text-align: center;
+  text-align: left;
   height: 100px;
   overflow: hidden;
   word-wrap: break-word;
 }
 
-.site_bar a{
-  color: inherit; 
-  margin: 0;
-  display:block;
-  text-decoration: none;
+
+
+
+.info_title > a, .info_title > span{
+  color: #616161;
+  font-size: 15px;
+  background: transparent;
   
-  text-align: center;
+  
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.info_title:nth-child(1){
+  padding-top:5px;
+}
+
+#url_src:hover{
+  background-color: #cecece;
+  
+}
+
+
+.site_bar a {
+  padding-top:12px;
+  color: inherit;
+  margin: 0;
+  display: block;
+  text-decoration: none;
+
+  text-align: left;
+  padding-left:3%;
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 38px;
+  font-weight: 200;
   white-space: nowrap;
 }
 
 .site_name span {
   position: relative;
   /* display: inline-block; */
-  
 }
 
-
-
 input[type="date"]::-webkit-calendar-picker-indicator {
-  color:#616161;
+  color: #616161 !important;
 }
 
 /* A few custom styles for date inputs */
@@ -168,32 +274,34 @@ input[type="date"] {
   border-radius: 10px;
   appearance: none;
   -webkit-appearance: none;
-  color:#616161;
-  font-family: Inter, sans-serif;
-  font-size: 18px;
-  border:1px solid #696969;
-  background:transparent;
-  padding:5px;
-  margin:0px;
+  color: #616161 !important;
+  font-size: 15px;
+  border: 1px solid #696969;
+  background: transparent;
+  padding: 5px;
+  margin: 0px;
   display: inline-block !important;
+  font-family: 'Heebo', sans-serif !important;
+  font-weight: 100 !important;
   visibility: visible !important;
   transition: all 0.3s ease;
 }
 
-input[type="date"]:hover{
+input[type="date"]:hover {
   background-color: #cecece;
-  border:solid 1px transparent;
+  border: solid 1px transparent;
 }
 
-input[type="date"], focus {
-  outline:0;
+input[type="date"],
+focus {
+  outline: 0;
   color: #616161;
   box-shadow: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
 }
 
-#valiDate{
+#valiDate {
   color: #616161;
   font-size: 15px;
   background: transparent;
@@ -201,10 +309,26 @@ input[type="date"], focus {
   padding-top: 10px;
   padding-bottom: 8px;
   border-radius: 10px;
-
+  
   transition: all 0.3s ease;
 }
-#valiDate:hover{
+#valiDate:hover {
   background-color: #cecece;
-  border:solid 1px transparent;
+  border: solid 1px transparent;
 }
+#valiDate:focus{
+  outline: 0;
+}
+
+
+
+.cursor {
+  pointer-events: none;
+}
+.cursor__ball {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+

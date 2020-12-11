@@ -1,4 +1,4 @@
-let blurs = [0, 1, 2, 3];
+let blurs = [0, 1, 2, 3, 5,10,15,18,20,35,50,80];
 let blurLevel = 0;
 
 // chrome.browserAction.onClicked.addListener(buttonClicked);
@@ -18,7 +18,10 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       );
     }
   } else if (msg.action == 'gameover') {
-    chrome.tabs.query({ active: true }, function (tabs) {
+    
+    blurLevel = 0;
+
+    chrome.tabs.query({ active: true, windowType: "normal" }, function (tabs) {
       chrome.tabs.sendMessage(tabs[0].id, { action: 'gameover' });
     });
   }

@@ -6,6 +6,7 @@
     "persistent": false,
     "scripts": ["js/hot-reload.js", "js/background.js"]
   },
+  "web_accessible_resources": ["icon_eye.png"],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],

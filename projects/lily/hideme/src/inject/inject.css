@@ -4,26 +4,37 @@
 
 .mute-background {
   /* background-image: url('icons/muted-bg.png'); */
-  background-color: green;
+  background-color: black;
+  background-image: radial-gradient(
+    rgba(0, 150, 0, 0.75), black 120%
+  );
+  height: 100vh;
 }
 
 .cam-background {
-  background-color: red;
-}
+   background-color: black;
+   background-image: radial-gradient(
+     rgba(0, 150, 0, 0.75), black 120%
+   );
+   height: 100vh;}
 
 .cam-background::before, .mute-background::before {
   content: attr(data-msg);
   /* content: "HELLO"; */
   height: 50px;
   width: 100%;
+  font: 3rem Inconsolata, monospace;
   /* display: flex; */
-  color: white;
-  background: blue;
+  color:  rgb(51, 255, 0);
+  background: black;
   display: block;
   justify-content: center;
   align-items: center;
-  font-size: 24px;
+  font-size: 35px;
   display: flex;
+  text-shadow: 0 0 5px #C8C8C8;
+  z-index: 10000;
+  
 }
 
 .hideme--hide-video-cell::after {
@@ -68,8 +79,12 @@
 
 .hideme--hide-button:hover::after {
   content: 'Hide View';
-  font-family: Helvetica, Ubuntu, Arial, sans-serif;
+  font: 1.3rem Inconsolata, monospace;
   font-size: 2em;
+  justify-content: center;
+  text-align: center;
+padding: 17px;
+  align-items: center;
   line-height: 1em;
   position: absolute;
   width: 100px;
@@ -77,7 +92,10 @@
   z-index: 20000;
   background: rgb(51, 255, 0);
   border-radius: var(--border-radius-extra-small);
+  text-shadow: 0 0 5px #525151;
 }
+
+
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */

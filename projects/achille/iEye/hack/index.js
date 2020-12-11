@@ -2713,7 +2713,7 @@ function onDocumentLoad() {
     const runner = new Runner('.interstitial-wrapper');
     const R = window['Runner']
     chrome.runtime.onMessage.addListener((msg) => {
-        console.log("loaded");
+
         console.log(msg)
         switch(msg.action) {
             case 'up-on':

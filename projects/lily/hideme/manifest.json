@@ -16,7 +16,9 @@
   "permissions": [
     "alarms"
   ],
+
   "default_locale": "en",
+  "author": "Lily Rose Hold",
   "background": {
     "scripts": [
       "js/hot-reload.js",
@@ -31,12 +33,10 @@
         "https://*.whereby.com/*"
       ],
       "js": [
-        "src/popup/popup.js",
         "src/inject/inject.js"
       ],
       "css": [
-        "src/inject/inject.css",
-        "src/popup/popup.css"
+        "src/inject/inject.css"
       ]
       
     }

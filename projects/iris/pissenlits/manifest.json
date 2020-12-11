@@ -14,6 +14,11 @@
   "background": {
     "scripts": ["libs/hot-reload.js"]
   },
+
+  "browser_action": {
+    "default_icon": "lightbreak.png"
+  },
+
   "web_accessible_resources": ["res/*"],
   "manifest_version": 2
 }
