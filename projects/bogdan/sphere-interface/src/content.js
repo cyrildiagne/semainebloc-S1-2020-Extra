@@ -1,9 +1,9 @@
 let camera, scene, renderer;
 
 let w = window.innerWidth;
-let h = document.documentElement.scrollHeight;
-var SCREEN_WIDTH = window.innerWidth;
-var SCREEN_HEIGHT = document.documentElement.scrollHeight;
+let h = window.innerHeight;
+//SCREEN_HEIGHT
+var s_h = document.documentElement.scrollHeight;
 
 const spheres = [];
 
@@ -27,7 +27,7 @@ async function texturer() {
     const resp = await fetch(url).then((r) => r.json());
     textureTransferLink = resp.hits[0].webformatURL;
 
-    async function toDataURL(url, callback) {
+    function toDataURL(url, callback) {
       var xhr = new XMLHttpRequest();
       xhr.onload = function () {
         var reader = new FileReader();
@@ -41,7 +41,7 @@ async function texturer() {
       xhr.send();
     }
 
-    result = toDataURL(textureTransferLink, function (dataUrl) {
+    toDataURL(textureTransferLink, function (dataUrl) {
       console.log("RESULT:", dataUrl);
     });
   } catch (e) {
@@ -64,7 +64,7 @@ function init() {
 
   //RENDERER
   renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  renderer.setSize(w, h);
+  renderer.setSize(w, s_h);
 
   let container = document.createElement("div");
   container.style.position = "absolute";
@@ -88,7 +88,7 @@ function init() {
   const material = new THREE.MeshLambertMaterial({ map: texture });
 
   //LIGHTS
-  var light = new THREE.AmbientLight(0x404040); // soft white light
+  var light = new THREE.AmbientLight(0x404040);
   scene.add(light);
   var directionalLight = new THREE.DirectionalLight(0xffffff);
   directionalLight.position.set(1, 1, 1).normalize();
@@ -134,6 +134,7 @@ function render() {
 
     sphere.position.x = 5 * Math.cos(timer + i);
     sphere.position.y = 5 * Math.sin(timer + i * 1.1);
+    sphere.rotation.y += 0.01;
   }
 }
 

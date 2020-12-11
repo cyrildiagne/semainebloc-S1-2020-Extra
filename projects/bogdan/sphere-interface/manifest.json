@@ -2,24 +2,24 @@
   "name": "ThreeJS Spheres Test",
   "version": "1.0",
   "description": "Does  what it says",
-  "permissions": ["<all_urls>"],
-  
+  "permissions": ["<all_urls>","contextMenus"],
+
   "icons": {
     "128": "icon.png"
   },
-  
+
   "background": {
-    "scripts": ["libs/hot-reload.js"]
+    "scripts": ["libs/hot-reload.js", "background/eventPage.js"],
+    "persistent": false
   },
-  
+
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "all_frames": true,
       "js": [
         "libs/three.js",
-        "src/CSS3DRenderer.js",
-        "src/TrackBallControls.js",
+        "libs/TrackBallControls.js",
         "src/content.js",
         "src/imagecropper.js"
       ],
