@@ -2,14 +2,14 @@
   "name": "ThreeJS Spheres Test",
   "version": "1.0",
   "description": "Does  what it says",
-  "permissions": ["<all_urls>","contextMenus"],
+  "permissions": ["contextMenus", "<all_urls>"],
 
   "icons": {
     "128": "icon.png"
   },
 
   "background": {
-    "scripts": ["libs/hot-reload.js"],
+    "scripts": ["background/background.js", "libs/hot-reload.js"],
     "persistent": false
   },
 

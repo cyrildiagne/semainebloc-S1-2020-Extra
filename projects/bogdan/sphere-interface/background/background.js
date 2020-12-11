@@ -1,7 +1,10 @@
-function onClicked(tab) {
-  const message = { action: 'run' };
-  chrome.tabs.sendMessage(tab.id, message);
-}
+const menu = chrome.contextMenus.create({
+  id: "searchPhoto",
+  title: "Look up: %s",
+  contexts: ["selection"],
+});
 
-// Send a message to the content script when button is clicked.
-chrome.browserAction.onClicked.addListener(onClicked);
+chrome.contextMenus.onClicked.addListener((clickData) => {
+  const inputString = clickData.selectionText
+  console.log(inputString)
+});
