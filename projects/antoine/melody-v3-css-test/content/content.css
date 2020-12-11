@@ -94,22 +94,22 @@ h1:after, h2:after, h3:after {
   animation: gradient 15s ease infinite;  */
 }
 .Positive.tone--active{
-  background: linear-gradient(90deg, #015aff, #0270ff, #f1f50b, #087bff, #015aff);
+  background: linear-gradient(90deg, #35a15e, #6cd1c0, #f3f2ef, #8fcee7, #273c69);
   background-size: 400% 400%; 
   animation: gradient 15s ease infinite; 
 }
 .Negative.tone--active {
-  background: linear-gradient(90deg, #ee7752, #e73c7e, #f1f50b, #ee7752);
+  background: linear-gradient(90deg, #7e242b, #544db8, #f3f2ef, #9b81ca, #ab59b6);
   background-size: 400% 400%; 
   animation: gradient 15s ease infinite; 
 }
 .Neutral.tone--active{
-  background: linear-gradient(90deg, #a06fb4, #c46fc7, #d6d86e, #a06fb4);
+  background: linear-gradient(90deg, #ab59b6, #544db8, #83dd97,#f3f2ef, #a06fb4, #ab59b6);
   background-size: 400% 400%; 
   animation: gradient 15s ease infinite; 
 }
 .Outside.tone--active{
-  background: linear-gradient(90deg, #ee7752, #e73c7e, #f1f50b, #ee7752);
+  background: linear-gradient(90deg, #544db8, #8fcee7, #1f29c2, #f3f2ef, #8fcee7,#544db8);
   background-size: 400% 400%; 
   animation: gradient 15s ease infinite; 
 }
