@@ -7,40 +7,34 @@ function doBlur(blur = 0, contrast = 100) {
 `;
 }
 
-let elem = placeButton('Find me !', 'game-button');
+let elem = placeButton("", "game-button");
 
-window.addEventListener(
-  'click',
-  (evt) => {
-    if (evt.target !== elem) return;
-    elem = undefined;
-    win();
-  },
-  true
-);
+
 
 // doBlur(10, 150);
-chrome.runtime.sendMessage({ action: 'getBlur' }, (blurValue) => {
+chrome.runtime.sendMessage({ action: "getBlur" }, (blurValue) => {
   console.log(blurValue);
   doBlur(blurValue, contrast[2]);
+
+  // requestAnimationFrame(_ => {document.body.classList.remove('game-no-transition')});
 });
 //doit envoyer les valeur de doBlur au background pour qu'il les stocke chrome.extension.sendMessage()
 //doit récupérer les valeurus stockées dans le background pour les incérementer.
 
-function placeButton(text, subclass) {
-  let elem = document.createElement('div');
+async function placeButton(text, subclass) {
+
+  let elem = document.createElement("div");
   elem.classList.add(`custom--${subclass}`);
   elem.textContent = text;
 
-  let filter = '*:not(script):not(.link):not(img):not(a):not(b):not(button)';
+  let filter =
+    "*:not(script):not(input):not(.link):not(img):not(a):not(b):not(button):not(.deal-panel)";
 
   let allDoms = document.body.querySelectorAll(filter);
-  let randomDom = allDoms[Math.floor(Math.random() * allDoms.length)];
+  let selectedContainer = allDoms[Math.floor(Math.random() * allDoms.length)];
 
   //   let allTexts = randomDom.childNodes;
   // let randomText = allTexts[Math.floor(Math.random() * allTexts.length)];
-
-  let selectedContainer;
 
   //   if (allTexts.length > 0) {
   //     let randomI = Math.floor(Math.random() * allTexts.length);
@@ -58,31 +52,65 @@ function placeButton(text, subclass) {
   //     selectedContainer = randomDom;
   //   }
 
-  selectedContainer = randomDom;
+  if (!selectedContainer) return placeButton(text, subclass);
+
+  // selectedContainer = randomDom;
 
   let bounds = selectedContainer.getBoundingClientRect();
 
-  if (bounds.width < 10 || bounds.height < 10)
-    return placeButton(text, subclass);
+  let x = bounds.left + Math.random() * bounds.width;
+  let y = bounds.top + Math.random() * bounds.height; 
 
-  if (!selectedContainer?.offsetParent) return placeButton(text, subclass);
+  // if (x < 0 || x > document.body.scrollWidth)
+    x = Math.random() * document.body.scrollWidth;
 
-  selectedContainer.appendChild(elem);
+  // if (y < 0 || y > document.body.scrollHeight)
+    y = Math.random() * document.body.scrollHeight;
+
+  elem.style.left = x + "px";
+  elem.style.top = y + "px";
+
+  // return placeButton(text, subclass);
+
+  // if (!selectedContainer?.offsetParent) return placeButton(text, subclass);
+
+  // // if (!selectedContainer.offsetHeight || !selectedContainer.offsetWidth)
+  // // return placeButton(text, subclass);
+
+  document.body.appendChild(elem);
+
+  await delay(1);
+  elem.classList.add('make-visible');
+  
+
+  window.addEventListener(
+    "click",
+    (evt) => {
+      if (evt.target !== elem) return;
+      elem = undefined;
+      win();
+    },
+    true
+  );
 
   return elem;
 }
 
 async function win() {
-  console.log('FOUND!');
+  console.log("FOUND!");
+
+  chrome.runtime.sendMessage({ action: "onWin" });
+  document.body.classList.add('game-transition');
 
   await delay(400);
   // doBlur(blur[index+1], contrast[2]);
   doBlur();
-  console.log('reloading now!');
+  console.log("reloading now!");
   await delay(1000);
 
-  chrome.runtime.sendMessage({ action: 'onWin' });
-  location.reload();
+  
+  await delay(100);
+  window.location.reload();
 }
 
 async function delay(millis = 0) {
@@ -95,8 +123,9 @@ async function delay(millis = 0) {
 chrome.runtime.onMessage.addListener(gotMessage);
 
 function gotMessage(message, sender, sendResponse) {
-  if (message.action === 'gameover') {
-    console.log('game over');
+  if (message.action === "gameover") {
+    console.log("game over");
+    
     doBlur();
   }
 }
