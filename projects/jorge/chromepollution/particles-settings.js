@@ -224,14 +224,14 @@ const particlesSettings2 = {
 const particlesSettings3 = {
   "particles": {
     "number": {
-      "value": 137,
+      "value": 374,
       "density": {
         "enable": true,
         "value_area": 800
       }
     },
     "color": {
-      "value": "#282121"
+      "value": "#1e1919"
     },
     "shape": {
       "type": "circle",
@@ -259,7 +259,7 @@ const particlesSettings3 = {
       }
     },
     "size": {
-      "value": 51.29459670609772,
+      "value": 63.131811330581804,
       "random": true,
       "anim": {
         "enable": false,
@@ -298,7 +298,7 @@ const particlesSettings3 = {
         "mode": "bubble"
       },
       "onclick": {
-        "enable": false,
+        "enable": true,
         "mode": "repulse"
       },
       "resize": true
@@ -318,7 +318,7 @@ const particlesSettings3 = {
         "speed": 3
       },
       "repulse": {
-        "distance": 400,
+        "distance": 200,
         "duration": 0.4
       },
       "push": {
