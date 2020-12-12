@@ -1,15 +1,23 @@
-// //https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/removeProperty
-// //https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/setProperty
+//https://www.openinteractive.ch/partner
+// https://brunoarizio.com/
+// http://wolfdog-raven.nl/
 
-// //https://www.w3schools.com/jsref/jsref_getcomputedstyle.asp
+//  ALT + S pour activer l'extension
 
-// // https://developer.mozilla.org/en-US/docs/Web/API/MutationObserverInit/attributes
 let keyUp = false;
 let alreadySend = 0;
 class Content {
   constructor() {
     this.closeAnimations = false;
     this.blocked = 0;
+
+    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+      if (request != this.closeAnimations) {
+        console.log("listenenr context");
+        this.closeAnimations = !this.closeAnimations;
+        return this.closeAnimations;
+      }
+    });
 
     this.setup();
   }
@@ -48,7 +56,7 @@ class Content {
       "ng-isolate-scope",
     ];
     // console.log(this.closeAnimations);
-
+    console.log(this.closeAnimations);
     if (this.closeAnimations == true) {
       console.log("Extension activated");
       if (this.createdBanner != true) {
@@ -95,17 +103,14 @@ class Content {
           elements[i].style.transition = "none !important";
           elements[i].style.transitionDuration = "0.01ms !important";
         }
+
+        if (elements[i].id == "scratch") {
+          elements[i].style.display = "none";
+        }
       }
     } else {
       this.createdBanner = false;
     }
-
-    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-      if (request != this.closeAnimations) {
-        this.closeAnimations = !this.closeAnimations;
-        return this.closeAnimations;
-      }
-    });
 
     requestAnimationFrame(this.draw.bind(this));
   }
@@ -115,9 +120,9 @@ class Content {
 
     if (e.which == 83) {
       this.closeAnimations = !this.closeAnimations;
-      chrome.runtime.sendMessage(this.closeAnimations, function (response) {
-        console.log(`message from background: ${JSON.stringify(response)}`);
-      });
+      // chrome.runtime.sendMessage(this.closeAnimations, function (response) {
+      //   console.log(`message from background: ${JSON.stringify(response)}`);
+      // });
     }
   }
 
